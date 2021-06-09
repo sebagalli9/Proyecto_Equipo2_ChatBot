@@ -18,6 +18,16 @@ namespace Library
      public class FileReader : IReader
      {
           public List<Category> categoryBank {get;}
+
+          public string ReadFile() 
+          {
+               return null;
+          }
+
+          public void AddToCategoryBank()
+          {
+
+          }
           public List<Category> GetData()
           {
             return null;

@@ -1,7 +1,7 @@
 # Proyecto_Equipo2_GiftBot
 ## PII UCU - Proyecto Final de Curso - Equipo 2 - Gift ChatBot
 
-<p align="center">![Banner](./Assets/gift.png)</p>
+![Banner](./Assets/gift.png)
 
 Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! FigtBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
 
@@ -44,5 +44,6 @@ La categoría elegida por el usuario se almacena en un atributo de la clase que 
 Cuando el usuario haga una elección por última vez (es decir, cuando la última categoría elegida ya no tenga categorías hijas), se va a utilizar ese último valor almacenado para realizar la búsqueda en Mercado Libre o Amazon.
 La búsqueda que se va a realizar en la plataforma de venta de productos va a estar además sujeta a las preferencias en cuanto a precio,  lugar (ciudad o país) y estado del producto (nuevo o usado) que el usuario ingresa antes de que comiencen las rondas de opciones. Estas preferencias en particular corresponden a atributos del “Perfil de la Persona”, por lo que este perfil se va ir construyendo a medida que el usuario ingresa los datos correspondientes.
 
+![WHLogo](./Assets/logowhitehats.png)
 
 

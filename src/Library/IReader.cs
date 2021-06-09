@@ -10,6 +10,8 @@ namespace Library
     public interface IReader
     {
         List<Category> categoryBank {get;}
+        string ReadFile();
+        void AddToCategoryBank();
         List<Category> GetData();
     }
 }
