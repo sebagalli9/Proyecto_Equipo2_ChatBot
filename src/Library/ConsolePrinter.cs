@@ -5,7 +5,7 @@ namespace Library
 {
      /*
      La clase ConsolePrinter implementa la interfaz IMessageSender por lo que debe implementar las operaciones 
-     polimórficas por lo tanto cumple con el patron de Polimorfismo.
+     polimórficas y por lo tanto cumple con el patron de Polimorfismo.
      */
      public class ConsolePrinter : IMessageSender
      {

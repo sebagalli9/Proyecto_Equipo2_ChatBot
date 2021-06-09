@@ -9,7 +9,6 @@ namespace Library
 
     La clase OptionsRound no cumple con el patrón Expert ya que para conocer la información necesaria para crear 
     cada nueva ronda de opciones va a tener que acudir a la clase Experta en conocer la lista de categorias 
-    (la clase que implemente la interfaz IReader)
     */
     public class OptionsRound
     {
