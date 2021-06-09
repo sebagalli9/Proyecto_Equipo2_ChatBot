@@ -1,9 +1,9 @@
-# Proyecto_Equipo2_GiftBot
+# Proyecto Equipo2 GiftBot
 ## PII UCU - Proyecto Final de Curso - Equipo 2 - Gift ChatBot
 
-![Banner](./Assets/gift.png)
+![Banner](./Assets/gift2.png)
 
-Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! FigtBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
+Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! GiftBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
 
 ## Resumen de Experiencia de Usuario
 1. “¿La persona a la que le quieres regalar es: hombre, mujer u otro?”
