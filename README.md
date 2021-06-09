@@ -1,7 +1,7 @@
 # Proyecto Equipo2 GiftBot
 ## PII UCU - Proyecto Final de Curso - Equipo 2 - Gift ChatBot
 
-![Banner](./Assets/gift2.png)
+![Banner](./Assets/gift.png)
 
 Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! GiftBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
 
@@ -14,11 +14,13 @@ Llega el día del cumpleaños de la persona más importante para tí y suele pas
 
 Ejemplo: 
 *Elije lo que creas que es más acorde a la persona a la que quieres regalarle:*
+
 *1- Le gusta quedarse en casa 2- Es hábil para lo manual 3- Le gusta la tecnología*
 
 6. Botones: *Buscar mi regalo* o *Siguiente pregunta*
 
 (Buscar mi regalo)Se muestran productos acordes a la informacion que se dio hasta ahora (edad, sexo,etc, selectedCategory).
+
 (Siguiente pregunta)Si quiere seguir buscando, se muestran las categorías cuya categoría padre sea la selectedCategory
 
 7. Se repite procedimiento a partir de paso 5
