@@ -1,0 +1,16 @@
+AHORA:
+Revisar comentarios Patrones y Principios
+Hacer Tests de todo
+Actualizar UML
+Actualizar CRC
+HACER LAS PREGUNTAS!!!!
+Actualizar README
+Revisar CSVREADER porque esta comentado y desactualizado (tampoco esta probado)
+
+
+PROXIMA ENTREGA:
++ Ver cómo hacer para que el usuario pueda cancelar la búsqueda en cualquier momento
++ Pensar una clase Menu que administre los comandos
++ Crear un MessageReciever (clases que se encarguen de recibir/interpretar los mensajes del usuario)
+
+
