@@ -1,0 +1,74 @@
+home;sport;¿Le gusta hacer ejercicio en el interior de la casa?;fitness
+home;sport;¿Dispone un lugar amplio para hacer ejercicio?;otracosa
+home;sport;¿Tiene jardin como parar realizar deporte al aire libre?;garden
+home;sport;¿?;algo
+home;sport;¿?;algo
+home;technology;¿Le gusta jugar videojuegos?;console
+home;technology;¿Le gusta usar redes sociales?;cellphone
+home;technology;¿Le gusta sacar fotos y hacer producciones de video?;camera
+home;technology;¿Es youtuber o streamer?;video
+home;technology;¿Le gusta la musica?;audio
+home;tool;¿?;algo
+home;tool;¿?;algo
+home;tool;¿?;algo
+home;tool;¿?;algo
+home;tool;¿?;algo
+home;clothing;¿?;algo
+home;clothing;¿?;algo
+home;clothing;¿?;algo
+home;clothing;¿?;algo
+home;clothing;¿?;algo
+home;toy;¿?;algo
+home;toy;¿?;algo
+home;toy;¿?;algo
+home;toy;¿?;algo
+home;toy;¿?;algo
+sport;technology;¿?;algo
+sport;technology;¿?;algo
+sport;technology;¿?;algo
+sport;technology;¿?;algo
+sport;technology;¿?;algo
+sport;tool;¿?;algo
+sport;tool;¿?;algo
+sport;tool;¿?;algo
+sport;tool;¿?;algo
+sport;clothing;¿?;algo
+sport;clothing;¿?;algo
+sport;clothing;¿?;algo
+sport;clothing;¿?;algo
+sport;clothing;¿?;algo
+sport;toy;¿?;algo
+sport;toy;¿?;algo
+sport;toy;¿?;algo
+sport;toy;¿?;algo
+sport;toy;¿?;algo
+technology;tool;¿?;algo
+technology;tool;¿?;algo
+technology;tool;¿?;algo
+technology;tool;¿?;algo
+technology;tool;¿?;algo
+technology;clothing;¿?;algo
+technology;clothing;¿?;algo
+technology;clothing;¿?;algo
+technology;clothing;¿?;algo
+technology;clothing;¿?;algo
+technology;toy;¿?;algo
+technology;toy;¿?;algo
+technology;toy;¿?;algo
+technology;toy;¿?;algo
+technology;toy;¿?;algo
+tool;clothing;¿?;algo
+tool;clothing;¿?;algo
+tool;clothing;¿?;algo
+tool;clothing;¿?;algo
+tool;clothing;¿?;algo
+tool;toy;¿?;algo
+tool;toy;¿?;algo
+tool;toy;¿?;algo
+tool;toy;¿?;algo
+tool;toy;¿?;algo
+toy;clothing;¿?;algo
+toy;clothing;¿?;algo
+toy;clothing;¿?;algo
+toy;clothing;¿?;algo
+toy;clothing;¿?;algo

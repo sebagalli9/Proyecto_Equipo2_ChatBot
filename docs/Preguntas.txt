@@ -1,0 +1,3 @@
+- Deberiamos hacer que CoreBot dependa de una interfaz IPersonProfile en vez de una clase PersonProfile?
+- IReader cumple OCP?
+
