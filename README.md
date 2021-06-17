@@ -5,46 +5,51 @@
 
 Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! GiftBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
 
-## Resumen de Experiencia de Usuario
-1. “¿La persona a la que le quieres regalar es: hombre, mujer u otro?”
-2. “¿La persona a la que le quieres regalar es: niño, adulto joven o adulto?”
-3. “¿En qué departamento quieres hacer la compra?“
-4. “¿Cuánto es lo máximo que quieres gastar?”
-5. Aparece primera ronda de categorías 
+## Resumen del funcionamiento del programa
+Desde un conjunto de archivos externos se extrae la información necesaria para crear bancos que almacenan distintas clases de categorías de preguntas, las cuales se clasifican como: Initial, Main, Mixed y Specific. 
 
-Ejemplo: 
-*Elije lo que creas que es más acorde a la persona a la que quieres regalarle:*
+Las preguntas clasificadas como Initial están orientadas a recolectar información básica y general sobre la persona a quien se quiere regalar (tales como género y rango de edad) y sobre preferencias generales del usuario (tales como lugar de compra y presupuesto disponible). Las preguntas clasificadas como Initial estan ideadas exclusivamente para guardar información que no está directamente relacionada con el producto final, pero aún así es información que enriquece los criterios de búsqueda del regalo acorde a las preferencias del usuario y las características generales de la persona a quien se quiere regalar.
 
-*1- Le gusta quedarse en casa 2- Es hábil para lo manual 3- Le gusta la tecnología*
-
-6. Botones: *Buscar mi regalo* o *Siguiente pregunta*
-
-(Buscar mi regalo)Se muestran productos acordes a la informacion que se dio hasta ahora (edad, sexo,etc, selectedCategory).
-
-(Siguiente pregunta)Si quiere seguir buscando, se muestran las categorías cuya categoría padre sea la selectedCategory
-
-7. Se repite procedimiento a partir de paso 5
-8. Boton: Ya encontré mi regalo
-
-## Resumen del flujo básico del programa
-El programa lee un archivo txt donde de cada línea se extrae: el nombre de una categoría, el nombre de su categoría padre y un texto correspondiente a una opción que representa esa categoría. (Ejemplo: “Le gusta estar al aire libre” podría ser la opción que representa la categoría Garden).
+Las preguntas clasificadas como Initial son las primeras en interactuar con el usuario una vez que se inicia el procedimiento para la recomendación de regalos. Cada una de estas preguntas cuenta con respuestas preestablecidas entre las cuales el usuario debe elegir. La opción de respuesta a cada pregunta seleccionada por el usuario se almacena en lo que llamamos un Perfil de Persona. 
 
 ```
-Ejemplo de formato de archivo txt:
-categoria: A, categoriaPadre: nombre, opción: opción
-categoria: B, categoriaPadre: A, opción: opción
-categoria: C, categoriaPadre: nombre, opción: opción
+Ejemplo de formato de archivo de preguntas clasificadas como Initial:
+¿Cual es género de la persona a la que le quieres regalar?;1-mujer,2-hombre
 ```
 
-*(Nota: Todavía no está desarrollado cómo se va a identificar la categoría padre de las categorías que correspondan a la primer ronda)*
+Las categorías clasificadas como Main almacenan una afirmación identificadora que representa una categoría general de productos. Una categoría Main es el nivel más amplio o genérico en el que se puede clasificar una categoría (Ejemplos: Home, Sport, Technology).
 
-La información extraída sobre cada una de las categorías se usa para construir instancias de objetos categoría y dichos objetos se almacenan en una única lista (un banco de categorías).
-A partir de esa lista de Categorías es de donde se extraen las categorías que aparecerán en cada ronda. En cada ronda, se va a presentar al usuario un número determinado de opciones entre las cuales va a tener que elegir una según la preferencia que tenga. Cada una de estas opciones representa su propia categoría (pues la opción es un atributo de la categoría) por lo que cuando el usuario haga la elección, estará eligiendo implícitamente una categoría.
+Las categorías clasificadas como Main son las segundas en interactuar con el usuario. Entre una lista de afirmaciones, el usuario debe elegir aquellas dos afirmaciones que sean más acorde a la persona a quien quiere regalarle. Las dos categorías Main seleccionadas por el usuario a partir de las afirmaciones se almacenan en el antes mencionado Perfil de la Persona.
 
-La categoría elegida por el usuario se almacena en un atributo de la clase que representa el “Perfil de la Persona”. El valor de ese atributo se va a ir sobreescribiendo a medida que el usuario siga haciendo elecciones y siempre almacenará el valor de la última elección que haya hecho. Con esto, la clase responsable de generar las nuevas rondas va a tomar el valor de la última categoría elegida para poder buscar todas las categorías (en el banco de categorías) cuya categoría padre sea la última categoría elegida por la persona.
+```
+Ejemplo de formato de archivo de preguntas clasificadas como Main:
+Le gusta quedarse en casa;1-home
+Es habil para el bricolage;2-tool
+Le gusta la tecnología;3-technology
+``` 
+Las categorías clasificadas como Mixed almacenan preguntas asociadas a la combinación de dos categorías Main, donde además cada pregunta representa una categoría más específica dentro de dicha combinación de dos categorías Main.
 
-Cuando el usuario haga una elección por última vez (es decir, cuando la última categoría elegida ya no tenga categorías hijas), se va a utilizar ese último valor almacenado para realizar la búsqueda en Mercado Libre o Amazon.
-La búsqueda que se va a realizar en la plataforma de venta de productos va a estar además sujeta a las preferencias en cuanto a precio,  lugar (ciudad o país) y estado del producto (nuevo o usado) que el usuario ingresa antes de que comiencen las rondas de opciones. Estas preferencias en particular corresponden a atributos del “Perfil de la Persona”, por lo que este perfil se va ir construyendo a medida que el usuario ingresa los datos correspondientes.
+Las categorías clasificadas como Mixed son las terceras en interactuar con el usuario. A partir de las dos categorías Main seleccionadas por el usuario, se realiza una búsqueda de las categorías Mixed que están asociadas a la combinación de dichas categorías Main. A partir de ello, se muestra un conjunto de preguntas nuevas que el usuario debe responder ingresando  "si" o un "no".
+
+```
+Ejemplo de formato de archivo de preguntas clasificadas como Mixed:
+home;technology;¿Le gusta usar redes sociales?;cellphone
+```
+
+Las categorías clasificadas como Specific almacenan preguntas asociadas a un producto puntual (o una gama de productos).
+
+Las categorías clasificadas como Specific son las últimas en interactuar con el usuario. A partir de aquellas preguntas Mixed a las que el usuario haya respondido "si", se muestra un nuevo conjunto de preguntas a las cuales el usuario debe responder ingresando "si" o un "no". 
+
+```
+Ejemplo de formato de archivo de preguntas clasificadas como Specific:
+cellphone;¿Le gusta sacar fotos?;Iphone
+```
+Finalmente, aquella o aquellas preguntas clasificadas como Specific que hayan obtenido como respuesta un "si", devolverán un producto que posteriormente va a ser ingresado a una búsqueda en Mercado Libre.
+
+####Casos especiales
+* En aquellos casos en que el usuario deba responder con un número que represente una opción e ingrese un número fuera del rango de las opciones disponibles, el programa volverá a repetir la pregunta y avisará que debe responder con un número válido.
+* En aquellos casos en que el usuario deba responder con un "si" o "no" e ingrese una palabra distinta de "si" o "no" (independientemente de letras mayúsculas o minúsculas), el programa volverá a repetir la pregunta y avisará que debe responder con un "si" o "no".
+* En aquellos casos en que el usuario deba responder con un "si" o un "no" y se responda a todas las preguntas con un "no", el programa recolectará categorías aleatorias y hará nuevas preguntas hasta que el usuario pueda encontrar una categoría a la cual poder responder "si".
 
 ![WHLogo](./Assets/logowhitehats.png)
 
