@@ -12,12 +12,17 @@ namespace Library
     {
         public string Name {get;}
         public string Question {get;}
-        public string Product {get;}
-        public SpecificCategory(string name, string question, string product)
+        public List<string> Products {get;}
+        public SpecificCategory(string name, string question)
         {
              this.Name = name;
              this.Question = question;
-             this.Product = product;
+             this.Products = new List<string>();
+        }
+
+        public void AddProduct(string prod)
+        {
+            this.Products.Add(prod);
         }
     }
 }

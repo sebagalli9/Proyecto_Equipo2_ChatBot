@@ -21,7 +21,7 @@ namespace Library
         List<MixedCategory> MixedCategoryBank {get;}
         List<SpecificCategory> SpecificCategoryBank {get;}
         List<InitialQuestion> InitialQuestionsBank {get;}
-        List<InitialQuestion> MainCategories {get;}
+        List<MainCategory> MainCategories {get;}
          
         void ReadMainCategories();
         void ReadMixedCategories();

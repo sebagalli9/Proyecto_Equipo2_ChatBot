@@ -4,19 +4,20 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-    La clase InitialQuestion cumple con el principio SRP ya que no tiene más de una razón de cambio.
-    La clase InitialQuestion cumple con al patrón Expert ya que es la clase experta en conocer la información
-    necesaria para instanciar objetos InitialQuestion.
+    La clase MainCategory cumple con el principio SRP ya que no tiene más de una razón de cambio.
+    La clase MainCategory cumple con al patrón Expert ya que es la clase experta en conocer la información
+    necesaria para instanciar objetos MainCategory.
     */
-    public class InitialQuestion
+    public class MainCategory
     {
         public string Question {get;}
         
         public Dictionary<string, string> AnswerOptions {get; private set;}
 
-        public InitialQuestion(string question)
+        public MainCategory(string question)
         {
             this.Question = question;
+
             this.AnswerOptions = new Dictionary<string, string>();
         }
 
