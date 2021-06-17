@@ -59,7 +59,7 @@ namespace Library
           {    
                int contador = 1;
                Console.WriteLine("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
-               foreach (InitialQuestion mainQ in reader.MainCategories) 
+               foreach (MainCategory mainQ in reader.MainCategories) 
                {
                     Console.WriteLine(contador + "-" + mainQ.Question);
                     mainCategoriesAnswers.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
@@ -199,7 +199,11 @@ namespace Library
                               {
                                    if (specificCategory.Question == category.Key)
                                    {
-                                        user.ProductSearcherKeyWords.Add(specificCategory.Product);
+                                        foreach(string prod in specificCategory.Products)
+                                        {
+                                             user.ProductSearcherKeyWords.Add(prod);
+                                        }
+                                        
                                    }
                               }
                          }

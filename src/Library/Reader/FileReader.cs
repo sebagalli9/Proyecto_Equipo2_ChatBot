@@ -23,14 +23,14 @@ namespace Library
     
     public class FileReader : IReader
     {   
-        public List<InitialQuestion> MainCategories {get; private set;}
+        public List<MainCategory> MainCategories {get; private set;}
         public List<MixedCategory> MixedCategoryBank {get; private set;}
         public List<SpecificCategory> SpecificCategoryBank {get; private set;}
         public List<InitialQuestion> InitialQuestionsBank {get; private set;}
 
         public void ReadMainCategories()
         {
-            MainCategories = new List<InitialQuestion>();
+            MainCategories = new List<MainCategory>();
             try
             {
                 using (StreamReader sr = new StreamReader(@"..\..\Assets\MainCategories.txt"))
@@ -45,7 +45,7 @@ namespace Library
                         {
                             listaLinea = line.Split(';'); 
                             
-                            InitialQuestion mainQ = new InitialQuestion(listaLinea[0]);
+                            MainCategory mainQ = new MainCategory(listaLinea[0]);
                        
                             string[] keyVal = listaLinea[1].Split("-");
                             mainQ.AddAnswerOption(keyVal[0],keyVal[1]);   
@@ -119,7 +119,14 @@ namespace Library
                         {
                             listaLinea = line.Split(';').ToArray();
 
-                            SpecificCategoryBank.Add(new SpecificCategory(listaLinea[0], listaLinea[1], listaLinea[2]));
+                            SpecificCategory specificCat = new SpecificCategory(listaLinea[0], listaLinea[1]);
+                            string[] products = listaLinea[2].Split(",");
+                            foreach (string prod in products)
+                            {
+                               specificCat.AddProduct(prod); 
+                            }
+
+                            SpecificCategoryBank.Add(specificCat);
                         }
                         catch (Exception)
                         {   
