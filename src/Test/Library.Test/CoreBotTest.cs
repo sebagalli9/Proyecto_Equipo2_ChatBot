@@ -20,7 +20,7 @@ namespace Test.Library
             coreBot = new CoreBot(reader,user,input);
         }
 
-        [Test]
+/*         [Test]
         public void AskInitialQuestionsTest()
         //Se prueba que el metodo AskInitialQuestions actualice las preferencias del perfil del usuario
         {
@@ -30,9 +30,9 @@ namespace Test.Library
             coreBot.AskInitialQuestions();
             //Assert
             Assert.AreEqual(5, user.Preferences.Count);
-        }
+        } */
 
-        [Test]
+   /*      [Test]
         public void AskMainCategoriesTest()
         //Se prueba que el metodo AskMainCategories actualice las categorias seleccionadas del perfil del usuario
         {
@@ -42,7 +42,7 @@ namespace Test.Library
             coreBot.AskMainCategories();
             //Assert
             Assert.AreEqual(2, user.SelectedCategory.Count);
-        }
+        } */
 
 
         /* [Test]
