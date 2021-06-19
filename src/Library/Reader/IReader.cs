@@ -21,12 +21,12 @@ namespace Library
         List<MixedCategory> MixedCategoryBank {get;}
         List<SpecificCategory> SpecificCategoryBank {get;}
         List<InitialQuestion> InitialQuestionsBank {get;}
-        List<MainCategory> MainCategories {get;}
+        List<MainCategory> MainCategoryBank {get;}
          
-        void ReadMainCategories();
-        void ReadMixedCategories();
-        void ReadSpecificCategories();
-        void ReadInitialQuestions(); 
+        void ReadMainCategories(string path);
+        void ReadMixedCategories(string path);
+        void ReadSpecificCategories(string path);
+        void ReadInitialQuestions(string path); 
         string ReadPlainText(string path);
         
     }

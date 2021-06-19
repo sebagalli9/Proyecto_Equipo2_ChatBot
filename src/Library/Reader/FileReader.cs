@@ -23,17 +23,17 @@ namespace Library
     
     public class FileReader : IReader
     {   
-        public List<MainCategory> MainCategories {get; private set;}
+        public List<MainCategory> MainCategoryBank {get; private set;}
         public List<MixedCategory> MixedCategoryBank {get; private set;}
         public List<SpecificCategory> SpecificCategoryBank {get; private set;}
         public List<InitialQuestion> InitialQuestionsBank {get; private set;}
 
-        public void ReadMainCategories()
+        public void ReadMainCategories(string path)
         {
-            MainCategories = new List<MainCategory>();
+            MainCategoryBank = new List<MainCategory>();
             try
-            {
-                using (StreamReader sr = new StreamReader(@"..\..\Assets\MainCategories.txt"))
+            { 
+                using (StreamReader sr = new StreamReader(path))
                 {   
                     int contador = 0;
                     string line;
@@ -50,7 +50,7 @@ namespace Library
                             string[] keyVal = listaLinea[1].Split("-");
                             mainQ.AddAnswerOption(keyVal[0],keyVal[1]);   
 
-                            this.MainCategories.Add(mainQ);
+                            this.MainCategoryBank.Add(mainQ);
                         }
                         catch (Exception)
                         {   
@@ -67,13 +67,13 @@ namespace Library
             }
         }
 
-        public void ReadMixedCategories()
+        public void ReadMixedCategories(string path)
         {
             this.MixedCategoryBank = new List<MixedCategory>();
 
             try
             {
-                using (StreamReader sr = new StreamReader(@"..\..\Assets\MixedQuestions.txt"))
+                using (StreamReader sr = new StreamReader(path))
                 {   
                     int contador = 0;
                     string line;
@@ -101,13 +101,13 @@ namespace Library
             }
         }
 
-        public void ReadSpecificCategories()
+        public void ReadSpecificCategories(string path)
         {
             this.SpecificCategoryBank = new List<SpecificCategory>();
             
             try
             {
-                using (StreamReader sr = new StreamReader(@"..\..\Assets\SpecificQuestions.txt"))
+                using (StreamReader sr = new StreamReader(path))
                 {
                     int contador = 0;
                     string line;
@@ -146,13 +146,13 @@ namespace Library
           
         } 
 
-        public void ReadInitialQuestions()
+        public void ReadInitialQuestions(string path)
         {
             InitialQuestionsBank = new List<InitialQuestion>();
 
             try
             {
-                using (StreamReader sr = new StreamReader(@"..\..\Assets\InitialQuestions.txt"))
+                using (StreamReader sr = new StreamReader(path))
                 {   
                     int contador = 0;
                     string line;
@@ -178,7 +178,7 @@ namespace Library
                         }
                         catch (Exception)
                         {   
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MixedQuestions.");
+                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo InitialQuestions.");
                             continue;
                         }
                     }
