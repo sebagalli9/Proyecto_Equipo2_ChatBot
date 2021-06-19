@@ -17,48 +17,64 @@ namespace Test.Library
         {
             reader = new FileReader();
             user = new PersonProfile();
-            coreBot = new CoreBot(reader,user,input);
         }
 
-/*         [Test]
+        [Test]
         public void AskInitialQuestionsTest()
         //Se prueba que el metodo AskInitialQuestions actualice las preferencias del perfil del usuario
         {
-            //Act
+            //Arrange
             input = new FakeAnswerReceiver("1");
-            reader.ReadInitialQuestions();
+            coreBot = new CoreBot(reader,user,input);
+            //Act
+            reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             coreBot.AskInitialQuestions();
             //Assert
             Assert.AreEqual(5, user.Preferences.Count);
-        } */
+        }
 
-   /*      [Test]
+        [Test]
         public void AskMainCategoriesTest()
         //Se prueba que el metodo AskMainCategories actualice las categorias seleccionadas del perfil del usuario
         {
-            //Act
+            //Arrange
             input = new FakeAnswerReceiver("1");
-            reader.ReadMainCategories();
+            coreBot = new CoreBot(reader,user,input);
+            //Act
+            reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             coreBot.AskMainCategories();
             //Assert
             Assert.AreEqual(2, user.SelectedCategory.Count);
-        } */
+        } 
 
-
-        /* [Test]
+        [Test]
+        public void GetMixedQuestionsTest()
+        {
+            //Arrange
+            input = new FakeAnswerReceiver("1");
+            coreBot = new CoreBot(reader,user,input);
+            //Act
+            reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
+            user.UpdateSelectedCategory("home");
+            user.UpdateSelectedCategory("technology");
+            coreBot.GetMixedCategoryQuestion();
+            //Assert
+            Assert.AreEqual(5, coreBot.MixedCategoriesSelected.Count);
+        } 
+        [Test]
         public void AskMixedQuestionsTest()
         {
-            //Act
-            reader.ReadMainCategories();
-            reader.ReadMixedCategories();
-            input = new FakeAnswerReceiver("1");
-            coreBot.AskMainCategories();
+            //Arrange
             input = new FakeAnswerReceiver("si");
+            coreBot = new CoreBot(reader,user,input);
+            //Act
+            reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
+            user.UpdateSelectedCategory("home");
+            user.UpdateSelectedCategory("technology");
+            coreBot.GetMixedCategoryQuestion();
             coreBot.AskMixedQuestions();
             //Assert
-            Assert.AreEqual(6,coreBot.AnswersMixedQuestions.Count);
-        } */
-
+            Assert.AreEqual(5,coreBot.AnswersMixedQuestions.Count);
+        } 
     }
-
 }

@@ -29,9 +29,9 @@ namespace Library
           IPersonProfile user;
 
           IInputReceiver input;
-          private List<MixedCategory> mixedCategoriesSelected;
-          private List<SpecificCategory> specificCategoriesSelected; 
-          private List<String> subCategory; 
+          public List<MixedCategory> MixedCategoriesSelected {get; private set;}
+          public List<SpecificCategory> SpecificCategoriesSelected {get; private set;}
+          public List<String> SubCategory {get; private set;} 
           public Dictionary<string, string> MainCategoriesAnswers {get;private set;}
           public Dictionary<string, string> AnswersMixedQuestions {get; private set;}
           public Dictionary<string, string> AnswersSpecificQuestions {get; private set;}
@@ -40,6 +40,7 @@ namespace Library
           {
                foreach(InitialQuestion initialQ in reader.InitialQuestionsBank)
                {
+                    
                     Console.WriteLine(initialQ.Question);
                     foreach(var option in initialQ.AnswerOptions)
                     {
@@ -61,7 +62,7 @@ namespace Library
           {    
                int contador = 1;
                Console.WriteLine("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
-               foreach (MainCategory mainQ in reader.MainCategories) 
+               foreach (MainCategory mainQ in reader.MainCategoryBank) 
                {
                     Console.WriteLine(contador + "-" + mainQ.Question);
                     MainCategoriesAnswers.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
@@ -92,7 +93,7 @@ namespace Library
                {
                     if ((category.ParentCategoryName == user.SelectedCategory[0] && category.SecondParentCategoryName == user.SelectedCategory[1]) || (category.ParentCategoryName == user.SelectedCategory[1] && category.SecondParentCategoryName == user.SelectedCategory[0]))
                     {
-                         mixedCategoriesSelected.Add(category);
+                         MixedCategoriesSelected.Add(category);
                     }
                }
           }
@@ -101,7 +102,7 @@ namespace Library
           {
                Console.WriteLine("Responde si o no a las siguientes preguntas.");
 
-               foreach (MixedCategory category in mixedCategoriesSelected)
+               foreach (MixedCategory category in MixedCategoriesSelected)
                {
                     Console.WriteLine(category.Question);
 
@@ -125,11 +126,11 @@ namespace Library
                     {
                          if (category.Value == "si")
                          {
-                              foreach (MixedCategory mixedCategory in mixedCategoriesSelected)
+                              foreach (MixedCategory mixedCategory in MixedCategoriesSelected)
                               {
                                    if (mixedCategory.Question == category.Key)
                                    {
-                                        subCategory.Add(mixedCategory.SubCategoryName);
+                                        SubCategory.Add(mixedCategory.SubCategoryName);
                                    }
                               }
                          }
@@ -137,29 +138,27 @@ namespace Library
 
                     foreach (SpecificCategory category in reader.SpecificCategoryBank)
                     {    
-                         foreach(string subCat in subCategory)
+                         foreach(string subCat in SubCategory)
                          {
                               if (category.Name == subCat)
                               {
-                                   specificCategoriesSelected.Add(category);
+                                   SpecificCategoriesSelected.Add(category);
                               }
                          }
                     }
                }
                else
                {
-                    mixedCategoriesSelected.Clear();
+                    MixedCategoriesSelected.Clear();
                     for(int i=0; i<6; i++)
                     {    
                          Random r = new Random();
                          int randomNum = r.Next(reader.MixedCategoryBank.Count);
                          MixedCategory randCat = reader.MixedCategoryBank[randomNum];     
-                         mixedCategoriesSelected.Add(randCat);                       
+                         MixedCategoriesSelected.Add(randCat);                       
                     }
-                    
                     AskMixedQuestions(); 
                     GetSpecificCategoryQuestion();                
-
                }
           }
       
@@ -167,7 +166,7 @@ namespace Library
           {
                Console.WriteLine("Responde si o no a las siguientes preguntas.");
 
-               foreach (SpecificCategory category in specificCategoriesSelected)
+               foreach (SpecificCategory category in SpecificCategoriesSelected)
                {
                     Console.WriteLine(category.Question);
 
@@ -190,7 +189,7 @@ namespace Library
                     {
                          if (category.Value == "si")
                          {
-                              foreach (SpecificCategory specificCategory in specificCategoriesSelected)
+                              foreach (SpecificCategory specificCategory in SpecificCategoriesSelected)
                               {
                                    if (specificCategory.Question == category.Key)
                                    {
@@ -206,13 +205,13 @@ namespace Library
                }
                else
                {
-                    specificCategoriesSelected.Clear();
+                    SpecificCategoriesSelected.Clear();
                     for(int i=0; i<6; i++)
                     {
                         Random r = new Random();
                         int randomNum = r.Next(reader.SpecificCategoryBank.Count); 
                         SpecificCategory randCat = reader.SpecificCategoryBank[randomNum];     
-                        specificCategoriesSelected.Add(randCat);     
+                        SpecificCategoriesSelected.Add(randCat);     
                     }
                     AskMixedQuestions(); 
                     GetProductToSearch();
@@ -221,10 +220,10 @@ namespace Library
 
           public void Start()
           {  
-               reader.ReadInitialQuestions();
-               reader.ReadMainCategories();
-               reader.ReadMixedCategories();
-               reader.ReadSpecificCategories();
+               reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
+               reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
+               reader.ReadMixedCategories(@"..\..\Assets\MixedCategories.txt");
+               reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
                AskInitialQuestions();
                AskMainCategories();
                GetMixedCategoryQuestion();
@@ -239,9 +238,9 @@ namespace Library
                this.reader = reader;
                this.user = user;
                this.input = input;
-               this.mixedCategoriesSelected = new List<MixedCategory>();
-               this.specificCategoriesSelected = new List<SpecificCategory>();
-               this.subCategory = new List<string>();
+               this.MixedCategoriesSelected = new List<MixedCategory>();
+               this.SpecificCategoriesSelected = new List<SpecificCategory>();
+               this.SubCategory = new List<string>();
                this.MainCategoriesAnswers= new Dictionary<string, string>();
                this.AnswersMixedQuestions = new Dictionary<string, string>();
                this.AnswersSpecificQuestions = new Dictionary<string, string>();

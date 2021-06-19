@@ -1,6 +1,0 @@
-¿Cual es género de la persona a la que le quieres regalar?;1-mujer,2-hombre
-¿En qué franja de edad se encuentra la persona a la que le quieres regalar?;1-niño,2-joven,3-adulto
-¿Cuánto dinero quieres gastar?;1-Hasta 550,2-550 a 1500,3-Más de 1500
-¿En qué departamento quieres hacer la compra?;1-salto,2-artigas,3-paysandu,4-treinta y tres,5-rivera,6-tacuarembo,7-cerro largo,8-rio negro,9-durazno,10-soriano,11-flores,12-florida,13-colonia,14-san jose,15-canelones,16-montevideo,17-maldonado,18-rocha,19-lavalleja
-Seleccione el estado del producto;1-nuevo,2-usado
-

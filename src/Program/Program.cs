@@ -12,10 +12,7 @@ namespace Program
             IInputReceiver input = new ConsoleReceiver();
             FakeAnswerReceiver fake = new FakeAnswerReceiver("si");
             CoreBot optionsRound = new CoreBot(reader,user,input);
-                  
             optionsRound.Start();
-               
-
         }
     }
 }
