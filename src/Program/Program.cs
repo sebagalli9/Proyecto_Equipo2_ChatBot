@@ -9,8 +9,10 @@ namespace Program
         {
             IReader reader = new FileReader();
             IPersonProfile user = new PersonProfile();
-            CoreBot optionsRound = new CoreBot(reader,user);
-
+            IInputReceiver input = new ConsoleReceiver();
+            FakeAnswerReceiver fake = new FakeAnswerReceiver("si");
+            CoreBot optionsRound = new CoreBot(reader,user,input);
+                  
             optionsRound.Start();
                
 

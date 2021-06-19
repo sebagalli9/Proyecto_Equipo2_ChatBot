@@ -27,12 +27,14 @@ namespace Library
      {
           IReader reader;
           IPersonProfile user;
+
+          IInputReceiver input;
           private List<MixedCategory> mixedCategoriesSelected;
           private List<SpecificCategory> specificCategoriesSelected; 
           private List<String> subCategory; 
-          private Dictionary<string, string> mainCategoriesAnswers = new Dictionary<string, string>();
-          private Dictionary<string, string> answersMixedQuestions = new Dictionary<string, string>();
-          private Dictionary<string, string> answersSpecificQuestions = new Dictionary<string, string>();
+          public Dictionary<string, string> MainCategoriesAnswers {get;private set;}
+          public Dictionary<string, string> AnswersMixedQuestions {get; private set;}
+          public Dictionary<string, string> AnswersSpecificQuestions {get; private set;}
           
           public void AskInitialQuestions()
           {
@@ -44,11 +46,11 @@ namespace Library
                          Console.WriteLine(option.Key + " - " + option.Value);
                     }
 
-                    string ans = Console.ReadLine();
+                    string ans = input.GetInput(); //Cambio aca
                     while(Convert.ToInt32(ans) > initialQ.AnswerOptions.Count)
                     {
                          Console.WriteLine("Debe ingresar un número del 1 al " + initialQ.AnswerOptions.Count);
-                         ans = Console.ReadLine();
+                         ans = input.GetInput();
                     }
                           
                     user.UpdatePreferences(initialQ.AnswerOptions[ans]);              
@@ -62,27 +64,26 @@ namespace Library
                foreach (MainCategory mainQ in reader.MainCategories) 
                {
                     Console.WriteLine(contador + "-" + mainQ.Question);
-                    mainCategoriesAnswers.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
+                    MainCategoriesAnswers.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
-
                }
 
-               string ans = Console.ReadLine(); 
-               while(Convert.ToInt32(ans) > mainCategoriesAnswers.Count)
+               string ans = input.GetInput(); //cambio aca 
+               while(Convert.ToInt32(ans) > MainCategoriesAnswers.Count)
                {
-                   Console.WriteLine("Debe ingresar un número del 1 al " + mainCategoriesAnswers.Count);
-                    ans = Console.ReadLine(); 
+                   Console.WriteLine("Debe ingresar un número del 1 al " + MainCategoriesAnswers.Count);
+                    ans = input.GetInput(); //cambio aca 
                }
-               user.UpdateSelectedCategory(mainCategoriesAnswers[ans]); 
+               user.UpdateSelectedCategory(MainCategoriesAnswers[ans]); 
 
                Console.WriteLine("Elije una segunda opción adicional:");
-               string ans2 = Console.ReadLine();
-               while(Convert.ToInt32(ans2) > mainCategoriesAnswers.Count)
+               string ans2 = input.GetInput(); //cambio aca
+               while(Convert.ToInt32(ans2) > MainCategoriesAnswers.Count)
                {
-                   Console.WriteLine("Debe ingresar un número del 1 al " + mainCategoriesAnswers.Count);
-                   ans2 = Console.ReadLine(); 
+                   Console.WriteLine("Debe ingresar un número del 1 al " + MainCategoriesAnswers.Count);
+                   ans2 = input.GetInput(); //cambio aca 
                }
-               user.UpdateSelectedCategory(mainCategoriesAnswers[ans2]);
+               user.UpdateSelectedCategory(MainCategoriesAnswers[ans2]);
           }
          
           public void GetMixedCategoryQuestion() 
@@ -104,23 +105,23 @@ namespace Library
                {
                     Console.WriteLine(category.Question);
 
-                    string ans = Console.ReadLine();
+                    string ans = input.GetInput(); //cambio aca 
                     while(ans.ToLower() != "si" && ans.ToLower() != "no")
                     {
                          Console.WriteLine("La respuesta debe ser si o no");
                          Console.WriteLine(category.Question);
-                         ans = Console.ReadLine();
+                         ans = input.GetInput(); //cambio aca 
                     }
 
-                    answersMixedQuestions.Add(category.Question, ans.ToLower());
+                    AnswersMixedQuestions.Add(category.Question, ans.ToLower());
                }
           }
  
           public void GetSpecificCategoryQuestion()    
           {
-               if(answersMixedQuestions.ContainsValue("si"))
+               if(AnswersMixedQuestions.ContainsValue("si"))
                {
-                    foreach (KeyValuePair<string, string> category in answersMixedQuestions)
+                    foreach (KeyValuePair<string, string> category in AnswersMixedQuestions)
                     {
                          if (category.Value == "si")
                          {
@@ -147,15 +148,9 @@ namespace Library
                }
                else
                {
-                    //Pregunta preguntas random dentro de MixedQuestionsBank
-                    //guarda las respuestas en answersMixedQuestions
-                    //se usa una recursion que entra de nuevo en GetSpecificCategoryQuestion
-
                     mixedCategoriesSelected.Clear();
                     for(int i=0; i<6; i++)
                     {    
-                         //sacar un elemento random del banco de mixedquestion
-                         //agregar el elemento random del banco a mixedcategoriesselected si es que no esta ya ahi adentro
                          Random r = new Random();
                          int randomNum = r.Next(reader.MixedCategoryBank.Count);
                          MixedCategory randCat = reader.MixedCategoryBank[randomNum];     
@@ -176,22 +171,22 @@ namespace Library
                {
                     Console.WriteLine(category.Question);
 
-                    string ans = Console.ReadLine();
+                    string ans = input.GetInput(); //cambio aca
                     while(ans.ToLower() != "si" && ans.ToLower() != "no")
                     {
                          Console.WriteLine("La respuesta debe ser si o no");
-                         ans = Console.ReadLine();
+                         ans = input.GetInput(); //cambio aca
                     }
 
-                    answersSpecificQuestions.Add(category.Question, ans.ToLower());
+                    AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
                }
           }
 
           public void GetProductToSearch()   
           {
-               if(answersSpecificQuestions.ContainsValue("si"))
+               if(AnswersSpecificQuestions.ContainsValue("si"))
                {   
-                    foreach (KeyValuePair<string, string> category in answersSpecificQuestions)
+                    foreach (KeyValuePair<string, string> category in AnswersSpecificQuestions)
                     {
                          if (category.Value == "si")
                          {
@@ -239,13 +234,17 @@ namespace Library
                GetProductToSearch();  
           }
 
-          public CoreBot(IReader reader, IPersonProfile user)
+          public CoreBot(IReader reader, IPersonProfile user, IInputReceiver input)
           {
                this.reader = reader;
                this.user = user;
+               this.input = input;
                this.mixedCategoriesSelected = new List<MixedCategory>();
                this.specificCategoriesSelected = new List<SpecificCategory>();
                this.subCategory = new List<string>();
+               this.MainCategoriesAnswers= new Dictionary<string, string>();
+               this.AnswersMixedQuestions = new Dictionary<string, string>();
+               this.AnswersSpecificQuestions = new Dictionary<string, string>();
           }
      }
 }
