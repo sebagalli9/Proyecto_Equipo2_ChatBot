@@ -1,52 +1,52 @@
 home;sport;¿Le gusta hacer ejercicio en el interior de la casa?;fitness
 home;sport;¿Dispone un lugar amplio para hacer ejercicio?;otracosa
 home;sport;¿Tiene jardin como parar realizar deporte al aire libre?;garden
-home;sport;¿?;algo
-home;sport;¿?;algo
+home;sport;¿1?;algo
+home;sport;¿2?;algo
 home;technology;¿Le gusta jugar videojuegos?;console
 home;technology;¿Le gusta usar redes sociales?;cellphone
 home;technology;¿Le gusta sacar fotos y hacer producciones de video?;camera
 home;technology;¿Es youtuber o streamer?;video
 home;technology;¿Le gusta la musica?;audio
-home;tool;¿?;algo
-home;tool;¿?;algo
-home;tool;¿?;algo
-home;tool;¿?;algo
-home;tool;¿?;algo
-home;clothing;¿?;algo
-home;clothing;¿?;algo
-home;clothing;¿?;algo
-home;clothing;¿?;algo
-home;clothing;¿?;algo
-home;toy;¿?;algo
-home;toy;¿?;algo
-home;toy;¿?;algo
-home;toy;¿?;algo
-home;toy;¿?;algo
-sport;technology;¿?;algo
-sport;technology;¿?;algo
-sport;technology;¿?;algo
-sport;technology;¿?;algo
-sport;technology;¿?;algo
-sport;tool;¿?;algo
-sport;tool;¿?;algo
-sport;tool;¿?;algo
-sport;tool;¿?;algo
-sport;clothing;¿?;algo
-sport;clothing;¿?;algo
-sport;clothing;¿?;algo
-sport;clothing;¿?;algo
-sport;clothing;¿?;algo
-sport;toy;¿?;algo
-sport;toy;¿?;algo
-sport;toy;¿?;algo
-sport;toy;¿?;algo
-sport;toy;¿?;algo
-technology;tool;¿?;algo
-technology;tool;¿?;algo
-technology;tool;¿?;algo
-technology;tool;¿?;algo
-technology;tool;¿?;algo
+home;tool;¿3?;algo
+home;tool;¿4?;algo
+home;tool;¿5?;algo
+home;tool;¿6?;algo
+home;tool;¿7?;algo
+home;clothing;¿8?;algo
+home;clothing;¿9?;algo
+home;clothing;¿10?;algo
+home;clothing;¿11?;algo
+home;clothing;¿12?;algo
+home;toy;¿13?;algo
+home;toy;¿14?;algo
+home;toy;¿15?;algo
+home;toy;¿16?;algo
+home;toy;¿17?;algo
+sport;technology;¿18?;algo
+sport;technology;¿19?;algo
+sport;technology;¿20?;algo
+sport;technology;¿21?;algo
+sport;technology;¿22?;algo
+sport;tool;¿23?;algo
+sport;tool;¿24?;algo
+sport;tool;¿25?;algo
+sport;tool;¿26?;algo
+sport;clothing;¿27?;algo
+sport;clothing;¿28?;algo
+sport;clothing;¿29?;algo
+sport;clothing;¿30?;algo
+sport;clothing;¿31?;algo
+sport;toy;¿32?;algo
+sport;toy;¿33?;algo
+sport;toy;¿34?;algo
+sport;toy;¿35?;algo
+sport;toy;¿36?;algo
+technology;tool;¿37?;algo
+technology;tool;¿38?;algo
+technology;tool;¿39?;algo
+technology;tool;¿40?;algo
+technology;tool;¿41?;algo
 technology;clothing;¿?;algo
 technology;clothing;¿?;algo
 technology;clothing;¿?;algo

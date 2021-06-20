@@ -10,8 +10,10 @@ namespace Program
             IReader reader = new FileReader();
             IPersonProfile user = new PersonProfile();
             IInputReceiver input = new ConsoleReceiver();
+            IMessageSender output = new ConsolePrinter();
             FakeAnswerReceiver fake = new FakeAnswerReceiver("si");
-            CoreBot optionsRound = new CoreBot(reader,user,input);
+            CoreBot optionsRound = new CoreBot(reader, user, input, output);
+            
             optionsRound.Start();
         }
     }

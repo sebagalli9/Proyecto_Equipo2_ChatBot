@@ -1,3 +1,8 @@
-- Deberiamos hacer que CoreBot dependa de una interfaz IPersonProfile en vez de una clase PersonProfile?
-- IReader cumple OCP?
+PREGUNTAS:
 
+1. ¿Estan bien las excepciones (poniendo ifs en el try)?
+
+2. ¿Exista una forma de no exponer atributos innecesariamente,
+    y aún así poder llamarlos en los tests (sin hacerlos de solo lectura)?
+
+3. 

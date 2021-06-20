@@ -6,16 +6,17 @@ namespace Test.Library
 {
     public class CoreBotTest
     {
-
         private IReader reader;
         private IPersonProfile user;
         private IInputReceiver input;
+        private IMessageSender output;
         private CoreBot coreBot;
 
         [SetUp]
         public void Setup()
         {
             reader = new FileReader();
+            output = new ConsolePrinter();
             user = new PersonProfile();
         }
 
@@ -25,7 +26,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             coreBot.AskInitialQuestions();
@@ -39,7 +40,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             coreBot.AskMainCategories();
@@ -53,7 +54,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             user.UpdateSelectedCategory("home");
@@ -68,7 +69,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             user.UpdateSelectedCategory("home");
@@ -85,7 +86,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
@@ -104,7 +105,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
@@ -124,7 +125,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
@@ -145,7 +146,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(List<MixedCategory>), coreBot.MixedCategoriesSelected);
         }
@@ -156,7 +157,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(List<SpecificCategory>), coreBot.SpecificCategoriesSelected);
         }
@@ -167,7 +168,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(List<string>), coreBot.SubCategory);
         }
@@ -178,7 +179,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(Dictionary<string, string>), coreBot.AnswersMainCategories);
         }
@@ -189,7 +190,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(Dictionary<string, string>), coreBot.AnswersMixedQuestions);
         }
@@ -200,7 +201,7 @@ namespace Test.Library
         {
             //Arrange
             input = new FakeAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input);
+            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(Dictionary<string, string>), coreBot.AnswersSpecificQuestions);
         }

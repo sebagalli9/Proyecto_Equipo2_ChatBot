@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 
@@ -26,6 +25,8 @@ namespace Library
      public class CoreBot
      {
           IReader reader;
+
+          IMessageSender output;
           IPersonProfile user;
 
           IInputReceiver input;
@@ -41,47 +42,75 @@ namespace Library
                foreach(InitialQuestion initialQ in reader.InitialQuestionsBank)
                {
                     
-                    Console.WriteLine(initialQ.Question);
+                    bool keepAsking;
+                    output.SendMessage(initialQ.Question);
                     foreach(var option in initialQ.AnswerOptions)
                     {
-                         Console.WriteLine(option.Key + " - " + option.Value);
+                        output.SendMessage(option.Key + " - " + option.Value);
                     }
 
-                    string ans = input.GetInput(); 
-                    while(Convert.ToInt32(ans) > initialQ.AnswerOptions.Count)
+                    do
                     {
-                         Console.WriteLine("Debe ingresar un número del 1 al " + initialQ.AnswerOptions.Count);
-                         ans = input.GetInput();
+                         keepAsking = false;
+                         
+                         string ans = input.GetInput();
+                         try
+                         {
+                              initialQ.ValidateAnswer(ans);
+                              user.UpdatePreferences(initialQ.AnswerOptions[ans]);              
+
+                         }
+                         catch (OutOfRangeException)
+                         {
+                              keepAsking = true;
+                              output.SendMessage("Debe ingresar un número del 1 al " + initialQ.AnswerOptions.Count);        
+                         }
                     }
-                          
-                    user.UpdatePreferences(initialQ.AnswerOptions[ans]);              
+
+                    while (keepAsking);    
                }           
           }
 
           public void AskMainCategories()
           {    
+               bool keepAsking;
                int contador = 1;
-               Console.WriteLine("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
+               output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
                foreach (MainCategory mainQ in reader.MainCategoryBank) 
                {
-                    Console.WriteLine(contador + "-" + mainQ.Question);
+                    output.SendMessage(contador + "-" + mainQ.Question);
                     AnswersMainCategories.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
                }
+                    do
+                    {
+                         keepAsking = false;
+                              
+                         string ans = input.GetInput();
+                         try
+                         {
+                              // Preguntar si esto se puede hacer
+                              if(Convert.ToInt32(ans)> reader.MainCategoryBank.Count)
+                              {
+                                   throw new OutOfRangeException("Respuesta fuera de rango");
+                              }  
+                              user.UpdateSelectedCategory(AnswersMainCategories[ans]); 
 
-               string ans = input.GetInput();  
-               while(Convert.ToInt32(ans) > AnswersMainCategories.Count)
-               {
-                   Console.WriteLine("Debe ingresar un número del 1 al " + AnswersMainCategories.Count);
-                    ans = input.GetInput();  
-               }
-               user.UpdateSelectedCategory(AnswersMainCategories[ans]); 
+                         }
+                         catch (OutOfRangeException)
+                         {
+                              keepAsking = true;
+                              output.SendMessage("Debe ingresar un número del 1 al " + reader.MainCategoryBank.Count);        
+                         }
+                    }
 
-               Console.WriteLine("Elije una segunda opción adicional:");
+                    while (keepAsking);  
+               
+               output.SendMessage("Elije una segunda opción adicional:");
                string ans2 = input.GetInput(); 
                while(Convert.ToInt32(ans2) > AnswersMainCategories.Count)
                {
-                   Console.WriteLine("Debe ingresar un número del 1 al " + AnswersMainCategories.Count);
+                   output.SendMessage("Debe ingresar un número del 1 al " + AnswersMainCategories.Count);
                    ans2 = input.GetInput();  
                }
                user.UpdateSelectedCategory(AnswersMainCategories[ans2]);
@@ -100,21 +129,35 @@ namespace Library
 
           public void AskMixedQuestions() 
           {
-               Console.WriteLine("Responde si o no a las siguientes preguntas.");
+               output.SendMessage("Responde si o no a las siguientes preguntas.");
 
                foreach (MixedCategory category in MixedCategoriesSelected)
                {
-                    Console.WriteLine(category.Question);
+                    bool keepAsking;
+                    output.SendMessage(category.Question);
 
-                    string ans = input.GetInput();  
-                    while(ans.ToLower() != "si" && ans.ToLower() != "no")
+                    do
                     {
-                         Console.WriteLine("La respuesta debe ser si o no");
-                         Console.WriteLine(category.Question);
-                         ans = input.GetInput();  
+                         keepAsking = false;
+                         string ans = input.GetInput();
+                         try
+                         {
+                              // Preguntar si esto se puede hacer
+                              if(ans.ToLower() != "si" && ans.ToLower() != "no")
+                              {
+                                   throw new YesOrNoException("La respuesta debe ser si o no");
+                              }  
+
+                              AnswersMixedQuestions.Add(category.Question, ans.ToLower());
+                         }
+                         catch (YesOrNoException)
+                         {
+                              keepAsking = true;
+                              output.SendMessage("La respuesta debe ser si o no");        
+                         }
                     }
 
-                    AnswersMixedQuestions.Add(category.Question, ans.ToLower());
+                    while (keepAsking);  
                }
           }
  
@@ -164,20 +207,34 @@ namespace Library
       
           public void AskSpecificQuestions()
           {
-               Console.WriteLine("Responde si o no a las siguientes preguntas.");
+               output.SendMessage("Responde si o no a las siguientes preguntas.");
 
                foreach (SpecificCategory category in SpecificCategoriesSelected)
                {
-                    Console.WriteLine(category.Question);
-
-                    string ans = input.GetInput(); 
-                    while(ans.ToLower() != "si" && ans.ToLower() != "no")
+                    bool keepAsking;
+                    output.SendMessage(category.Question);
+                    do
                     {
-                         Console.WriteLine("La respuesta debe ser si o no");
-                         ans = input.GetInput(); 
+                         keepAsking = false;
+                         string ans = input.GetInput();
+                         try
+                         {
+                              // Preguntar si esto se puede hacer
+                              if(ans.ToLower() != "si" && ans.ToLower() != "no")
+                              {
+                                   throw new YesOrNoException("La respuesta debe ser si o no");
+                              }  
+
+                              AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
+                         }
+                         catch (YesOrNoException)
+                         {
+                              keepAsking = true;
+                              output.SendMessage("La respuesta debe ser si o no");        
+                         }
                     }
 
-                    AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
+                    while (keepAsking);
                }
           }
 
@@ -222,7 +279,7 @@ namespace Library
           {  
                reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
                reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
-               reader.ReadMixedCategories(@"..\..\Assets\MixedCategories.txt");
+               reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
                reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
                AskInitialQuestions();
                AskMainCategories();
@@ -233,11 +290,12 @@ namespace Library
                GetProductToSearch();  
           }
 
-          public CoreBot(IReader reader, IPersonProfile user, IInputReceiver input)
+          public CoreBot(IReader reader, IPersonProfile user, IInputReceiver input, IMessageSender output)
           {
                this.reader = reader;
                this.user = user;
                this.input = input;
+               this.output = output;
                this.MixedCategoriesSelected = new List<MixedCategory>();
                this.SpecificCategoriesSelected = new List<SpecificCategory>();
                this.SubCategory = new List<string>();
