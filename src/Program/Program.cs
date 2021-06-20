@@ -11,7 +11,7 @@ namespace Program
             IPersonProfile user = new PersonProfile();
             IInputReceiver input = new ConsoleReceiver();
             IMessageSender output = new ConsolePrinter();
-            FakeAnswerReceiver fake = new FakeAnswerReceiver("si");
+            TestAnswerReceiver fake = new TestAnswerReceiver("si");
             CoreBot optionsRound = new CoreBot(reader, user, input, output);
             
             optionsRound.Start();

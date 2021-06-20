@@ -4,11 +4,11 @@ using System.Collections.Generic;
 namespace Library
 {
 
-    public class FakeAnswerReceiver : IInputReceiver
+    public class TestAnswerReceiver : IInputReceiver
     {
         public string Text{get; private set;}
 
-        public FakeAnswerReceiver(string text)
+        public TestAnswerReceiver(string text)
         {
             this.Text = text;
         }
