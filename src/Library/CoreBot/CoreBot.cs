@@ -32,7 +32,7 @@ namespace Library
           public List<MixedCategory> MixedCategoriesSelected {get; private set;}
           public List<SpecificCategory> SpecificCategoriesSelected {get; private set;}
           public List<String> SubCategory {get; private set;} 
-          public Dictionary<string, string> MainCategoriesAnswers {get;private set;}
+          public Dictionary<string, string> AnswersMainCategories {get;private set;}
           public Dictionary<string, string> AnswersMixedQuestions {get; private set;}
           public Dictionary<string, string> AnswersSpecificQuestions {get; private set;}
           
@@ -47,7 +47,7 @@ namespace Library
                          Console.WriteLine(option.Key + " - " + option.Value);
                     }
 
-                    string ans = input.GetInput(); //Cambio aca
+                    string ans = input.GetInput(); 
                     while(Convert.ToInt32(ans) > initialQ.AnswerOptions.Count)
                     {
                          Console.WriteLine("Debe ingresar un número del 1 al " + initialQ.AnswerOptions.Count);
@@ -65,26 +65,26 @@ namespace Library
                foreach (MainCategory mainQ in reader.MainCategoryBank) 
                {
                     Console.WriteLine(contador + "-" + mainQ.Question);
-                    MainCategoriesAnswers.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
+                    AnswersMainCategories.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
                }
 
-               string ans = input.GetInput(); //cambio aca 
-               while(Convert.ToInt32(ans) > MainCategoriesAnswers.Count)
+               string ans = input.GetInput();  
+               while(Convert.ToInt32(ans) > AnswersMainCategories.Count)
                {
-                   Console.WriteLine("Debe ingresar un número del 1 al " + MainCategoriesAnswers.Count);
-                    ans = input.GetInput(); //cambio aca 
+                   Console.WriteLine("Debe ingresar un número del 1 al " + AnswersMainCategories.Count);
+                    ans = input.GetInput();  
                }
-               user.UpdateSelectedCategory(MainCategoriesAnswers[ans]); 
+               user.UpdateSelectedCategory(AnswersMainCategories[ans]); 
 
                Console.WriteLine("Elije una segunda opción adicional:");
-               string ans2 = input.GetInput(); //cambio aca
-               while(Convert.ToInt32(ans2) > MainCategoriesAnswers.Count)
+               string ans2 = input.GetInput(); 
+               while(Convert.ToInt32(ans2) > AnswersMainCategories.Count)
                {
-                   Console.WriteLine("Debe ingresar un número del 1 al " + MainCategoriesAnswers.Count);
-                   ans2 = input.GetInput(); //cambio aca 
+                   Console.WriteLine("Debe ingresar un número del 1 al " + AnswersMainCategories.Count);
+                   ans2 = input.GetInput();  
                }
-               user.UpdateSelectedCategory(MainCategoriesAnswers[ans2]);
+               user.UpdateSelectedCategory(AnswersMainCategories[ans2]);
           }
          
           public void GetMixedCategoryQuestion() 
@@ -106,12 +106,12 @@ namespace Library
                {
                     Console.WriteLine(category.Question);
 
-                    string ans = input.GetInput(); //cambio aca 
+                    string ans = input.GetInput();  
                     while(ans.ToLower() != "si" && ans.ToLower() != "no")
                     {
                          Console.WriteLine("La respuesta debe ser si o no");
                          Console.WriteLine(category.Question);
-                         ans = input.GetInput(); //cambio aca 
+                         ans = input.GetInput();  
                     }
 
                     AnswersMixedQuestions.Add(category.Question, ans.ToLower());
@@ -170,11 +170,11 @@ namespace Library
                {
                     Console.WriteLine(category.Question);
 
-                    string ans = input.GetInput(); //cambio aca
+                    string ans = input.GetInput(); 
                     while(ans.ToLower() != "si" && ans.ToLower() != "no")
                     {
                          Console.WriteLine("La respuesta debe ser si o no");
-                         ans = input.GetInput(); //cambio aca
+                         ans = input.GetInput(); 
                     }
 
                     AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
@@ -241,7 +241,7 @@ namespace Library
                this.MixedCategoriesSelected = new List<MixedCategory>();
                this.SpecificCategoriesSelected = new List<SpecificCategory>();
                this.SubCategory = new List<string>();
-               this.MainCategoriesAnswers= new Dictionary<string, string>();
+               this.AnswersMainCategories= new Dictionary<string, string>();
                this.AnswersMixedQuestions = new Dictionary<string, string>();
                this.AnswersSpecificQuestions = new Dictionary<string, string>();
           }

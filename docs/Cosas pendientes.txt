@@ -1,11 +1,10 @@
 AHORA:
 Revisar comentarios Patrones y Principios
-Hacer Tests de todo
 Actualizar UML
 Actualizar CRC
 HACER LAS PREGUNTAS!!!!
-Actualizar README
-Revisar CSVREADER porque esta comentado y desactualizado (tampoco esta probado)
+Implementar excepciones
+Implementar conole printer
 
 
 PROXIMA ENTREGA:
