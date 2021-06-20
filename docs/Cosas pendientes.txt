@@ -1,15 +1,14 @@
+
 AHORA:
-Revisar comentarios Patrones y Principios
-Actualizar UML
-Actualizar CRC
-HACER LAS PREGUNTAS!!!!
-Implementar excepciones
-Implementar conole printer
++ Revisar comentarios Patrones y Principios
++ Revisar todas las encapsulaciones y las listas read only
++ Actualizar UML
++ Actualizar CRC
++ Actualizar el Readme
++ HACER LAS PREGUNTAS!!!!
 
 
 PROXIMA ENTREGA:
 + Ver cómo hacer para que el usuario pueda cancelar la búsqueda en cualquier momento
 + Pensar una clase Menu que administre los comandos
 + Crear un MessageReciever (clases que se encarguen de recibir/interpretar los mensajes del usuario)
-
-

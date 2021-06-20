@@ -11,8 +11,5 @@ namespace Library
     {
         void SendMessage(string message);
 
-        string Text{get;}
-        string Directory{get;}
-
     }
 }

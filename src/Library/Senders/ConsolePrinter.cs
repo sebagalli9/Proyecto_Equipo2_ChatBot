@@ -11,13 +11,9 @@ namespace Library
      */
      public class ConsolePrinter : IMessageSender
      {
-          public string Text => throw new NotImplementedException();
-
-          public string Directory => throw new NotImplementedException();
-
           public void SendMessage(string message)
           {
-               
+               Console.WriteLine(message);
           }
      }
 }
