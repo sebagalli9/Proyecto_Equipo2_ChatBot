@@ -143,17 +143,13 @@ namespace Library
                          try
                          {
                               // Preguntar si esto se puede hacer
-                              if(ans.ToLower() != "si" && ans.ToLower() != "no")
-                              {
-                                   throw new YesOrNoException("La respuesta debe ser si o no");
-                              }  
+                              category.ValidateAnswer(ans);  
 
                               AnswersMixedQuestions.Add(category.Question, ans.ToLower());
                          }
                          catch (YesOrNoException)
                          {
-                              keepAsking = true;
-                              output.SendMessage("La respuesta debe ser si o no");        
+                              keepAsking = true;      
                          }
                     }
 
@@ -220,17 +216,13 @@ namespace Library
                          try
                          {
                               // Preguntar si esto se puede hacer
-                              if(ans.ToLower() != "si" && ans.ToLower() != "no")
-                              {
-                                   throw new YesOrNoException("La respuesta debe ser si o no");
-                              }  
+                              category.ValidateAnswer(ans); 
 
                               AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
                          }
                          catch (YesOrNoException)
                          {
-                              keepAsking = true;
-                              output.SendMessage("La respuesta debe ser si o no");        
+                              keepAsking = true;      
                          }
                     }
 
