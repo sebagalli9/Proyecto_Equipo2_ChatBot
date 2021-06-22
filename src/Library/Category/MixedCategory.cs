@@ -10,18 +10,26 @@ namespace Library
     */
     public class MixedCategory
     {
-        public string ParentCategoryName {get;}
-        public string SecondParentCategoryName {get;}
-        public string Question {get;}
-        public string SubCategoryName {get;}
+        public string ParentCategoryName { get; }
+        public string SecondParentCategoryName { get; }
+        public string Question { get; }
+        public string SubCategoryName { get; }
 
 
-        public MixedCategory(string parentCategoryName, string secondParentCategoryName, string question,string subCategoryName)
+        public MixedCategory(string parentCategoryName, string secondParentCategoryName, string question, string subCategoryName)
         {
             this.ParentCategoryName = parentCategoryName;
             this.SecondParentCategoryName = secondParentCategoryName;
             this.Question = question;
             this.SubCategoryName = subCategoryName;
+        }
+
+        public void ValidateAnswer(string ans)
+        {
+            if (ans.ToLower() != "si" && ans.ToLower() != "no")
+            {
+                throw new YesOrNoException("La respuesta debe ser si o no");
+            }
         }
     }
 }
