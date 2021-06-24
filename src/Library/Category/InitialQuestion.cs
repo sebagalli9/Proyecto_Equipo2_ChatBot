@@ -26,13 +26,5 @@ namespace Library
         {
             AnswerOptions.Add(num,option);
         }
-
-        public void ValidateAnswer(string ans)
-        {
-            if(Convert.ToInt32(ans)> this.AnswerOptions.Count)
-            {
-               throw new OutOfRangeException("Respuesta fuera de rango");
-            }   
-        }
     }
 }

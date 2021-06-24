@@ -23,13 +23,5 @@ namespace Library
             this.Question = question;
             this.SubCategoryName = subCategoryName;
         }
-
-        public void ValidateAnswer(string ans)
-        {
-            if (ans.ToLower() != "si" && ans.ToLower() != "no")
-            {
-                throw new YesOrNoException("La respuesta debe ser si o no");
-            }
-        }
     }
 }
