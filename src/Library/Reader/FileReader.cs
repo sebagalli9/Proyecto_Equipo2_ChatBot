@@ -20,48 +20,40 @@ namespace Library
     - Tiene los datos que seran provistos al constructor para inicializar las instancias de MixedCategory, SpecificCategory
       y InitialQuestion.
     */
-    
+
     public class FileReader : IReader
-    {   
-        public List<MainCategory> MainCategoryBank {get; private set;}
-        public List<MixedCategory> MixedCategoryBank {get; private set;}
-        public List<SpecificCategory> SpecificCategoryBank {get; private set;}
-        public List<InitialQuestion> InitialQuestionsBank {get; private set;}
+    {
+        public List<MainCategory> MainCategoryBank { get; private set; }
+        public List<MixedCategory> MixedCategoryBank { get; private set; }
+        public List<SpecificCategory> SpecificCategoryBank { get; private set; }
+        public List<InitialQuestion> InitialQuestionsBank { get; private set; }
 
         public void ReadMainCategories(string path)
         {
             MainCategoryBank = new List<MainCategory>();
             try
-            { 
+            {
                 using (StreamReader sr = new StreamReader(path))
-                {   
+                {
                     int contador = 0;
                     string line;
                     string[] listaLinea;
                     while ((line = sr.ReadLine()) != null)
-                    {   
+                    {
                         contador += 1;
-                        try
-                        {
-                            listaLinea = line.Split(';'); 
-                            
-                            MainCategory mainQ = new MainCategory(listaLinea[0]);
-                       
-                            string[] keyVal = listaLinea[1].Split("-");
-                            mainQ.AddAnswerOption(keyVal[0],keyVal[1]);   
 
-                            this.MainCategoryBank.Add(mainQ);
-                        }
-                        catch (Exception)
-                        {   
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MainCategories.");
-                            continue;
-                        }
-                        
+                        listaLinea = line.Split(';');
+
+                        MainCategory mainQ = new MainCategory(listaLinea[0]);
+
+                        string[] keyVal = listaLinea[1].Split("-");
+                        mainQ.AddAnswerOption(keyVal[0], keyVal[1]);
+
+                        this.MainCategoryBank.Add(mainQ);
                     }
                 }
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo leer.");
             }
@@ -74,24 +66,15 @@ namespace Library
             try
             {
                 using (StreamReader sr = new StreamReader(path))
-                {   
+                {
                     int contador = 0;
                     string line;
                     string[] listaLinea;
                     while ((line = sr.ReadLine()) != null)
-                    {   
+                    {
                         contador += 1;
-                        try
-                        {
-                            listaLinea = line.Split(';');
-                            this.MixedCategoryBank.Add(new MixedCategory(listaLinea[0], listaLinea[1], listaLinea[2], listaLinea[3]));
-                            
-                        }
-                        catch (Exception)
-                        {   
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MixedQuestions.");
-                            continue;
-                        }
+                        listaLinea = line.Split(';');
+                        this.MixedCategoryBank.Add(new MixedCategory(listaLinea[0], listaLinea[1], listaLinea[2], listaLinea[3]));
                     }
                 }
             }
@@ -104,7 +87,7 @@ namespace Library
         public void ReadSpecificCategories(string path)
         {
             this.SpecificCategoryBank = new List<SpecificCategory>();
-            
+
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -113,38 +96,28 @@ namespace Library
                     string line;
                     string[] listaLinea;
                     while ((line = sr.ReadLine()) != null)
-                    {   
+                    {
                         contador += 1;
-                        try
+
+                        listaLinea = line.Split(';').ToArray();
+
+                        SpecificCategory specificCat = new SpecificCategory(listaLinea[0], listaLinea[1]);
+                        string[] products = listaLinea[2].Split(",");
+                        foreach (string prod in products)
                         {
-                            listaLinea = line.Split(';').ToArray();
-
-                            SpecificCategory specificCat = new SpecificCategory(listaLinea[0], listaLinea[1]);
-                            string[] products = listaLinea[2].Split(",");
-                            foreach (string prod in products)
-                            {
-                               specificCat.AddProduct(prod); 
-                            }
-
-                            SpecificCategoryBank.Add(specificCat);
+                            specificCat.AddProduct(prod);
                         }
-                        catch (Exception)
-                        {   
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo SpecificQuestions.");
-                            continue;
-                        }
-                        
+
+                        SpecificCategoryBank.Add(specificCat);
                     }
-
                 }
-
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
             }
-          
-        } 
+
+        }
 
         public void ReadInitialQuestions(string path)
         {
@@ -153,34 +126,24 @@ namespace Library
             try
             {
                 using (StreamReader sr = new StreamReader(path))
-                {   
+                {
                     int contador = 0;
                     string line;
                     string[] listaLinea;
                     while ((line = sr.ReadLine()) != null)
-                    {   
+                    {
                         contador += 1;
-                        try
-                        {
-                            listaLinea = line.Split(';');
-                            string[] answers = listaLinea[1].Split(","); 
-                            
-                            InitialQuestion initialQ = new InitialQuestion(listaLinea[0]);
-                            foreach(string element in answers)
-                            {
-                                string[] keyVal = element.Split("-");
-                                initialQ.AddAnswerOption(keyVal[0],keyVal[1]);         
-                            }
+                        listaLinea = line.Split(';');
+                        string[] answers = listaLinea[1].Split(",");
 
-                            this.InitialQuestionsBank.Add(initialQ);
-                            
-                            
+                        InitialQuestion initialQ = new InitialQuestion(listaLinea[0]);
+                        foreach (string element in answers)
+                        {
+                            string[] keyVal = element.Split("-");
+                            initialQ.AddAnswerOption(keyVal[0], keyVal[1]);
                         }
-                        catch (Exception)
-                        {   
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo InitialQuestions.");
-                            continue;
-                        }
+
+                        this.InitialQuestionsBank.Add(initialQ);
                     }
                 }
             }
@@ -188,7 +151,7 @@ namespace Library
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
             }
-        }  
+        }
 
         public string ReadPlainText(string path)
         {
@@ -196,30 +159,20 @@ namespace Library
             try
             {
                 using (StreamReader sr = new StreamReader(path))
-                {   
+                {
                     int contador = 0;
                     string line;
                     while ((line = sr.ReadLine()) != null)
-                    {   
+                    {
                         contador += 1;
-                        try
-                        {
-                            text += line;
-                        }
-                        catch (Exception)
-                        {   
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MixedQuestions.");
-                            continue;
-                        }
-                        
+                        text += line;
                     }
                 }
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo leer.");
             }
-
             return text;
         }
     }
