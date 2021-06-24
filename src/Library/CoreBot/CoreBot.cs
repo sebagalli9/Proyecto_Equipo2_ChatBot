@@ -41,39 +41,19 @@ namespace Library
           {
                foreach(InitialQuestion initialQ in reader.InitialQuestionsBank)
                {
-                    
-                    bool keepAsking;
                     output.SendMessage(initialQ.Question);
                     foreach(var option in initialQ.AnswerOptions)
                     {
                         output.SendMessage(option.Key + " - " + option.Value);
                     }
-
-                    do
-                    {
-                         keepAsking = false;
-                         
-                         string ans = input.GetInput();
-                         try
-                         {
-                              initialQ.ValidateAnswer(ans);
-                              user.UpdatePreferences(initialQ.AnswerOptions[ans]);              
-
-                         }
-                         catch (OutOfRangeException)
-                         {
-                              keepAsking = true;
-                              output.SendMessage("Debe ingresar un número del 1 al " + initialQ.AnswerOptions.Count);        
-                         }
-                    }
-
-                    while (keepAsking);    
+                    
+                    string ans = input.GetInput();
+                    user.UpdatePreferences(initialQ.AnswerOptions[ans]); 
                }           
           }
 
           public void AskMainCategories()
           {    
-               bool keepAsking;
                int contador = 1;
                output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
                foreach (MainCategory mainQ in reader.MainCategoryBank) 
@@ -82,37 +62,12 @@ namespace Library
                     AnswersMainCategories.Add(contador.ToString(),mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
                }
-                    do
-                    {
-                         keepAsking = false;
-                              
-                         string ans = input.GetInput();
-                         try
-                         {
-                              // Preguntar si esto se puede hacer
-                              if(Convert.ToInt32(ans)> reader.MainCategoryBank.Count)
-                              {
-                                   throw new OutOfRangeException("Respuesta fuera de rango");
-                              }  
-                              user.UpdateSelectedCategory(AnswersMainCategories[ans]); 
-
-                         }
-                         catch (OutOfRangeException)
-                         {
-                              keepAsking = true;
-                              output.SendMessage("Debe ingresar un número del 1 al " + reader.MainCategoryBank.Count);        
-                         }
-                    }
-
-                    while (keepAsking);  
+               string ans = input.GetInput();
+               user.UpdateSelectedCategory(AnswersMainCategories[ans]); 
+                     
                
                output.SendMessage("Elije una segunda opción adicional:");
                string ans2 = input.GetInput(); 
-               while(Convert.ToInt32(ans2) > AnswersMainCategories.Count)
-               {
-                   output.SendMessage("Debe ingresar un número del 1 al " + AnswersMainCategories.Count);
-                   ans2 = input.GetInput();  
-               }
                user.UpdateSelectedCategory(AnswersMainCategories[ans2]);
           }
          
@@ -133,27 +88,10 @@ namespace Library
 
                foreach (MixedCategory category in MixedCategoriesSelected)
                {
-                    bool keepAsking;
                     output.SendMessage(category.Question);
 
-                    do
-                    {
-                         keepAsking = false;
-                         string ans = input.GetInput();
-                         try
-                         {
-                              // Preguntar si esto se puede hacer
-                              category.ValidateAnswer(ans);  
-
-                              AnswersMixedQuestions.Add(category.Question, ans.ToLower());
-                         }
-                         catch (YesOrNoException)
-                         {
-                              keepAsking = true;      
-                         }
-                    }
-
-                    while (keepAsking);  
+                    string ans = input.GetInput();
+                    AnswersMixedQuestions.Add(category.Question, ans.ToLower()); 
                }
           }
  
@@ -207,26 +145,10 @@ namespace Library
 
                foreach (SpecificCategory category in SpecificCategoriesSelected)
                {
-                    bool keepAsking;
                     output.SendMessage(category.Question);
-                    do
-                    {
-                         keepAsking = false;
-                         string ans = input.GetInput();
-                         try
-                         {
-                              // Preguntar si esto se puede hacer
-                              category.ValidateAnswer(ans); 
-
-                              AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
-                         }
-                         catch (YesOrNoException)
-                         {
-                              keepAsking = true;      
-                         }
-                    }
-
-                    while (keepAsking);
+                    
+                    string ans = input.GetInput();
+                    AnswersSpecificQuestions.Add(category.Question, ans.ToLower());
                }
           }
 
