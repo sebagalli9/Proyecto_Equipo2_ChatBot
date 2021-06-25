@@ -5,10 +5,13 @@ namespace Library
 {
     /*
     La clase TelegramPrinter implementa la interfaz IMessageSender por lo que debe implementar las operaciones 
-    polimórficas por lo tanto cumple con el patron de Polimorfismo.
+    polimórficas y por lo tanto cumple con el patron de Polimorfismo.
 
-    La clase cumple con DIP ya que al ser una clase de bajo nivel depende de una abstracción IMessageSender.
+    La clase cumple con el patron Expert ya que es la clase experta en enviar mensajes a Telegram.
+
+    La clase cumple con el principio SRP ya que no tiene más de una razón de cambio.
     */
+    
     public class TelegramPrinter : IMessageSender
     {
         public string Text => throw new NotImplementedException();

@@ -46,6 +46,11 @@ cellphone;¿Le gusta sacar fotos?;Iphone
 ```
 Finalmente, aquella o aquellas preguntas clasificadas como Specific que hayan obtenido como respuesta un "si", devolverán un producto que posteriormente va a ser ingresado a una búsqueda en Mercado Libre.
 
+#### Observaciones
+
+- Las excepciones estan especificamente orientadas al usuario y su interacción con el Bot.
+- No se creo un tipo que englobe InitialQuestion, MainCategory, MixedCategory y SpecificCategory ya que no es posible generalizar estas categorias y por tanto crear un tipo ICategory no sería viable. Además, hacer uso de una Interfaz ICategory podría dar lugar a que las categorías fueran sustituibles entre si y el programa no maneja estas categorías como intercambiables, sino que se necesita una categoria en especifico en un momento en especifico. 
+
 ![WHLogo](./Assets/logowhitehats.png)
 
 

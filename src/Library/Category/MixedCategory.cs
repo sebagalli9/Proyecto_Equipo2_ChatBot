@@ -6,7 +6,8 @@ namespace Library
     /*
     La clase MixedCategory cumple con el principio SRP ya que no tiene más de una razón de cambio.
     La clase MixedCategory cumple con al patrón Expert ya que es la clase experta en conocer la información
-    necesaria para instanciar objetos MidexCategory.
+    necesaria para instanciar objetos MidexCategory. La clase también es experta en conocer las 
+    respuestas predeterminadas posibles.
     */
     public class MixedCategory
     {

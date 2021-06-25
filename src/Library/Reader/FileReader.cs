@@ -7,18 +7,23 @@ using System.IO;
 namespace Library
 {
     /*
-    Actualmente la clase FileReader no cumple con el principio SRP ya que existe más de una razón de cambio, por ejemplo:
-    - Modificar la forma en la que se leen las MixedCategories de un archivo txt.
-    - Modificar la forma en la que se leen las SpecificCategories de un archivo txt.
+    Actualmente la clase FileReader cumple con el principio SRP ya que no existe más de una razón de cambio, que es:
+    - Modificar la forma en la que se leen los archivos txt.
 
     Atualmente la clase FileReader cumple con el patrón Expert ya que es la clase experta en la información que se extrae 
-    del archivo ".txt" para poder cumplir con la responsabilidad de almacenar dicha información en sus listas correspondientes.
+    de un archivo ".txt" para poder cumplir con la responsabilidad de almacenar dicha información en sus listas correspondientes.
 
     Actualmente la clase FileReader cumple con el patrón Creator ya que:
     - Es la clase que agrega instancias de las clases MixedCategory, SpecificCategory e InitialQuestion a listas de su mismo tipo.
     - Guarda dichas instancias.
-    - Tiene los datos que seran provistos al constructor para inicializar las instancias de MixedCategory, SpecificCategory
-      y InitialQuestion.
+    - Tiene los datos que seran provistos al constructor para inicializar las instancias de MixedCategory, SpecificCategory, 
+    MainCategory y InitialQuestion.
+
+    En la clase FileReader existe una relación de composición entre esta clase y las clases InitialQuestion, MainCategory,
+    MixedCategory y SpecificCategory, ya que está compuesta de bancos de categorias de instancias de sus clases respectivas
+    , las cuales no tienen un proposito independiente a las instancias de esta clase. 
+
+    La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
     */
 
     public class FileReader : IReader
