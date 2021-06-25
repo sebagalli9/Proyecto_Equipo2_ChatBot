@@ -6,7 +6,8 @@ namespace Library
     /*
     La clase SpecificCategory cumple con el principio SRP ya que no tiene más de una razón de cambio.
     La clase SpecificCategory cumple con al patrón Expert ya que es la clase experta en conocer la información
-    necesaria para instanciar objetos SpecificCategory.
+    necesaria para instanciar objetos SpecificCategory. La clase también es experta en conocer las 
+    respuestas predeterminadas posibles.
     */
     public class SpecificCategory
     {

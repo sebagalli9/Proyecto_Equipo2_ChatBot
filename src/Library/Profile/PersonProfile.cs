@@ -5,15 +5,14 @@ namespace Library
 {
 
     /*
-    Actualmente la clase PersonProfile no cumple con el principio SRP ya que existe más de una razón de cambio, por ejemplo:
-    - Modificar la forma en que se actualiza el status.
-    - Modificar la forma en que se actualiza la categoría seleccionada.
+    Actualmente la clase PersonProfile cumple con el principio SRP ya que no existe más de una razón de cambio la cual es:
+    - Hacer actualizaciónes de información en el perfil.
     
     La clase PersonProfile cumple con el patrón Expert ya que es la clase experta en conocer la información necesaria
     para crear instancias de la clase PersonProfile y actualizar dicha información.
 
-    La clase no cumple con el patrón DIP ya que no depende solamente de la abstracción IValidator, sino que se requiere
-    una instancia de uno de sus subtipos en cada metodo validador.
+    La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
+
     */
 
     public class PersonProfile : IPersonProfile
@@ -41,6 +40,7 @@ namespace Library
         {
             this.SelectedCategory.Add(category);
         }
+
         public void AddProductToSearch(string product)
         {
             this.ProductSearcherKeyWords.Add(product);

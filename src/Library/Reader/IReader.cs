@@ -8,13 +8,9 @@ namespace Library
     de esta interfaz cumplirian con el patron Polimorfismo ya que las operaciones serian operaciones polimorficas. 
 
     Se cumple LSP ya que los objetos de las clases que implementan la interfaz IReader pueden ser asignados a una variable de 
-    tipo IReader y el coportamiento del programa no va a cambiar.
-    Actualmente si utilizamos un FileReader o un CsvReader o otra clase que implemente IReader, el comportamiento del programa
-    no cambia.
+    tipo IReader y el coportamiento del programa no va a cambiar. Actualmente si utilizamos un FileReader o un CsvReader o otra 
+    clase que implemente IReader, el comportamiento del programa no cambia.
 
-    Se cumple ISP ya que las clases que implementan la interfaz IReader no estan forzadas a implenentar un tipo que no usan.
-
-    Ocp: PENDIENTE JUSTIFICACION
     */
     public interface IReader
     {

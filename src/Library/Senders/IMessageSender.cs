@@ -4,8 +4,10 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-    Las operaciones de la interfaz IMesssageSender son polimórficas ya que tiene tres clases (ConsolePrinter,
-    TelegramPrinter, WhatsappPrinter) que implementan esas operaciones. Se cumple con el patrón de polimorfismo.
+
+    Se cumple con el patrón de polimorfismo ya que las clases que implementan esta interfaz implementan
+    sus operaciones polimórficas.
+    
     */
     public interface IMessageSender
     {

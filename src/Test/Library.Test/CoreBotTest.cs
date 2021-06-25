@@ -18,15 +18,14 @@ namespace Test.Library
             reader = new FileReader();
             output = new ConsolePrinter();
             user = new PersonProfile();
+            input = new TestAnswerReceiver("1");
+            coreBot = new CoreBot(reader,user,input,output);
         }
 
         [Test]
         public void AskInitialQuestionsTest()
         //Se prueba que el metodo AskInitialQuestions actualice las preferencias del perfil del usuario
         {
-            //Arrange
-            input = new TestAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             coreBot.AskInitialQuestions();
@@ -38,9 +37,6 @@ namespace Test.Library
         public void AskMainCategoriesTest()
         //Se prueba que el metodo AskMainCategories actualice las categorias seleccionadas del perfil del usuario
         {
-            //Arrange
-            input = new TestAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             coreBot.AskMainCategories();
@@ -52,9 +48,6 @@ namespace Test.Library
         public void GetMixedQuestionsTest()
         //Se prueba que el metodo GetMixedQuestions obtenga las preguntas mixtas a preguntar a partir de las categorias Main seleccionadas
         {
-            //Arrange
-            input = new TestAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             user.UpdateSelectedCategory("home");
@@ -67,9 +60,6 @@ namespace Test.Library
         public void AskMixedQuestionsTest()
         //Se prueba que el metodo AskMixedQuestions almacene correctamente las respuestas dadas a las preguntas mixtas
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             user.UpdateSelectedCategory("home");
@@ -84,9 +74,6 @@ namespace Test.Library
         public void GetSpecificCategoryQuestionTest()
         //Se prueba que el metodo GetSpecificCategoryQuestion obtenga las preguntas especificas a preguntar a partir de las respuestas a las preguntas mixtas
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
@@ -103,9 +90,6 @@ namespace Test.Library
         public void AskSpecificQuestionsTest()
         //Se prueba que el metodo AskSpecificQuestions almacene correctamente las respuestas dadas a las preguntas mixtas
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
@@ -123,9 +107,6 @@ namespace Test.Library
         public void GetProcutToSearchTest()
         //Se prueba que el metodo GetProductToSearch obtenga correctamente productos a buscar
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
@@ -144,9 +125,6 @@ namespace Test.Library
         public void MixedCategoriesSelectedMustBeAMixedCategoryList()
         //Se prueba que la lista MixedCategoriesSelected sea una lista de objetos de tipo MixedCategory
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(List<MixedCategory>), coreBot.MixedCategoriesSelected);
         }
@@ -155,9 +133,6 @@ namespace Test.Library
         public void SpecificCategoriesSelectedMustBeASpecificCategoryList()
         //Se prueba que la lista SpecificCategoriesSelected sea una lista de objetos de tipo SpecificCategory
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(List<SpecificCategory>), coreBot.SpecificCategoriesSelected);
         }
@@ -166,9 +141,6 @@ namespace Test.Library
         public void SubCategoryMustBeStringList()
         //Se prueba que la lista SubCategory sea una lista de strings
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(List<string>), coreBot.SubCategory);
         }
@@ -177,9 +149,6 @@ namespace Test.Library
         public void AnswersMainCategoriesMustBeAStringDictionary()
         //Se prueba que el diccionario AnswersMainCategories sea un diccionario de tipo <strings,string>
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(Dictionary<string, string>), coreBot.AnswersMainCategories);
         }
@@ -188,9 +157,6 @@ namespace Test.Library
         public void AnswersMixedQuestionsMustBeAStringDictionary()
         //Se prueba que el diccionario AnswersMixedQuestions sea un diccionario de tipo <strings,string>
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(Dictionary<string, string>), coreBot.AnswersMixedQuestions);
         }
@@ -199,9 +165,6 @@ namespace Test.Library
         public void AnswersSpecificQuestionsMustBeAStringDictionary()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
         {
-            //Arrange
-            input = new TestAnswerReceiver("si");
-            coreBot = new CoreBot(reader,user,input,output);
             //Assert
             Assert.IsInstanceOf(typeof(Dictionary<string, string>), coreBot.AnswersSpecificQuestions);
         }
