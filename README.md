@@ -46,11 +46,6 @@ cellphone;¿Le gusta sacar fotos?;Iphone
 ```
 Finalmente, aquella o aquellas preguntas clasificadas como Specific que hayan obtenido como respuesta un "si", devolverán un producto que posteriormente va a ser ingresado a una búsqueda en Mercado Libre.
 
-####Casos especiales
-* En aquellos casos en que el usuario deba responder con un número que represente una opción e ingrese un número fuera del rango de las opciones disponibles, el programa volverá a repetir la pregunta y avisará que debe responder con un número válido.
-* En aquellos casos en que el usuario deba responder con un "si" o "no" e ingrese una palabra distinta de "si" o "no" (independientemente de letras mayúsculas o minúsculas), el programa volverá a repetir la pregunta y avisará que debe responder con un "si" o "no".
-* En aquellos casos en que el usuario deba responder con un "si" o un "no" y se responda a todas las preguntas con un "no", el programa recolectará categorías aleatorias y hará nuevas preguntas hasta que el usuario pueda encontrar una categoría a la cual poder responder "si".
-
 ![WHLogo](./Assets/logowhitehats.png)
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    
+
     /*
     Actualmente la clase PersonProfile no cumple con el principio SRP ya que existe más de una razón de cambio, por ejemplo:
     - Modificar la forma en que se actualiza el status.
@@ -16,16 +16,16 @@ namespace Library
     una instancia de uno de sus subtipos en cada metodo validador.
     */
 
-    public class PersonProfile: IPersonProfile
-    {   
+    public class PersonProfile : IPersonProfile
+    {
 
         public List<string> SelectedCategory { get; private set; }
         public List<string> ProductSearcherKeyWords { get; private set; }
-        public List<string> Preferences {get; private set;}
+        public List<string> Preferences { get; private set; }
 
         public PersonProfile()
         {
-            
+
             this.Preferences = new List<string>();
             this.SelectedCategory = new List<string>();
             this.ProductSearcherKeyWords = new List<string>();
@@ -37,9 +37,9 @@ namespace Library
             this.Preferences.Add(pref);
         }
 
-        public void UpdateSelectedCategory(string category) 
-        {   
-            this.SelectedCategory.Add(category);          
+        public void UpdateSelectedCategory(string category)
+        {
+            this.SelectedCategory.Add(category);
         }
         public void AddProductToSearch(string product)
         {

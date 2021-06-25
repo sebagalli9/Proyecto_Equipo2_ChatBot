@@ -74,11 +74,21 @@ namespace Library
                     {
                         contador += 1;
                         listaLinea = line.Split(';');
-                        this.MixedCategoryBank.Add(new MixedCategory(listaLinea[0], listaLinea[1], listaLinea[2], listaLinea[3]));
+                        MixedCategory mixedQ = new MixedCategory(listaLinea[0], listaLinea[1], listaLinea[2], listaLinea[3]);
+
+                        string[] answers = listaLinea[4].Split(",");
+
+                        foreach (string element in answers)
+                        {
+                            string[] keyVal = element.Split("-");
+                            mixedQ.AddAnswerOption(keyVal[0], keyVal[1]);
+                        }
+
+                        this.MixedCategoryBank.Add(mixedQ);
                     }
                 }
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
             }
@@ -106,6 +116,14 @@ namespace Library
                         foreach (string prod in products)
                         {
                             specificCat.AddProduct(prod);
+                        }
+
+                        string[] answers = listaLinea[3].Split(",");
+
+                        foreach (string element in answers)
+                        {
+                            string[] keyVal = element.Split("-");
+                            specificCat.AddAnswerOption(keyVal[0], keyVal[1]);
                         }
 
                         SpecificCategoryBank.Add(specificCat);
@@ -147,7 +165,7 @@ namespace Library
                     }
                 }
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
             }

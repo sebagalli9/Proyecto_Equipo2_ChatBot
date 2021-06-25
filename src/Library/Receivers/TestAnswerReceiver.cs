@@ -6,7 +6,7 @@ namespace Library
 
     public class TestAnswerReceiver : IInputReceiver
     {
-        public string Text{get; private set;}
+        public string Text { get; private set; }
 
         public TestAnswerReceiver(string text)
         {

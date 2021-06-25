@@ -5,6 +5,6 @@ namespace Library
 {
     public class OutOfRangeException : Exception
     {
-        public OutOfRangeException(string message) : base(message) {}
+        public OutOfRangeException(string message) : base(message) { }
     }
 }
