@@ -15,6 +15,8 @@ namespace Library
         public string Question { get; }
         public string SubCategoryName { get; }
 
+        public Dictionary<string, string> AnswerOptions { get; private set; }
+
 
         public MixedCategory(string parentCategoryName, string secondParentCategoryName, string question, string subCategoryName)
         {
@@ -22,6 +24,12 @@ namespace Library
             this.SecondParentCategoryName = secondParentCategoryName;
             this.Question = question;
             this.SubCategoryName = subCategoryName;
+            this.AnswerOptions = new Dictionary<string, string>();
+        }
+
+        public void AddAnswerOption(String num, String option)
+        {
+            AnswerOptions.Add(num, option);
         }
     }
 }

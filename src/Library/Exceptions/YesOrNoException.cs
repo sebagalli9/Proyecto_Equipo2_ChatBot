@@ -5,6 +5,6 @@ namespace Library
 {
     public class YesOrNoException : Exception
     {
-        public YesOrNoException(string message) : base(message) {}
+        public YesOrNoException(string message) : base(message) { }
     }
 }

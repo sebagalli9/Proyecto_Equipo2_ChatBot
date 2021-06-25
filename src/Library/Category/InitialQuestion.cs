@@ -12,9 +12,9 @@ namespace Library
     */
     public class InitialQuestion
     {
-        public string Question {get;}
-        
-        public Dictionary<string, string> AnswerOptions {get; private set;}
+        public string Question { get; }
+
+        public Dictionary<string, string> AnswerOptions { get; private set; }
 
         public InitialQuestion(string question)
         {
@@ -24,7 +24,7 @@ namespace Library
 
         public void AddAnswerOption(String num, String option)
         {
-            AnswerOptions.Add(num,option);
+            AnswerOptions.Add(num, option);
         }
     }
 }

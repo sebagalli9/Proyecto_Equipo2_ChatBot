@@ -1,74 +1,74 @@
-home;sport;¿Le gusta hacer ejercicio en el interior de la casa?;fitness
-home;sport;¿Dispone un lugar amplio para hacer ejercicio?;otracosa
-home;sport;¿Tiene jardin como parar realizar deporte al aire libre?;garden
-home;sport;¿1?;algo
-home;sport;¿2?;algo
-home;technology;¿Le gusta jugar videojuegos?;console
-home;technology;¿Le gusta usar redes sociales?;cellphone
-home;technology;¿Le gusta sacar fotos y hacer producciones de video?;camera
-home;technology;¿Es youtuber o streamer?;video
-home;technology;¿Le gusta la musica?;audio
-home;tool;¿3?;algo
-home;tool;¿4?;algo
-home;tool;¿5?;algo
-home;tool;¿6?;algo
-home;tool;¿7?;algo
-home;clothing;¿8?;algo
-home;clothing;¿9?;algo
-home;clothing;¿10?;algo
-home;clothing;¿11?;algo
-home;clothing;¿12?;algo
-home;toy;¿13?;algo
-home;toy;¿14?;algo
-home;toy;¿15?;algo
-home;toy;¿16?;algo
-home;toy;¿17?;algo
-sport;technology;¿18?;algo
-sport;technology;¿19?;algo
-sport;technology;¿20?;algo
-sport;technology;¿21?;algo
-sport;technology;¿22?;algo
-sport;tool;¿23?;algo
-sport;tool;¿24?;algo
-sport;tool;¿25?;algo
-sport;tool;¿26?;algo
-sport;clothing;¿27?;algo
-sport;clothing;¿28?;algo
-sport;clothing;¿29?;algo
-sport;clothing;¿30?;algo
-sport;clothing;¿31?;algo
-sport;toy;¿32?;algo
-sport;toy;¿33?;algo
-sport;toy;¿34?;algo
-sport;toy;¿35?;algo
-sport;toy;¿36?;algo
-technology;tool;¿37?;algo
-technology;tool;¿38?;algo
-technology;tool;¿39?;algo
-technology;tool;¿40?;algo
-technology;tool;¿41?;algo
-technology;clothing;¿?;algo
-technology;clothing;¿?;algo
-technology;clothing;¿?;algo
-technology;clothing;¿?;algo
-technology;clothing;¿?;algo
-technology;toy;¿?;algo
-technology;toy;¿?;algo
-technology;toy;¿?;algo
-technology;toy;¿?;algo
-technology;toy;¿?;algo
-tool;clothing;¿?;algo
-tool;clothing;¿?;algo
-tool;clothing;¿?;algo
-tool;clothing;¿?;algo
-tool;clothing;¿?;algo
-tool;toy;¿?;algo
-tool;toy;¿?;algo
-tool;toy;¿?;algo
-tool;toy;¿?;algo
-tool;toy;¿?;algo
-toy;clothing;¿?;algo
-toy;clothing;¿?;algo
-toy;clothing;¿?;algo
-toy;clothing;¿?;algo
-toy;clothing;¿?;algo
+home;sport;¿Le gusta hacer ejercicio en el interior de la casa?;fitness;1-si,2-no
+home;sport;¿Dispone un lugar amplio para hacer ejercicio?;otracosa;1-si,2-no
+home;sport;¿Tiene jardin como parar realizar deporte al aire libre?;garden;1-si,2-no
+home;sport;¿1?;algo;1-si,2-no
+home;sport;¿2?;algo;1-si,2-no
+home;technology;¿Le gusta jugar videojuegos?;console;1-si,2-no
+home;technology;¿Le gusta usar redes sociales?;cellphone;1-si,2-no
+home;technology;¿Le gusta sacar fotos y hacer producciones de video?;camera;1-si,2-no
+home;technology;¿Es youtuber o streamer?;video;1-si,2-no
+home;technology;¿Le gusta la musica?;audio;1-si,2-no
+home;tool;¿3?;algo;1-si,2-no
+home;tool;¿4?;algo;1-si,2-no
+home;tool;¿5?;algo;1-si,2-no
+home;tool;¿6?;algo;1-si,2-no
+home;tool;¿7?;algo;1-si,2-no
+home;clothing;¿8?;algo;1-si,2-no
+home;clothing;¿9?;algo;1-si,2-no
+home;clothing;¿10?;algo;1-si,2-no
+home;clothing;¿11?;algo;1-si,2-no
+home;clothing;¿12?;algo;1-si,2-no
+home;toy;¿13?;algo;1-si,2-no
+home;toy;¿14?;algo;1-si,2-no
+home;toy;¿15?;algo;1-si,2-no
+home;toy;¿16?;algo;1-si,2-no
+home;toy;¿17?;algo;1-si,2-no
+sport;technology;¿18?;algo;1-si,2-no
+sport;technology;¿19?;algo;1-si,2-no
+sport;technology;¿20?;algo;1-si,2-no
+sport;technology;¿21?;algo;1-si,2-no
+sport;technology;¿22?;algo;1-si,2-no
+sport;tool;¿23?;algo;1-si,2-no
+sport;tool;¿24?;algo;1-si,2-no
+sport;tool;¿25?;algo;1-si,2-no
+sport;tool;¿26?;algo;1-si,2-no
+sport;clothing;¿27?;algo;1-si,2-no
+sport;clothing;¿28?;algo;1-si,2-no
+sport;clothing;¿29?;algo;1-si,2-no
+sport;clothing;¿30?;algo;1-si,2-no
+sport;clothing;¿31?;algo;1-si,2-no
+sport;toy;¿32?;algo;1-si,2-no
+sport;toy;¿33?;algo;1-si,2-no
+sport;toy;¿34?;algo;1-si,2-no
+sport;toy;¿35?;algo;1-si,2-no
+sport;toy;¿36?;algo;1-si,2-no
+technology;tool;¿37?;algo;1-si,2-no
+technology;tool;¿38?;algo;1-si,2-no
+technology;tool;¿39?;algo;1-si,2-no
+technology;tool;¿40?;algo;1-si,2-no
+technology;tool;¿41?;algo;1-si,2-no
+technology;clothing;¿?;algo;1-si,2-no
+technology;clothing;¿?;algo;1-si,2-no
+technology;clothing;¿?;algo;1-si,2-no
+technology;clothing;¿?;algo;1-si,2-no
+technology;clothing;¿?;algo;1-si,2-no
+technology;toy;¿?;algo;1-si,2-no
+technology;toy;¿?;algo;1-si,2-no
+technology;toy;¿?;algo;1-si,2-no
+technology;toy;¿?;algo;1-si,2-no
+technology;toy;¿?;algo;1-si,2-no
+tool;clothing;¿?;algo;1-si,2-no
+tool;clothing;¿?;algo;1-si,2-no
+tool;clothing;¿?;algo;1-si,2-no
+tool;clothing;¿?;algo;1-si,2-no
+tool;clothing;¿?;algo;1-si,2-no
+tool;toy;¿?;algo;1-si,2-no
+tool;toy;¿?;algo;1-si,2-no
+tool;toy;¿?;algo;1-si,2-no
+tool;toy;¿?;algo;1-si,2-no
+tool;toy;¿?;algo;1-si,2-no
+toy;clothing;¿?;algo;1-si,2-no
+toy;clothing;¿?;algo;1-si,2-no
+toy;clothing;¿?;algo;1-si,2-no
+toy;clothing;¿?;algo;1-si,2-no
+toy;clothing;¿?;algo;1-si,2-no

@@ -18,16 +18,16 @@ namespace Library
     */
     public interface IReader
     {
-        List<MixedCategory> MixedCategoryBank {get;}
-        List<SpecificCategory> SpecificCategoryBank {get;}
-        List<InitialQuestion> InitialQuestionsBank {get;}
-        List<MainCategory> MainCategoryBank {get;}
-         
+        List<MixedCategory> MixedCategoryBank { get; }
+        List<SpecificCategory> SpecificCategoryBank { get; }
+        List<InitialQuestion> InitialQuestionsBank { get; }
+        List<MainCategory> MainCategoryBank { get; }
+
         void ReadMainCategories(string path);
         void ReadMixedCategories(string path);
         void ReadSpecificCategories(string path);
-        void ReadInitialQuestions(string path); 
+        void ReadInitialQuestions(string path);
         string ReadPlainText(string path);
-        
+
     }
 }
