@@ -2,5 +2,4 @@ Le gusta quedarse en casa;1-home
 Es habil para el bricolage;2-tool
 Le gusta la tecnología;3-technology
 Le gusta la moda;4-clothing
-Le gusta jugar;5-toy
-Le gusta hacer actividades deportivas;6-sport
+Le gusta hacer actividades deportivas;5-sport

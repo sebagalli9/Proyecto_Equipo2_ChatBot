@@ -54,7 +54,7 @@ namespace Test.Library
             user.UpdateSelectedCategory("technology");
             coreBot.GetMixedCategoryQuestion();
             //Assert
-            Assert.AreEqual(5, coreBot.MixedCategoriesSelected.Count);
+            Assert.AreEqual(6, coreBot.MixedCategoriesSelected.Count);
         } 
         [Test]
         public void AskMixedQuestionsTest()
@@ -67,7 +67,7 @@ namespace Test.Library
             coreBot.GetMixedCategoryQuestion();
             coreBot.AskMixedQuestions();
             //Assert
-            Assert.AreEqual(5,coreBot.AnswersMixedQuestions.Count);
+            Assert.AreEqual(6,coreBot.AnswersMixedQuestions.Count);
         } 
 
         [Test]
@@ -83,7 +83,7 @@ namespace Test.Library
             coreBot.AskMixedQuestions();
             coreBot.GetSpecificCategoryQuestion();
             //Assert
-            Assert.AreEqual(15,coreBot.SpecificCategoriesSelected.Count);
+            Assert.AreEqual(19,coreBot.SpecificCategoriesSelected.Count);
         }
 
         [Test]
@@ -100,7 +100,7 @@ namespace Test.Library
             coreBot.GetSpecificCategoryQuestion();
             coreBot.AskSpecificQuestions();
             //Assert
-            Assert.AreEqual(15,coreBot.AnswersSpecificQuestions.Count);
+            Assert.AreEqual(19,coreBot.AnswersSpecificQuestions.Count);
         }
 
         [Test]
@@ -118,7 +118,7 @@ namespace Test.Library
             coreBot.AskSpecificQuestions();
             coreBot.GetProductToSearch();
             //Assert
-            Assert.AreEqual(15,user.ProductSearcherKeyWords.Count);
+            Assert.AreEqual(27,user.ProductSearcherKeyWords.Count);
         }
 
         [Test]
