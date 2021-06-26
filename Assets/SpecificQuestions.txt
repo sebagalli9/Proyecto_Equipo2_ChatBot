@@ -1,84 +1,53 @@
-bathroom;¿pregunta1?;producto;1-si,2-no
-bathroom;¿pregunta2?;producto;1-si,2-no
-bathroom;¿pregunta3?;producto;1-si,2-no
-kitchen;¿pregunta4?;producto;1-si,2-no
-kitchen;¿pregunta5?;producto;1-si,2-no
-kitchen;¿pregunta6?;producto;1-si,2-no
-room;¿pregunta7?;producto;1-si,2-no
-room;¿pregunta8?;producto;1-si,2-no
-room;¿pregunta9?;producto;1-si,2-no
-living;¿pregunta10?;producto;1-si,2-no
-living;¿pregunta11?;producto;1-si,2-no
-living;¿pregunta12?;producto;1-si,2-no
-garden;¿pregunta13?;producto;1-si,2-no
-garden;¿pregunta14?;producto;1-si,2-no
-garden;¿pregunta15?;producto;1-si,2-no
-fitness;¿pregunta16?;producto;1-si,2-no
-fitness;¿pregunta17?;producto;1-si,2-no
-fitness;¿pregunta18?;producto;1-si,2-no
-contacSport;¿pregunta19?;producto;1-si,2-no
-contacSport;¿pregunta20?;producto;1-si,2-no
-contacSport;¿pregunta21?;producto;1-si,2-no
-adventure;¿pregunta22?;producto;1-si,2-no
-adventure;¿pregunta23?;producto;1-si,2-no
-adventure;¿pregunta24?;producto;1-si,2-no
-ballSport;¿pregunta25?;producto;1-si,2-no
-ballSport;¿pregunta26?;producto;1-si,2-no
-ballSport;¿pregunta27?;producto;1-si,2-no
-acuaticSport;¿pregunta28?;producto;1-si,2-no
-acuaticSport;¿pregunta29?;producto;1-si,2-no
-acuaticSport;¿pregunta30?;producto;1-si,2-no
-cellphone;¿Le gusta sacar fotos?;Iphone con super camara;1-si,2-no
-cellphone;¿Le gusta jugar?;RedGuardian celular;1-si,2-no
-cellphone;¿Usa su celular para trabajar?;Android celular;1-si,2-no
-camera;¿pregunta34?;producto;1-si,2-no
-camera;¿pregunta35?;producto;1-si,2-no
-camera;¿pregunta36?;producto;1-si,2-no
-computer;¿pregunta37?;producto;1-si,2-no
-computer;¿pregunta38?;producto;1-si,2-no
-computer;¿pregunta39?;producto;1-si,2-no
-console;¿Le gusta las consolas de ultima generación?;consola nintendo;1-si,2-no
-console;¿pregunta41?;control;1-si,2-no
-console;¿pregunta42?;juego playstation;1-si,2-no
-electronicComponent;¿pregunta43?;producto;1-si,2-no
-electronicComponent;¿pregunta44?;producto;1-si,2-no
-electronicComponent;¿pregunta45?;producto;1-si,2-no
-drone;¿pregunta46?;producto;1-si,2-no
-drone;¿pregunta47?;producto;1-si,2-no
-drone;¿pregunta48?;producto;1-si,2-no
-audio;¿pregunta49?;producto;1-si,2-no
-audio;¿pregunta50?;producto;1-si,2-no
-audio;¿pregunta51?;producto;1-si,2-no
-video;¿pregunta52?;producto;1-si,2-no
-video;¿pregunta53?;producto;1-si,2-no
-video;¿pregunta54?;producto;1-si,2-no
-electricTool;¿pregunta55?;producto;1-si,2-no
-electricTool;¿pregunta56?;producto;1-si,2-no
-electricTool;¿pregunta57?;producto;1-si,2-no
-manualTool;¿pregunta58?;producto;1-si,2-no
-manualTool;¿pregunta59?;producto;1-si,2-no
-manualTool;¿pregunta60?;producto;1-si,2-no
-gardenTool;¿pregunta61?;producto;1-si,2-no
-gardenTool;¿pregunta62?;producto;1-si,2-no
-gardenTool;¿pregunta63?;producto;1-si,2-no
-work;¿pregunta64?;producto;1-si,2-no
-work;¿pregunta65?;producto;1-si,2-no
-work;¿pregunta66?;producto;1-si,2-no
-moda;¿pregunta67?;producto;1-si,2-no
-moda;¿pregunta68?;producto;1-si,2-no
-moda;¿pregunta69?;producto;1-si,2-no
-leisure;¿pregunta70?;producto;1-si,2-no
-leisure;¿pregunta71?;producto;1-si,2-no
-leisure;¿pregunta72?;producto;1-si,2-no
-sportClothing;¿pregunta73?;producto;1-si,2-no
-sportClothing;¿pregunta74?;producto;1-si,2-no
-sportClothing;¿pregunta75?;producto;1-si,2-no
-electronicToy;¿pregunta76?;producto;1-si,2-no
-electronicToy;¿pregunta77?;producto;1-si,2-no
-electronicToy;¿pregunta78?;producto;1-si,2-no
-animalToy;¿pregunta79?;producto;1-si,2-no
-animalToy;¿pregunta80?;producto;1-si,2-no
-animalToy;¿pregunta81?;producto;1-si,2-no
-teddyToy;¿pregunta82?;producto;1-si,2-no
-teddyToy;¿pregunta83?;producto;1-si,2-no
-teddyToy;¿pregunta84?;producto;1-si,2-no
+garden;¿Le gustan las actividades de jardín?;hamacas, tobogán, cama elástica;1-si,2-no
+garden;¿Le gustan las piscinas?;inflables para piscina;1-si,2-no
+fitness;¿Le gustan las actividades tranquilas?;colchoneta yoga, pelota pilates;1-si,2-no
+indoorSport;¿Le gusta saltar?;cama elástica, cuerda de saltar;1-si,2-no
+fitness;¿Le gusta correr?;caramañola;1-si,2-no
+adventure;¿Le gusta estar en la naturaleza?;carpa camping;1-si,2-no
+adventure;¿Le gustan los deportes de nieve?;campera nieve;1-si,2-no
+adventure;¿Le gusta trekking?;calzado deportivo;1-si,2-no
+ballSport;¿Le gusta el futbol?;pelota de futbol, championes futbol;1-si,2-no
+ballSport;¿Le gusta el basketball?;pelota de basketball, aro de basketball;1-si,2-no
+ballSport;¿Le gusta el rugby?;pelota de rugby;1-si,2-no
+acuaticSport;¿Le gusta nadar?;gorra de natacion,traje de baño, lentes de agua, flotador;1-si,2-no
+acuaticSport;¿Le gusta la pesca?;caña de pescar,anzuelos,reel de pesca;1-si,2-no
+acuaticSport;¿Le gusta realizar deportes en la playa?;tabla de surf,sandboard,kayak;1-si,2-no
+cellphone;¿Le gusta sacar fotos?;tripode para celular;1-si,2-no
+cellphone;¿Pasa muchas horas fuera de su casa?;case,cargador portatil;1-si,2-no
+cellphone;¿Escucha musica en su celular?;auriculares para celular;1-si,2-no
+camera;¿Le gustaria poder sacar fotos profesionales?;camara de fotos profesonial, flash;1-si,2-no
+camera;¿A menudo tiene que transportar su equipo?;mochila para cámara, protector acuático;1-si,2-no
+camera;¿Le gustaria ser un creador de contenido audiovisual?;camara de video;1-si,2-no
+camera;¿Le gusta filmar en la naturaleza?;drone con camara;1-si,2-no
+computer;¿Le gustan los accesorios de computadora?;perifericos para computadora;1-si,2-no
+computer;¿Le gustaria tener las comodidades basicas de una computadora en un producto más compacto?;tablet;1-si,2-no
+console;¿Le gusta jugar en su computadora?;mouse gamer, teclado gamer, auriculares gamer;1-si,2-no
+console;¿Le gusta las consolas de ultima generación?;PS5,XBOX X;1-si,2-no
+console;¿Suele viajar mucho?;nintendo switch;1-si,2-no
+audio;¿Le gusta escuchar música en su casa?;parlante ;1-si,2-no
+audio;¿Le gusta escuchar musica mientras esta fuera de su casa?;auriculares;1-si,2-no
+audio;¿Le gusta cantar?;microfono karaoke;1-si,2-no
+audio;¿Le gustan los instrumentos?;bateria, piano electronico, guitarra;1-si,2-no
+video;¿Tiene internet?;chrome cast;1-si,2-no
+video;¿Le gusta ir al cine?;proyector;1-si,2-no
+video;¿Le gusta ver series y peliculas en compañia?;popera;1-si,2-no
+kitchen;¿Le gusta la pastelería?;kit de reposteria ;1-si,2-no
+kitchen;¿Utiliza utensilios eléctricos?;batidora, licuadora, procesadora;1-si,2-no
+room;¿Prefiere estudiar o trabajar en formato oficina?;silla, escritorio;1-si,2-no
+room;¿Le gustan los articulos de papeleria?;papeleria;1-si,2-no
+living;¿Le gusta el arte?;cuadros, jarrones, portaretraros;1-si,2-no
+living;¿Le gustan las antiguedades?;antiguedades;1-si,2-no
+living;¿Le gustan las plantas?;plantas decoracion;1-si,2-no
+electricTool;¿Le gusta la herreria?;sierra para metal, prensas, lentes de protección;1-si,2-no
+electricTool;¿Le gusta la carpinteria?;sierra electrica, taladro, destornillador;1-si,2-no
+manualTool;¿Le gusta pintar?;caballete pintura, pinceles, lienzo, brochas;1-si,2-no
+manualTool;¿Le gusta hacer artesanias?;herramientas para artesania;1-si,2-no
+gardenTool;¿Le gusta la jardinería?;palas de jardineria, guantes de jardineria, macetas, tijeras de poda ;1-si,2-no
+gardenTool;¿Se encarga de las tareas de jardin?;cortacesped, cortacerco, podadora;1-si,2-no
+robots;¿Le gusta cocinar?;robot de cocina;1-si,2-no
+robots;¿Se encarga de la limpieza del hogar?;aspiradora robot;1-si,2-no
+electronics;¿Le gusta la programación?;arduino, microcontroladores y placas;1-si,2-no
+sportEquipment;¿Le gusta entrenar?;cronometro deportivo, cuerda de saltar, rodilleras;1-si,2-no
+sportEquipment;¿Le gustan los ejercicios  de fuerza y resistencia?;pesas, barras para pesas, banco de pesas, barra de dominadas;1-si,2-no
+sportEquipment;¿Le gustan los deportes de contacto?;protectores bucales, vendas, guantes de boxeo, saco de boxeo, paleta de boxeo, punching ball;1-si,2-no
+algo;¿Una pregunta?;producto;1-si,2-no
