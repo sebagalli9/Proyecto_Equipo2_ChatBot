@@ -1,10 +1,6 @@
 
 AHORA:
-+ Revisar comentarios Patrones y Principios
 + Revisar todas las encapsulaciones y las listas read only
-+ Actualizar UML
-+ Actualizar CRC
-+ Actualizar el Readme
 + HACER LAS PREGUNTAS!!!!
 
 

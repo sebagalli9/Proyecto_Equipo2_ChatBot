@@ -24,7 +24,6 @@ namespace Library
 
         public PersonProfile()
         {
-
             this.Preferences = new List<string>();
             this.SelectedCategory = new List<string>();
             this.ProductSearcherKeyWords = new List<string>();
