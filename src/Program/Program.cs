@@ -14,6 +14,10 @@ namespace Program
             CoreBot optionsRound = new CoreBot(reader, user, input, output);
             
             optionsRound.Start();
+            foreach(string key in user.ProductSearcherKeyWords)
+            {
+                Console.WriteLine(key);
+            }
         }
     }
 }

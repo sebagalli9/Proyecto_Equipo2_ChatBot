@@ -17,6 +17,7 @@ namespace Library
         {
             this.Text = text;
         }
+        
         public string GetInput()
         {
             return this.Text;

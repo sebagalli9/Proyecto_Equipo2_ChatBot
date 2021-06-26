@@ -11,9 +11,9 @@ namespace Library
 
     public interface IPersonProfile
     {
-        public List<string> SelectedCategory { get; }
-        public List<string> ProductSearcherKeyWords { get; }
-        public List<string> Preferences { get; }
+        List<string> SelectedCategory { get; }
+        List<string> ProductSearcherKeyWords { get; }
+        List<string> Preferences { get; }
         void UpdatePreferences(string pref);
         void UpdateSelectedCategory(string category);
         void AddProductToSearch(string product);

@@ -90,7 +90,7 @@ namespace Library
 
         public void AskMixedQuestions()
         {
-            output.SendMessage("Responde si o no a las siguientes preguntas.");
+            output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
 
             foreach (MixedCategory category in MixedCategoriesSelected)
             {
@@ -151,7 +151,7 @@ namespace Library
 
         public void AskSpecificQuestions()
         {
-            output.SendMessage("Responde si o no a las siguientes preguntas.");
+            output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
 
             foreach (SpecificCategory category in SpecificCategoriesSelected)
             {
