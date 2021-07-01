@@ -32,6 +32,7 @@ namespace Library
         public List<MixedCategory> MixedCategoryBank { get; private set; }
         public List<SpecificCategory> SpecificCategoryBank { get; private set; }
         public List<InitialQuestion> InitialQuestionsBank { get; private set; }
+        public List<PriceQuestion> PriceQuestionsBank { get; private set; }
 
         public void ReadMainCategories(string path)
         {
@@ -144,7 +145,7 @@ namespace Library
 
         public void ReadInitialQuestions(string path)
         {
-            InitialQuestionsBank = new List<InitialQuestion>();
+            this.InitialQuestionsBank = new List<InitialQuestion>();
 
             try
             {
@@ -176,6 +177,39 @@ namespace Library
             }
         }
 
+        public void ReadPriceQuestions(string path)
+        {
+            this.PriceQuestionsBank = new List<PriceQuestion>();
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    int contador = 0;
+                    string line;
+                    string[] listaLinea;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        contador += 1;
+                        listaLinea = line.Split(';');
+                        string[] answers = listaLinea[1].Split(",");
+
+                        PriceQuestion priceQ = new PriceQuestion(listaLinea[0]);
+                        foreach (string element in answers)
+                        {
+                            string[] keyVal = element.Split("-");
+                            priceQ.AddAnswerOption(keyVal[0], keyVal[1]);
+                        }
+
+                        this.PriceQuestionsBank.Add(priceQ);
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
+            }
+        }
         public string ReadPlainText(string path)
         {
             string text = "";

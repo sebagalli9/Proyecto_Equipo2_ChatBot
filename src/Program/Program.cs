@@ -8,7 +8,6 @@ using Telegram.Bot.Types.Enums;
 using System.IO;
 using System.Text;
 
-
 namespace Program
 {
     class Program
@@ -23,11 +22,11 @@ namespace Program
 
             optionsRound.Start();
 
-            /* FindGift findG = new FindGift();
-            findG.SearchGiftML(); */
+            FindGift findG = new FindGift();
+            findG.SearchGiftML();
 
-            //TelegramGateway.RunTelegramAPI();
-            
+            TelegramGateway.RunTelegramAPI();
+             
         }
     }
 }

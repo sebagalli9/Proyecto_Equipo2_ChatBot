@@ -73,6 +73,19 @@ namespace Library
             } 
         }
 
+        private List<string> pricePreferences = new List<string>();
+        public List<string> PricePreferences 
+        { 
+            get
+            {
+                return this.pricePreferences;
+            } 
+            private set
+            {
+                this.pricePreferences = value;
+            } 
+        }
+        
         public PersonProfile()
         {
 
@@ -81,6 +94,11 @@ namespace Library
         public void UpdatePreferences(string pref)
         {
             this.Preferences.Add(pref);
+        }
+
+        public void UpdatePricePreferences(string pricePref)
+        {
+            this.PricePreferences.Add(pricePref);
         }
 
         public void UpdateSelectedCategory(string category)
