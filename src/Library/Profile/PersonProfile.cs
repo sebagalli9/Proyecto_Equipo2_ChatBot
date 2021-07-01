@@ -13,20 +13,68 @@ namespace Library
 
     La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
 
+    PersonProfile implementa el patron Singleton ya que se necesita que durante el programa exista una unica instancia de la clase,
+    donde se almacenan los datos de las respuestas de la sesión actual.
+
     */
 
     public class PersonProfile : IPersonProfile
     {
 
-        public List<string> SelectedCategory { get; private set; }
-        public List<string> ProductSearcherKeyWords { get; private set; }
-        public List<string> Preferences { get; private set; }
+        private static PersonProfile instance;
+        public static PersonProfile Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new PersonProfile();
+                }
+
+                return instance;
+            }
+        }
+
+        private List<string> selectedCategory = new List<string>();
+        public List<string> SelectedCategory { 
+            get
+            {
+                return this.selectedCategory;
+            } 
+            private set
+            {
+                this.selectedCategory = value;
+            } 
+        }
+
+        private List<string> productSearcherKeyWords = new List<string>();
+        public List<string> ProductSearcherKeyWords 
+        { 
+            get
+            {
+                return this.productSearcherKeyWords;
+            } 
+            private set
+            {
+                this.productSearcherKeyWords = value;
+            } 
+        }
+
+        private List<string> preferences = new List<string>();
+        public List<string> Preferences 
+        { 
+            get
+            {
+                return this.preferences;
+            } 
+            private set
+            {
+                this.preferences = value;
+            } 
+        }
 
         public PersonProfile()
         {
-            this.Preferences = new List<string>();
-            this.SelectedCategory = new List<string>();
-            this.ProductSearcherKeyWords = new List<string>();
 
         }
 
