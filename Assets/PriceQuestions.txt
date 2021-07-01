@@ -1,0 +1,1 @@
+¿Cuánto dinero quieres gastar?;1-Hasta 550,2-550 a 1500,3-Más de 1500

@@ -18,11 +18,13 @@ namespace Library
         List<SpecificCategory> SpecificCategoryBank { get; }
         List<InitialQuestion> InitialQuestionsBank { get; }
         List<MainCategory> MainCategoryBank { get; }
+        List<PriceQuestion> PriceQuestionsBank { get; }
 
         void ReadMainCategories(string path);
         void ReadMixedCategories(string path);
         void ReadSpecificCategories(string path);
         void ReadInitialQuestions(string path);
+        void ReadPriceQuestions(string path);
         string ReadPlainText(string path);
 
     }

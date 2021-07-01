@@ -58,6 +58,21 @@ namespace Library
             }
         }
 
+        public void AskPriceQuestions()
+        {
+            foreach (PriceQuestion priceQ in reader.PriceQuestionsBank)
+            {
+                output.SendMessage(priceQ.Question);
+                foreach (var option in priceQ.AnswerOptions)
+                {
+                    output.SendMessage(option.Key + " - " + option.Value);
+                }
+
+                string ans = input.GetInput();
+                user.UpdatePricePreferences(priceQ.AnswerOptions[ans]);
+            }
+        }
+
         public void AskMainCategories()
         {
             int contador = 1;
@@ -210,7 +225,9 @@ namespace Library
             reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
             reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
             reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
+            reader.ReadPriceQuestions(@"..\..\Assets\PriceQuestions.txt");
             AskInitialQuestions();
+            AskPriceQuestions();
             AskMainCategories();
             GetMixedCategoryQuestion();
             AskMixedQuestions();
