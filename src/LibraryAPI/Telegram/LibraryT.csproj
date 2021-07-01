@@ -8,12 +8,4 @@
     <PackageReference Include="Telegram.Bot" Version="15.7.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\LibraryAPI\Telegram\LibraryT.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\LibraryAPI\MercadoLibre\LibraryML.csproj" />
-  </ItemGroup>
-
 </Project>
