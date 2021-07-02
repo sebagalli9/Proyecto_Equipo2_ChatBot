@@ -22,5 +22,10 @@ namespace Library
         {
 
         }
+
+        public void SendMessageAnswers(Dictionary<string, string> ans)
+        {
+            
+        }
     }
 }

@@ -13,13 +13,10 @@ namespace Library
 { 
     internal class AboutCommandHandler : AbstractCommandHandler
     {
-        public async override Task<object> Handle(object sender, MessageEventArgs messageEventArgs)
+        public async override Task<object> Handle(string messageText, Chat chatInfo)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
-            Message message = messageEventArgs.Message;
-            Chat chatInfo = message.Chat;
-            string messageText = message.Text.ToLower();
-
+            
             if (messageText != null && ((messageText as string) == "/about" || (messageText as string) == "/informacion"))
             {
                 FileReader fileReader = new FileReader();
@@ -29,7 +26,7 @@ namespace Library
             }
             else
             {
-                return base.Handle(sender, messageEventArgs);
+                return base.Handle(messageText, chatInfo);
             }
         }
 

@@ -2,10 +2,7 @@
 AHORA:
 + Revisar todas las encapsulaciones y las listas read only
 + HACER LAS PREGUNTAS!!!!
++ Poner los botones de telegram
++ Comando findMyGift no funca
++ Comando exit funcional
 
-
-PROXIMA ENTREGA:
-+ Ver cómo hacer para que el usuario pueda cancelar la búsqueda en cualquier momento
-+ Pensar una clase Menu que administre los comandos
-+ Crear un MessageReciever (clases que se encarguen de recibir/interpretar los mensajes del usuario)
-+ Hacer intefaz IGateway

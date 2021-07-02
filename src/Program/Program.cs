@@ -7,6 +7,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Program
 {
@@ -16,16 +17,21 @@ namespace Program
         {
             IReader reader = new FileReader();
             IPersonProfile user = PersonProfile.Instance;
-            IInputReceiver input = new ConsoleReceiver();
+            IMessageReceiver input = new ConsoleReceiver();
             IMessageSender output = new ConsolePrinter();
-            CoreBot optionsRound = new CoreBot(reader, user, input, output);
-
-            optionsRound.Start();
-
-            FindGift findG = new FindGift();
-            findG.SearchGiftML();
+            IMessageSender telegramPrinter = new TelegramGateway();
+            CoreBot coreBot = new CoreBot(reader, user, input, telegramPrinter);
 
             TelegramGateway.RunTelegramAPI();
+            //reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
+            //coreBot.AskInitialQuestions();
+
+            //coreBot.Start();
+
+            //FindGift findG = new FindGift();
+            //findG.SearchGiftML();
+
+            
             
         }
     }

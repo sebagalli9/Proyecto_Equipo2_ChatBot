@@ -21,11 +21,11 @@ namespace Library
             return handler;
         }
         
-        public virtual object Handle(object sender, MessageEventArgs messageEventArgs)
+        public virtual object Handle(string message, Chat chatInfo)
         {
             if (this._nextHandler != null)
             {
-                return this._nextHandler.Handle(sender, messageEventArgs);
+                return this._nextHandler.Handle(message, chatInfo);
             }
             else
             {

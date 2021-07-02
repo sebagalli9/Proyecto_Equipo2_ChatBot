@@ -1,8 +1,4 @@
-PREGUNTAS:
-
-1. ¿Estan bien las excepciones (poniendo ifs en el try)?
-
-2. ¿Exista una forma de no exponer atributos innecesariamente,
-    y aún así poder llamarlos en los tests (sin hacerlos de solo lectura)?
-
-3. 
+- tenemos que hacer el corebot singleton?
+- cómo es lo de el estado de la sesion, para que lo quiero, para que me sirve
+- corebot rompe ocp?
+- tenemos que separar en handlers diferentes la ejecucion de los metodos de start del corebot?

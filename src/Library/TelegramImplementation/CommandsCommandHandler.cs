@@ -14,18 +14,15 @@ namespace Library
     internal class CommandsCommandHandler : AbstractCommandHandler
     {
 
-        public async override Task<object> Handle(object sender, MessageEventArgs messageEventArgs)
+        public async override Task<object> Handle(string messageText, Chat chatInfo)
         {
-            ITelegramBotClient client = TelegramBot.Instance.Client;
-            Message message = messageEventArgs.Message;
-            Chat chatInfo = message.Chat;
-            string messageText = message.Text.ToLower();          
+            ITelegramBotClient client = TelegramBot.Instance.Client;   
 
             if (messageText != null && ((messageText as string) == "/commands" || (messageText as string) == "/comandos"))
             {
                 
                 StringBuilder commandsStringBuilder = new StringBuilder("Lista de Comandos:\n")
-                                                                                .Append("/findGift\n")
+                                                                                .Append("/searchgift\n")
                                                                                 .Append("/about\n")
                                                                                 .Append("/exit\n");
 
@@ -34,7 +31,7 @@ namespace Library
             }
             else
             {
-                return base.Handle(sender, messageEventArgs);
+                return base.Handle(messageText, chatInfo);
             }
         }
 

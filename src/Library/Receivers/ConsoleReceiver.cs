@@ -9,7 +9,7 @@ namespace Library
     La clase cumple con el principio SRP ya que existe una sola razón de cambio.
     */
 
-    public class ConsoleReceiver : IInputReceiver
+    public class ConsoleReceiver : IMessageReceiver
     {
         public string GetInput()
         {
