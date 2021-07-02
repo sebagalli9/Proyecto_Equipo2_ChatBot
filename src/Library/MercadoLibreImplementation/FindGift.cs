@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using LibraryAPI;
 using PII_MLApi;
+using System.Linq;
 
 namespace Library
 {
@@ -18,7 +19,13 @@ namespace Library
                 }
                 
                 List<MLApiSearchResult> results = new MLApi().Search(search);
-                results.ForEach(r => Console.WriteLine(r));
+
+                CurrencyChanger currencyChanger = new CurrencyChanger();
+            
+                List<MLApiSearchResult> resultsFiltered = new List<MLApiSearchResult>();
+
+                resultsFiltered = results.Where(x=>Convert.ToDouble(x.Price)<=Convert.ToDouble(PersonProfile.Instance.PricePreferences[0])).ToList();
+                resultsFiltered.ForEach(r => Console.WriteLine(r));
             }
             
         }

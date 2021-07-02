@@ -5,7 +5,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryAPI\Telegram\LibrarT.csproj" />
+    <ProjectReference Include="..\LibraryAPI\Telegram\LibraryT.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
