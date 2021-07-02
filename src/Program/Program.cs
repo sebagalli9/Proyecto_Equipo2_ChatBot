@@ -26,7 +26,7 @@ namespace Program
             findG.SearchGiftML();
 
             TelegramGateway.RunTelegramAPI();
-             
+            
         }
     }
 }
