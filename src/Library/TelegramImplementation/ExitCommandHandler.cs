@@ -13,13 +13,10 @@ namespace Library
 { 
     internal class ExitCommandHandler : AbstractCommandHandler
     {
-        public async override Task<object> Handle(object sender, MessageEventArgs messageEventArgs)
+        public async override Task<object> Handle(string messageText, Chat chatInfo)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
-            Message message = messageEventArgs.Message;
-            Chat chatInfo = message.Chat;
-            string messageText = message.Text.ToLower();
-
+        
             if (messageText != null && ((messageText as string) == "/exit" || (messageText as string) == "/salir"))
             {
                 await client.SendTextMessageAsync(chatId: chatInfo.Id, text: $"Se ha finalizado la sesión ¡Hasta luego {chatInfo.FirstName}!");
@@ -27,7 +24,7 @@ namespace Library
             }
             else
             {
-                return base.Handle(sender, messageEventArgs);
+                return base.Handle(messageText, chatInfo);
             }
         }
 

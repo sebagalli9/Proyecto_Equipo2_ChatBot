@@ -8,7 +8,7 @@ namespace Library
     sus operaciones polimórficas.
     */
 
-    public interface IInputReceiver
+    public interface IMessageReceiver
     {
         string GetInput();
     }

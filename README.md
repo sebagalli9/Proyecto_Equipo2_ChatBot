@@ -48,8 +48,9 @@ Finalmente, aquella o aquellas preguntas clasificadas como Specific que hayan ob
 
 #### Observaciones
 
+- En aquellos casos en que el usuario deba responder con un "si" o un "no" y se responda a todas las preguntas con un "no", el programa recolectará categorías aleatorias y hará nuevas preguntas hasta que el usuario pueda encontrar una categoría a la cual poder responder "si".
 - Las excepciones estan especificamente orientadas al usuario y su interacción con el Bot.
-- No se creo un tipo que englobe InitialQuestion, MainCategory, MixedCategory y SpecificCategory ya que no es posible generalizar estas categorias y por tanto crear un tipo ICategory no sería viable. Además, hacer uso de una Interfaz ICategory podría dar lugar a que las categorías fueran sustituibles entre si y el programa no maneja estas categorías como intercambiables, sino que se necesita una categoria en especifico en un momento en especifico. 
+- No se creo un tipo que englobe InitialQuestion, MainCategory, MixedCategory y SpecificCategory ya que no es posible generalizar estas categorias y por tanto crear un tipo ICategory no sería viable. Además, hacer uso de una Interfaz ICategory podría dar lugar a que las categorías fueran sustituibles entre si y el programa no maneja estas categorías como intercambiables, sino que las categorias se ejecutan en un orden especifico, por la lógica de categorización para recomendar un producto final. 
 - Dado que las opciones van a estar definidas en funcion de botones, no consideramos necesario el tener 
 que validar las respuestas, ya que el usuario no cuenta con la libertad de escribir lo que quiera.
 

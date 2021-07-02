@@ -34,7 +34,7 @@ namespace Library
         IReader reader;
         IMessageSender output;
         IPersonProfile user;
-        IInputReceiver input;
+        IMessageReceiver input;
 
         public List<MixedCategory> MixedCategoriesSelected { get; private set; }
         public List<SpecificCategory> SpecificCategoriesSelected { get; private set; }
@@ -48,10 +48,11 @@ namespace Library
             foreach (InitialQuestion initialQ in reader.InitialQuestionsBank)
             {
                 output.SendMessage(initialQ.Question);
-                foreach (var option in initialQ.AnswerOptions)
+                /* foreach (var option in initialQ.AnswerOptions)
                 {
                     output.SendMessage(option.Key + " - " + option.Value);
-                }
+                } */
+                output.SendMessageAnswers(initialQ.AnswerOptions);
 
                 string ans = input.GetInput();
                 user.UpdatePreferences(initialQ.AnswerOptions[ans]);
@@ -219,8 +220,22 @@ namespace Library
             }
         }
 
-        public void Start()
+        private void CleanLists()
         {
+            MixedCategoriesSelected.Clear();
+            SpecificCategoriesSelected.Clear();
+            SubCategory.Clear();
+            AnswersMainCategories.Clear();
+            AnswersMixedQuestions.Clear();
+            AnswersSpecificQuestions.Clear();
+
+        }
+
+        public void Start()
+        {    
+            CleanLists();
+            user.CleanSelections();
+
             reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
             reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
             reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
@@ -236,7 +251,9 @@ namespace Library
             GetProductToSearch();
         }
 
-        public CoreBot(IReader reader, IPersonProfile user, IInputReceiver input, IMessageSender output)
+        
+
+        public CoreBot(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output)
         {
             this.reader = reader;
             this.user = user;

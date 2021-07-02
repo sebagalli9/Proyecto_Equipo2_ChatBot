@@ -21,6 +21,8 @@ namespace Library
         void UpdatePricePreferences(string pricePref);
         void UpdateSelectedCategory(string category);
         void AddProductToSearch(string product);
+        void CleanPreferences();
+        void CleanSelections();
 
     }
 }

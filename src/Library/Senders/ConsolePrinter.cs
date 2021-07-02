@@ -18,5 +18,13 @@ namespace Library
         {
             Console.WriteLine(message);
         }
+
+        public void SendMessageAnswers(Dictionary<string,string> ans)
+        {
+            foreach (var option in ans)
+            {
+                SendMessage(option.Key + " - " + option.Value);
+            }
+        }
     }
 }

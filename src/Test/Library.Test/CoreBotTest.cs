@@ -8,7 +8,7 @@ namespace Test.Library
     {
         private IReader reader;
         private IPersonProfile user;
-        private IInputReceiver input;
+        private IMessageReceiver input;
         private IMessageSender output;
         private CoreBot coreBot;
 

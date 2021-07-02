@@ -11,5 +11,7 @@ namespace Library
     {
         void SendMessage(string message);
 
+        void SendMessageAnswers(Dictionary<string,string> ans);
+
     }
 }

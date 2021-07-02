@@ -15,6 +15,6 @@ namespace Library
     {
         ICommandHandler SetNext(ICommandHandler handler);
         
-        object Handle(object sender, MessageEventArgs messageEventArgs);
+        object Handle(string message, Chat chatInfo);
     }
 }
