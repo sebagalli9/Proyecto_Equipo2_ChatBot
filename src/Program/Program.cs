@@ -20,18 +20,15 @@ namespace Program
             IMessageReceiver input = new ConsoleReceiver();
             IMessageSender output = new ConsolePrinter();
             IMessageSender telegramPrinter = new TelegramGateway();
-            CoreBot coreBot = new CoreBot(reader, user, input, telegramPrinter);
+            ISearchGift findG;
+            findG = new SearchGiftML();
+            CoreBot coreBot = new CoreBot(reader, user, input, output, findG);
 
-            TelegramGateway.RunTelegramAPI();
+            //TelegramGateway.RunTelegramAPI();
             //reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
             //coreBot.AskInitialQuestions();
 
-            //coreBot.Start();
-
-            //FindGift findG = new FindGift();
-            //findG.SearchGiftML();
-
-            
+            coreBot.Start();
             
         }
     }

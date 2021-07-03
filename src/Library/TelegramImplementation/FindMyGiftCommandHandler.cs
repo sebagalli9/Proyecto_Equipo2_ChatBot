@@ -23,7 +23,9 @@ namespace Library
                 IPersonProfile user = PersonProfile.Instance;
                 IMessageReceiver input = new TelegramGateway();
                 IMessageSender output = new TelegramGateway();
-                CoreBot coreBot = new CoreBot(reader, user, input, output);
+                ISearchGift findG;
+                findG = new SearchGiftML();
+                CoreBot coreBot = new CoreBot(reader, user, input, output, findG);
                 await Task.Run(() => coreBot.Start());
                
                 return "searchgift Command";
