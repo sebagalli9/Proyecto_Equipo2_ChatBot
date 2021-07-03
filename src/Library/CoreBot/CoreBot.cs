@@ -36,6 +36,8 @@ namespace Library
         IPersonProfile user;
         IMessageReceiver input;
 
+        ISearchGift findG;
+
         public List<MixedCategory> MixedCategoriesSelected { get; private set; }
         public List<SpecificCategory> SpecificCategoriesSelected { get; private set; }
         public List<String> SubCategory { get; private set; }
@@ -249,16 +251,18 @@ namespace Library
             GetSpecificCategoryQuestion();
             AskSpecificQuestions();
             GetProductToSearch();
+            findG.FindGift();
         }
 
         
 
-        public CoreBot(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output)
+        public CoreBot(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift findG)
         {
             this.reader = reader;
             this.user = user;
             this.input = input;
             this.output = output;
+            this.findG = findG;
             this.MixedCategoriesSelected = new List<MixedCategory>();
             this.SpecificCategoriesSelected = new List<SpecificCategory>();
             this.SubCategory = new List<string>();

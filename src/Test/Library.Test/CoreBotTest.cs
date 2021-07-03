@@ -10,8 +10,9 @@ namespace Test.Library
         private IPersonProfile user;
         private IMessageReceiver input;
         private IMessageSender output;
-        private CoreBot coreBot;
+        private ISearchGift findG;
 
+        private CoreBot coreBot;
         [SetUp]
         public void Setup()
         {
@@ -19,7 +20,8 @@ namespace Test.Library
             output = new ConsolePrinter();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
-            coreBot = new CoreBot(reader,user,input,output);
+            findG = new SearchGiftML();
+            coreBot = new CoreBot(reader,user,input,output,findG);
         }
 
         [Test]
