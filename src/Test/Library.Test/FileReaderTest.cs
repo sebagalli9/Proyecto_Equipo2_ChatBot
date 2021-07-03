@@ -53,7 +53,7 @@ namespace Test.Library
             //Act
             fileReader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             //Assert
-            Assert.AreEqual(5, fileReader.InitialQuestionsBank.Count);
+            Assert.AreEqual(4, fileReader.InitialQuestionsBank.Count);
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace Test.Library
             //Act
             string text = fileReader.ReadPlainText("../../../../../../Assets/Welcome.txt");
             //Assert
-            Assert.AreEqual(18, text.Length);
+            Assert.AreEqual(23, text.Length);
         }
     }
 

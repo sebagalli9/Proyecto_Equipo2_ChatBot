@@ -24,6 +24,7 @@ namespace Library
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
         public static long ChatID{get; private set;}
+        public string callbackValue;
         public static void RunTelegramAPI()
         {
            
@@ -61,55 +62,47 @@ namespace Library
             commandsCommandHandler.Handle(messageText, chatInfo);
         }
 
+        public string GetInputAdapter(string res)
+        {   
+            callbackValue = res;
+
+            return callbackValue;
+        }
         public string GetInput()
         {
-            return null;
+            string aux = callbackValue;
+
+            return aux;
         }
 
         public void SendMessage(string message)
         {
-           SendMessageTelegramAdapted(message);
+           SendMessageTelegramAdapter(message);
         }
 
         public void SendMessageAnswers(Dictionary<string, string> ans)
         {
-            //aca se puede hacer lo de imprimir los botones
-            //lo que llega en el diccionario es tipo: 1-mujer
-            //el usuario tiene que ver escrito en el boton o 1 o mujer
-            //el boton tiene que devolver si o si el valor 
+            ITelegramBotClient client = TelegramBot.Instance.Client;
             
-            /* List<InlineKeyboardButton> keyboardButtons = new List<InlineKeyboardButton>();
+            var rows = new List<List<InlineKeyboardButton>>();
 
-            foreach(var option in ans)
+            foreach (var index in ans)
             {
-                InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(
-                            text: option.Value,
-                            callbackData: option.Key);
-                
+                List<InlineKeyboardButton> row = new List<InlineKeyboardButton>();
 
-                 keyboardButtons.Add(button);
+                InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: index.Value, callbackData: GetInputAdapter(index.Key));
+                row.Add(button);
             }
 
-            ITelegramBotClient client = TelegramBot.Instance.Client;
-            client.SendTextMessageAsync(
-                        ChatID,
-                        "Elija una opción",
-                        replyMarkup: keyboardButtons);    */
+            InlineKeyboardMarkup buttons = rows.Select(row => row.ToArray()).ToArray();
             
-            
-            
-
+            client.SendTextMessageAsync(ChatID,"Elija una opción",replyMarkup: buttons);
         }
 
-        
-        public void SendMessageTelegramAdapted(string message)
+        public void SendMessageTelegramAdapter(string message)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
             client.SendTextMessageAsync(chatId: ChatID, text: message);
         }
-        
-
-
-
     }
 }
