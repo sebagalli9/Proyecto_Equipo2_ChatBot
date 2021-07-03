@@ -30,7 +30,7 @@ namespace Test.Library
             reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             coreBot.AskInitialQuestions();
             //Assert
-            Assert.AreEqual(5, user.Preferences.Count);
+            Assert.AreEqual(4, user.Preferences.Count);
         }
 
         [Test]
