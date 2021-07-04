@@ -1,8 +1,9 @@
 
-AHORA:
 + Revisar todas las encapsulaciones y las listas read only
 + HACER LAS PREGUNTAS!!!!
-+ Poner los botones de telegram
-+ Comando findMyGift no funca
 + Comando exit funcional
++ Aplicacion de OCP en CoreBot
++ No se esta recibiendo el input
++ El start se esta cortando despues de que se apreta un boton
++ Hacer un boton por elemento en diccionario
 

@@ -52,14 +52,25 @@ namespace Library
                 output.SendMessage(initialQ.Question);
                 /* foreach (var option in initialQ.AnswerOptions)
                 {
-                    output.SendMessage(option.Key + " - " + option.Value);
-                } */
+                    output.SendMessage("/"+ option.Key + " - " + option.Value);
+                }  */
+                
                 output.SendMessageAnswers(initialQ.AnswerOptions);
-
                 string ans = input.GetInput();
+                Console.WriteLine("La respuesta es" + ans);
                 user.UpdatePreferences(initialQ.AnswerOptions[ans]);
             }
         }
+
+        /* private int currentItemIndex;
+        public void ProcessNextInitialQuestion()
+        {
+            if( currentItemIndex <= reader.InitialQuestionsBank.Count )
+            {
+                output.SendMessage(reader.InitialQuestionsBank[currentItemIndex].Question);
+                output.SendMessageAnswers(reader.InitialQuestionsBank[currentItemIndex].AnswerOptions);
+            }
+        } */
 
         public void AskPriceQuestions()
         {

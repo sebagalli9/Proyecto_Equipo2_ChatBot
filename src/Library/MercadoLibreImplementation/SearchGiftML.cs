@@ -8,17 +8,23 @@ namespace Library
 {
     public class SearchGiftML : ISearchGift
     {
+        IPersonProfile user;
+
+        public SearchGiftML(IPersonProfile user)
+        {
+            this.user = user;
+        }
         public void FindGift()
         {   
             List<MLApiSearchResult> resultsFiltered = new List<MLApiSearchResult>();
             string prefs = "";
 
-            foreach(string pref in PersonProfile.Instance.Preferences)
+            foreach(string pref in user.Preferences)
             {
                 prefs += (pref + "-");
             }
             
-            foreach (string prod in PersonProfile.Instance.ProductSearcherKeyWords)
+            foreach (string prod in user.ProductSearcherKeyWords)
             {
                 string search = "";
                
