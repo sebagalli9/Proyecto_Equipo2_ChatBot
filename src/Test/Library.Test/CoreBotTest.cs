@@ -20,7 +20,7 @@ namespace Test.Library
             output = new ConsolePrinter();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
-            findG = new SearchGiftML();
+            findG = new SearchGiftML(user);
             coreBot = new CoreBot(reader,user,input,output,findG);
         }
 

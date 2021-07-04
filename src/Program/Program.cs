@@ -16,19 +16,17 @@ namespace Program
         static void Main(string[] args)
         {
             IReader reader = new FileReader();
-            IPersonProfile user = PersonProfile.Instance;
+            IPersonProfile user = new PersonProfile();
             IMessageReceiver input = new ConsoleReceiver();
             IMessageSender output = new ConsolePrinter();
             IMessageSender telegramPrinter = new TelegramGateway();
             ISearchGift findG;
-            findG = new SearchGiftML();
+            findG = new SearchGiftML(user);
             CoreBot coreBot = new CoreBot(reader, user, input, output, findG);
 
-            //TelegramGateway.RunTelegramAPI();
-            //reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
-            //coreBot.AskInitialQuestions();
+            TelegramGateway.RunTelegramAPI();
 
-            coreBot.Start();
+            //coreBot.Start();
             
         }
     }

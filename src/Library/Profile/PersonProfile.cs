@@ -13,27 +13,10 @@ namespace Library
 
     La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
 
-    PersonProfile implementa el patron Singleton ya que se necesita que durante el programa exista una unica instancia de la clase,
-    donde se almacenan los datos de las respuestas de la sesión actual.
-
     */
 
     public class PersonProfile : IPersonProfile
     {
-
-        private static PersonProfile instance;
-        public static PersonProfile Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new PersonProfile();
-                }
-
-                return instance;
-            }
-        }
 
         private List<string> selectedCategory = new List<string>();
         public List<string> SelectedCategory { 
@@ -88,7 +71,9 @@ namespace Library
         
         public PersonProfile()
         {
-
+            this.Preferences = new List<string>();
+            this.SelectedCategory = new List<string>();
+            this.ProductSearcherKeyWords = new List<string>();
         }
 
         public void UpdatePreferences(string pref)

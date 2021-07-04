@@ -20,18 +20,20 @@ namespace Library
     compatibles con el cliente 
     
     Se aplica el patron Chain of Responsibility 
+
+    Se cumple ISP
     */
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
         public static long ChatID{get; private set;}
-        public string callbackValue;
+        public static string callbackValue;
         public static void RunTelegramAPI()
-        {
-           
+        { 
             TelegramBot telegramBot = TelegramBot.Instance;
             Console.WriteLine($"Hola soy el Bot de P2, mi nombre es {telegramBot.BotName} y tengo el Identificador {telegramBot.BotId}");
             ITelegramBotClient bot = telegramBot.Client;
             bot.OnMessage += OnMessage;
+            bot.OnCallbackQuery += BotOnCallbackQueryRecived;
             bot.StartReceiving();
             Console.WriteLine("Presiona una tecla para terminar");
             Console.ReadKey();
@@ -62,17 +64,13 @@ namespace Library
             commandsCommandHandler.Handle(messageText, chatInfo);
         }
 
-        public string GetInputAdapter(string res)
+        public static void GetInputAdapter(string res)
         {   
             callbackValue = res;
-
-            return callbackValue;
         }
         public string GetInput()
-        {
-            string aux = callbackValue;
-
-            return aux;
+        { 
+            return callbackValue;
         }
 
         public void SendMessage(string message)
@@ -80,29 +78,79 @@ namespace Library
            SendMessageTelegramAdapter(message);
         }
 
+        public void SendMessageTelegramAdapter(string message)
+        {
+            ITelegramBotClient client = TelegramBot.Instance.Client;
+            client.SendTextMessageAsync(chatId: ChatID, text: message);
+        }
+
         public void SendMessageAnswers(Dictionary<string, string> ans)
+        {
+            SendMessageAnswersAdapter(ans);
+        }
+
+        public async void SendMessageAnswersAdapter(Dictionary<string, string> ans)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
             
+            /* 
             var rows = new List<List<InlineKeyboardButton>>();
 
             foreach (var index in ans)
             {
                 List<InlineKeyboardButton> row = new List<InlineKeyboardButton>();
 
-                InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: index.Value, callbackData: GetInputAdapter(index.Key));
+                InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: index.Value, callbackData: index.Key);
                 row.Add(button);
             }
 
             InlineKeyboardMarkup buttons = rows.Select(row => row.ToArray()).ToArray();
             
-            client.SendTextMessageAsync(ChatID,"Elija una opción",replyMarkup: buttons);
+            await client.SendTextMessageAsync(
+                    ChatID,
+                    "Seleccione",
+                    replyMarkup: buttons 
+                );
+            */
+
+            var keyBoard = new InlineKeyboardMarkup(new []
+                {
+                    new []
+                    {
+                        InlineKeyboardButton.WithCallbackData(
+                            text:"boton 1",
+                            callbackData: "1"
+                        ),
+                        InlineKeyboardButton.WithCallbackData(
+                            text:"boton 2",
+                            callbackData: "2"
+                        )
+                    }
+                }
+
+                );  
+                await client.SendTextMessageAsync(
+                    ChatID,
+                    "Seleccione",
+                    replyMarkup: keyBoard 
+                );
         }
 
-        public void SendMessageTelegramAdapter(string message)
+        private static async void BotOnCallbackQueryRecived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
-            ITelegramBotClient client = TelegramBot.Instance.Client;
-            client.SendTextMessageAsync(chatId: ChatID, text: message);
+            var callbackQuery = callbackQueryEventArgs.CallbackQuery;
+           
+            ITelegramBotClient client = TelegramBot.Instance.Client;                    
+             
+            ChatID = callbackQuery.Message.Chat.Id;
+
+            await client.SendTextMessageAsync(
+                    ChatID,
+                    "ok"
+                );
+
+             callbackValue = callbackQuery.Data;       
+             
         }
     }
 }

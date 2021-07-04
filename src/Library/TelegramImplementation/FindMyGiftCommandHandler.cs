@@ -17,16 +17,17 @@ namespace Library
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
             
-            if (messageText != null && ((messageText as string) == "/searchgift" || (messageText as string) == "/buscarregalo"))
+            if (messageText != null && ((messageText as string) == "/searchgift"))
             {
                 IReader reader = new FileReader();
-                IPersonProfile user = PersonProfile.Instance;
+                IPersonProfile user = new PersonProfile();
                 IMessageReceiver input = new TelegramGateway();
                 IMessageSender output = new TelegramGateway();
                 ISearchGift findG;
-                findG = new SearchGiftML();
+                findG = new SearchGiftML(user);
                 CoreBot coreBot = new CoreBot(reader, user, input, output, findG);
                 await Task.Run(() => coreBot.Start());
+               
                
                 return "searchgift Command";
             }
