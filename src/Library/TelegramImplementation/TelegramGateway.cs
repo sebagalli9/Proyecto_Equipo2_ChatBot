@@ -27,6 +27,7 @@ namespace Library
     {
         public static long ChatID{get; private set;}
         public static string callbackValue;
+        public static bool BottonClickedCompleted {get; private set;}
         public static void RunTelegramAPI()
         { 
             TelegramBot telegramBot = TelegramBot.Instance;
@@ -68,9 +69,10 @@ namespace Library
         {   
             callbackValue = res;
         }
-        public string GetInput()
+        public string GetInput() 
+        //Este metodo deberia esperar a que alguien aprente el boton para retornar, asi el valor de callback ya esta actualizado
         { 
-            return callbackValue;
+            return callbackValue;    
         }
 
         public void SendMessage(string message)
@@ -91,44 +93,24 @@ namespace Library
 
         public async void SendMessageAnswersAdapter(Dictionary<string, string> ans)
         {
-            ITelegramBotClient client = TelegramBot.Instance.Client;
+            ITelegramBotClient client = TelegramBot.Instance.Client;        
             
-            /* 
-            var rows = new List<List<InlineKeyboardButton>>();
+             var rows = new List<List<InlineKeyboardButton>>();
 
             foreach (var index in ans)
             {
-                List<InlineKeyboardButton> row = new List<InlineKeyboardButton>();
-
                 InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: index.Value, callbackData: index.Key);
-                row.Add(button);
-            }
 
-            InlineKeyboardMarkup buttons = rows.Select(row => row.ToArray()).ToArray();
-            
-            await client.SendTextMessageAsync(
-                    ChatID,
-                    "Seleccione",
-                    replyMarkup: buttons 
-                );
-            */
-
-            var keyBoard = new InlineKeyboardMarkup(new []
-                {
-                    new []
+                rows.Add(
+                    new List<InlineKeyboardButton>
                     {
-                        InlineKeyboardButton.WithCallbackData(
-                            text:"boton 1",
-                            callbackData: "1"
-                        ),
-                        InlineKeyboardButton.WithCallbackData(
-                            text:"boton 2",
-                            callbackData: "2"
-                        )
-                    }
-                }
+                         button
+                    });
 
-                );  
+            }
+             var keyBoard = new InlineKeyboardMarkup(rows);
+
+           
                 await client.SendTextMessageAsync(
                     ChatID,
                     "Seleccione",
@@ -149,8 +131,14 @@ namespace Library
                     "ok"
                 );
 
-             callbackValue = callbackQuery.Data;       
+             callbackValue = callbackQuery.Data; 
+             UpdateBottonClickedCompleted(true);     
              
+        }
+
+        public static void UpdateBottonClickedCompleted(bool b)
+        {
+            BottonClickedCompleted = b;
         }
     }
 }
