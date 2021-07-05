@@ -25,9 +25,9 @@ namespace Program
             findG = new SearchGiftML(user);
             CoreBot coreBot = new CoreBot(reader, user, input, output, findG, storage);
 
-            TelegramGateway.RunTelegramAPI();
+            //TelegramGateway.RunTelegramAPI();
 
-            //coreBot.Start();
+            coreBot.Start();
             
         }
     }
