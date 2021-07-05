@@ -26,9 +26,10 @@ namespace Library
             
             foreach (string prod in user.ProductSearcherKeyWords)
             {
-                string search = "";
+                string search = prod + "-" + prefs;
+                Console.WriteLine(search);
                
-                List<MLApiSearchResult> results = new MLApi().Search((search + prod + "-" + prefs).Replace(" ", "-"));
+                List<MLApiSearchResult> results = new MLApi().Search((search).Replace(" ", "-"));
 
                 CurrencyChanger currencyChanger = new CurrencyChanger();
 

@@ -35,53 +35,50 @@ namespace Library
         IMessageSender output;
         IPersonProfile user;
         IMessageReceiver input;
+        ISearchGift giftSearcherEngine;
+        ConversationData storage;
 
-        ISearchGift findG;
-
-        public List<MixedCategory> MixedCategoriesSelected { get; private set; }
-        public List<SpecificCategory> SpecificCategoriesSelected { get; private set; }
-        public List<String> SubCategory { get; private set; }
-        public Dictionary<string, string> AnswersMainCategories { get; private set; }
-        public Dictionary<string, string> AnswersMixedQuestions { get; private set; }
-        public Dictionary<string, string> AnswersSpecificQuestions { get; private set; }
 
         public void AskInitialQuestions()
         {
             foreach (InitialQuestion initialQ in reader.InitialQuestionsBank)
             {
-                output.SendMessage(initialQ.Question);
-                /* foreach (var option in initialQ.AnswerOptions)
-                {
-                    output.SendMessage("/"+ option.Key + " - " + option.Value);
-                }  */
-                
+                output.SendMessage(initialQ.Question);  
                 output.SendMessageAnswers(initialQ.AnswerOptions);
                 string ans = input.GetInput();
                 Console.WriteLine("La respuesta es" + ans);
                 user.UpdatePreferences(initialQ.AnswerOptions[ans]);
             }
+
+            if(user.Preferences.Count == reader.InitialQuestionsBank.Count)
+            {
+                storage.UpdateAskInitialCompleted(true);
+                output.SendMessage("Se ha finalizado la fase de preguntas iniciales");
+            }
         }
 
-        /* private int currentItemIndex;
+        /* private int currentInitialQItemIndex;
         public void ProcessNextInitialQuestion()
         {
-            if( currentItemIndex <= reader.InitialQuestionsBank.Count )
+            if( currentInitialQItemIndex < reader.InitialQuestionsBank.Count )
             {
-                output.SendMessage(reader.InitialQuestionsBank[currentItemIndex].Question);
-                output.SendMessageAnswers(reader.InitialQuestionsBank[currentItemIndex].AnswerOptions);
+                output.SendMessage(reader.InitialQuestionsBank[currentInitialQItemIndex].Question);
+                output.SendMessageAnswers(reader.InitialQuestionsBank[currentInitialQItemIndex].AnswerOptions);
+                string ans = input.GetInput();
+                Console.WriteLine("La respuesta es" + ans);
+                user.UpdatePreferences(reader.InitialQuestionsBank[currentInitialQItemIndex].AnswerOptions[ans]);
+
+                currentInitialQItemIndex ++;
+                ProcessNextInitialQuestion();
             }
-        } */
+        } */ 
 
         public void AskPriceQuestions()
         {
             foreach (PriceQuestion priceQ in reader.PriceQuestionsBank)
             {
                 output.SendMessage(priceQ.Question);
-                foreach (var option in priceQ.AnswerOptions)
-                {
-                    output.SendMessage(option.Key + " - " + option.Value);
-                }
-
+                output.SendMessageAnswers(priceQ.AnswerOptions);
                 string ans = input.GetInput();
                 user.UpdatePricePreferences(priceQ.AnswerOptions[ans]);
             }
@@ -89,197 +86,227 @@ namespace Library
 
         public void AskMainCategories()
         {
-            int contador = 1;
-            output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
-            foreach (MainCategory mainQ in reader.MainCategoryBank)
+            if(storage.AskInitialCompleted)
             {
-                output.SendMessage(contador + "-" + mainQ.Question);
-                AnswersMainCategories.Add(contador.ToString(), mainQ.AnswerOptions[contador.ToString()]);
-                contador += 1;
+                int contador = 1;
+                output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
+                foreach (MainCategory mainQ in reader.MainCategoryBank)
+                {
+                    output.SendMessage(contador + "-" + mainQ.Question);
+                    storage.AnswersMainCategories.Add(contador.ToString(), mainQ.AnswerOptions[contador.ToString()]);
+                    contador += 1;
+                }
+                foreach (MainCategory mainQ in reader.MainCategoryBank)
+                {
+                    output.SendMessageAnswers(mainQ.AnswerOptions);
+                }
+                string ans = input.GetInput();
+                user.UpdateSelectedCategory(storage.AnswersMainCategories[ans]);
+
+
+                output.SendMessage("Elije una segunda opción adicional:");
+                string ans2 = input.GetInput();
+                user.UpdateSelectedCategory(storage.AnswersMainCategories[ans2]);
             }
-            string ans = input.GetInput();
-            user.UpdateSelectedCategory(AnswersMainCategories[ans]);
 
-
-            output.SendMessage("Elije una segunda opción adicional:");
-            string ans2 = input.GetInput();
-            user.UpdateSelectedCategory(AnswersMainCategories[ans2]);
+            if(user.SelectedCategory.Count == 2 && storage.AskInitialCompleted)
+            {
+                storage.UpdateAskMainCompleted(true);
+                output.SendMessage("Se ha finalizado la fase de preguntas principales");
+            }
+            
         }
 
         public void GetMixedCategoryQuestion()
-        {
-            foreach (MixedCategory category in reader.MixedCategoryBank)
+        {  
+            if(storage.AskMainCompleted)
             {
-                if ((category.ParentCategoryName == user.SelectedCategory[0] && category.SecondParentCategoryName == user.SelectedCategory[1]) || (category.ParentCategoryName == user.SelectedCategory[1] && category.SecondParentCategoryName == user.SelectedCategory[0]))
+                foreach (MixedCategory category in reader.MixedCategoryBank)
                 {
-                    MixedCategoriesSelected.Add(category);
+                    if ((category.ParentCategoryName == user.SelectedCategory[0] && category.SecondParentCategoryName == user.SelectedCategory[1]) || (category.ParentCategoryName == user.SelectedCategory[1] && category.SecondParentCategoryName == user.SelectedCategory[0]))
+                    {
+                        storage.MixedCategoriesSelected.Add(category);
+                    }
                 }
             }
+             
+            if(storage.MixedCategoriesSelected.Count > 0 && storage.AskMainCompleted)
+            {
+                storage.UpdateGetMixedCompleted(true);
+                output.SendMessage("Se ha finalizado la fase de seleccion de preguntas mixtas");
+            }         
         }
 
         public void AskMixedQuestions()
         {
-            output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
-
-            foreach (MixedCategory category in MixedCategoriesSelected)
+            if(storage.GetMixedCompleted)
             {
-                output.SendMessage(category.Question);
-                foreach (var option in category.AnswerOptions)
-                {
-                    output.SendMessage(option.Key + " - " + option.Value);
-                }
+                output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
 
-                string ans = input.GetInput();
-                AnswersMixedQuestions.Add(category.Question, category.AnswerOptions[ans]);
+                foreach (MixedCategory category in storage.MixedCategoriesSelected)
+                {
+                    output.SendMessage(category.Question);
+                    output.SendMessageAnswers(category.AnswerOptions);
+                    string ans = input.GetInput();
+                    storage.AnswersMixedQuestions.Add(category.Question, category.AnswerOptions[ans]);
+                }
             }
+
+            if(storage.MixedCategoriesSelected.Count == storage.AnswersMixedQuestions.Count && storage.GetMixedCompleted)
+            {
+                storage.UpdateAskMixedCompleted(true);
+                output.SendMessage("Se ha finalizado la fase de preguntas mixtas"); 
+            }
+            
         }
 
         public void GetSpecificCategoryQuestion()
         {
-            if (AnswersMixedQuestions.ContainsValue("si"))
+            if(storage.AskMixedCompleted)
             {
-                foreach (KeyValuePair<string, string> category in AnswersMixedQuestions)
+                if (storage.AnswersMixedQuestions.ContainsValue("si"))
                 {
-                    if (category.Value == "si")
+                    foreach (KeyValuePair<string, string> category in storage.AnswersMixedQuestions)
                     {
-                        foreach (MixedCategory mixedCategory in MixedCategoriesSelected)
+                        if (category.Value == "si")
                         {
-                            if (mixedCategory.Question == category.Key)
+                            foreach (MixedCategory mixedCategory in storage.MixedCategoriesSelected)
                             {
-                                SubCategory.Add(mixedCategory.SubCategoryName);
+                                if (mixedCategory.Question == category.Key)
+                                {
+                                    storage.SubCategory.Add(mixedCategory.SubCategoryName);
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (SpecificCategory category in reader.SpecificCategoryBank)
+                    {
+                        foreach (string subCat in storage.SubCategory)
+                        {
+                            if (category.Name == subCat)
+                            {
+                                storage.SpecificCategoriesSelected.Add(category);
                             }
                         }
                     }
                 }
-
-                foreach (SpecificCategory category in reader.SpecificCategoryBank)
+                else
                 {
-                    foreach (string subCat in SubCategory)
+                    storage.MixedCategoriesSelected.Clear();
+                    for (int i = 0; i < 6; i++)
                     {
-                        if (category.Name == subCat)
-                        {
-                            SpecificCategoriesSelected.Add(category);
-                        }
+                        Random r = new Random();
+                        int randomNum = r.Next(reader.MixedCategoryBank.Count);
+                        MixedCategory randCat = reader.MixedCategoryBank[randomNum];
+                        storage.MixedCategoriesSelected.Add(randCat);
                     }
+                    AskMixedQuestions();
+                    GetSpecificCategoryQuestion();
                 }
             }
-            else
-            {
-                MixedCategoriesSelected.Clear();
-                for (int i = 0; i < 6; i++)
-                {
-                    Random r = new Random();
-                    int randomNum = r.Next(reader.MixedCategoryBank.Count);
-                    MixedCategory randCat = reader.MixedCategoryBank[randomNum];
-                    MixedCategoriesSelected.Add(randCat);
-                }
-                AskMixedQuestions();
-                GetSpecificCategoryQuestion();
-            }
-        }
 
+            if(storage.SpecificCategoriesSelected.Count > 0 && storage.AskMixedCompleted)
+            {
+                storage.UpdateGetSpecificCompleted(true);
+                output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas");
+            }
+            
+        }
         public void AskSpecificQuestions()
         {
-            output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
-
-            foreach (SpecificCategory category in SpecificCategoriesSelected)
+            if(storage.GetSpecificCompleted)
             {
-                output.SendMessage(category.Question);
+                output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
 
-                foreach (var option in category.AnswerOptions)
+                foreach (SpecificCategory category in storage.SpecificCategoriesSelected)
                 {
-                    output.SendMessage(option.Key + " - " + option.Value);
+                    output.SendMessage(category.Question);
+                    output.SendMessageAnswers(category.AnswerOptions);
+                    string ans = input.GetInput();
+                    storage.AnswersSpecificQuestions.Add(category.Question, category.AnswerOptions[ans]);
                 }
-
-                string ans = input.GetInput();
-                AnswersSpecificQuestions.Add(category.Question, category.AnswerOptions[ans]);
             }
+
+            if(storage.SpecificCategoriesSelected.Count == storage.AnswersSpecificQuestions.Count && storage.GetSpecificCompleted)
+            {
+                storage.UpdateAskSpecificCompleted(true);
+                output.SendMessage("Se ha finalizado la fase de preguntas especificas"); 
+            }
+            
         }
 
         public void GetProductToSearch()
         {
-            if (AnswersSpecificQuestions.ContainsValue("si"))
+            if(storage.AskSpecificCompleted)
             {
-                foreach (KeyValuePair<string, string> category in AnswersSpecificQuestions)
+                if (storage.AnswersSpecificQuestions.ContainsValue("si"))
                 {
-                    if (category.Value == "si")
+                    foreach (KeyValuePair<string, string> category in storage.AnswersSpecificQuestions)
                     {
-                        foreach (SpecificCategory specificCategory in SpecificCategoriesSelected)
+                        if (category.Value == "si")
                         {
-                            if (specificCategory.Question == category.Key)
+                            foreach (SpecificCategory specificCategory in storage.SpecificCategoriesSelected)
                             {
-                                foreach (string prod in specificCategory.Products)
+                                if (specificCategory.Question == category.Key)
                                 {
-                                    user.ProductSearcherKeyWords.Add(prod);
-                                }
+                                    foreach (string prod in specificCategory.Products)
+                                    {
+                                        user.ProductSearcherKeyWords.Add(prod);
+                                    }
 
+                                }
                             }
                         }
                     }
                 }
-            }
-            else
-            {
-                SpecificCategoriesSelected.Clear();
-                for (int i = 0; i < 6; i++)
+                else
                 {
-                    Random r = new Random();
-                    int randomNum = r.Next(reader.SpecificCategoryBank.Count);
-                    SpecificCategory randCat = reader.SpecificCategoryBank[randomNum];
-                    SpecificCategoriesSelected.Add(randCat);
+                    storage.SpecificCategoriesSelected.Clear();
+                    for (int i = 0; i < 6; i++)
+                    {
+                        Random r = new Random();
+                        int randomNum = r.Next(reader.SpecificCategoryBank.Count);
+                        SpecificCategory randCat = reader.SpecificCategoryBank[randomNum];
+                        storage.SpecificCategoriesSelected.Add(randCat);
+                    }
+                    Console.WriteLine("Has respondido a todo que no");
+                    AskMixedQuestions();
+                    GetProductToSearch();
                 }
-                AskMixedQuestions();
-                GetProductToSearch();
             }
-        }
-
-        private void CleanLists()
-        {
-            MixedCategoriesSelected.Clear();
-            SpecificCategoriesSelected.Clear();
-            SubCategory.Clear();
-            AnswersMainCategories.Clear();
-            AnswersMixedQuestions.Clear();
-            AnswersSpecificQuestions.Clear();
-
-        }
+            
+        } 
 
         public void Start()
-        {    
-            CleanLists();
-            user.CleanSelections();
-
+        {      
+            //user.CleanSelections();
             reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
             reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
             reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
             reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
             reader.ReadPriceQuestions(@"..\..\Assets\PriceQuestions.txt");
+            //ProcessNextInitialQuestion();
             AskInitialQuestions();
-            AskPriceQuestions();
+            //AskPriceQuestions();
             AskMainCategories();
             GetMixedCategoryQuestion();
             AskMixedQuestions();
             GetSpecificCategoryQuestion();
             AskSpecificQuestions();
             GetProductToSearch();
-            findG.FindGift();
+            giftSearcherEngine.FindGift();
         }
 
-        
-
-        public CoreBot(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift findG)
+        public CoreBot(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
             this.reader = reader;
             this.user = user;
             this.input = input;
             this.output = output;
-            this.findG = findG;
-            this.MixedCategoriesSelected = new List<MixedCategory>();
-            this.SpecificCategoriesSelected = new List<SpecificCategory>();
-            this.SubCategory = new List<string>();
-            this.AnswersMainCategories = new Dictionary<string, string>();
-            this.AnswersMixedQuestions = new Dictionary<string, string>();
-            this.AnswersSpecificQuestions = new Dictionary<string, string>();
+            this.giftSearcherEngine = searcher;
+            this.storage = storage;
+
         }
     }
 }
