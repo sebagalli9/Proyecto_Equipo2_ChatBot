@@ -53,6 +53,7 @@ namespace Library
         public void UpdateAskSpecificCompleted(bool b) {this.AskSpecificCompleted = b;}
         public void UpdateGetMixedCompleted(bool b) {this.GetMixedCompleted = b;}
         public void UpdateGetSpecificCompleted(bool b) {this.GetSpecificCompleted = b;}
+        public void UpdateGetProductCompleted(bool b) {this.GetProductCompleted = b;}
 
     }
 }

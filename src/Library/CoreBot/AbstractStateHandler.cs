@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 { 
-    abstract class AbstractStateHandler: IStateHandler
+    public abstract class AbstractStateHandler: IStateHandler
     {
         private IStateHandler _nextHandler;
 
@@ -12,11 +12,11 @@ namespace Library
             return handler;
         }
         
-        public virtual object Handle()
+        public virtual object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
             if (this._nextHandler != null)
             {
-                return this._nextHandler.Handle();
+                return this._nextHandler.Handle(reader,user,input, output,searcher,storage);
             }
             else
             {
