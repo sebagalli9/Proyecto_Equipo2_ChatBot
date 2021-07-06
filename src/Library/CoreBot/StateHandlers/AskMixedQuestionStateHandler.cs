@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+
 
 namespace Library
 { 
@@ -7,13 +9,19 @@ namespace Library
         public override object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
             if(storage.GetMixedCompleted)
-            {
-                output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
+            {   
+                //para probar en consola
+                //output.SendMessage("Responde marcando 1 para responder si o 2 para responder no a las siguientes preguntas.");
 
                 foreach (MixedCategory category in storage.MixedCategoriesSelected)
-                {
+                {   
+                    Thread.Sleep(1000);
                     output.SendMessage(category.Question);
                     output.SendMessageAnswers(category.AnswerOptions);
+                    string aux = input.GetInput();
+                    while (input.GetInput() == aux)
+                    {
+                    }
                     string ans = input.GetInput();
                     storage.AnswersMixedQuestions.Add(category.Question, category.AnswerOptions[ans]);
                 }

@@ -9,10 +9,12 @@ namespace Library
     public class SearchGiftML : ISearchGift
     {
         IPersonProfile user;
+        IMessageSender output;
 
-        public SearchGiftML(IPersonProfile user)
+        public SearchGiftML(IPersonProfile user, IMessageSender output)
         {
             this.user = user;
+            this.output = output;
         }
         public void FindGift()
         {   
@@ -26,8 +28,9 @@ namespace Library
             
             foreach (string prod in user.ProductSearcherKeyWords)
             {
-                string search = prod + "-" + prefs;
-                Console.WriteLine(search);
+                string search = prod;
+
+                //Console.WriteLine(search);
                
                 List<MLApiSearchResult> results = new MLApi().Search((search).Replace(" ", "-"));
 
@@ -38,7 +41,7 @@ namespace Library
                     resultsFiltered.Add(results[i]);
                 }
             }
-                resultsFiltered.ForEach(r => Console.WriteLine(r)); 
+                resultsFiltered.ForEach(r => output.SendMessage(r.ToString())); 
 
         }
     }

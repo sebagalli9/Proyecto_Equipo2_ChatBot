@@ -23,7 +23,7 @@ namespace Test.Library
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
-            findG = new SearchGiftML(user);
+            findG = new SearchGiftML(user,output);
             storage = new ConversationData();
             askInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
         }

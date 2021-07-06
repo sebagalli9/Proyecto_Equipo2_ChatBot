@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Library
 { 
@@ -15,18 +16,41 @@ namespace Library
                     output.SendMessage(contador + "-" + mainQ.Question);
                     storage.AnswersMainCategories.Add(contador.ToString(), mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
+                    //espera
+                    Thread.Sleep(800);
+                    //espera
                 }
+                //espera
+                Thread.Sleep(1000);
+                //espera
                 foreach (MainCategory mainQ in reader.MainCategoryBank)
                 {
                     output.SendMessageAnswers(mainQ.AnswerOptions);
                 }
+                
+                //espera
+                string aux = input.GetInput();
+                while (input.GetInput() == aux)
+                {
+                }
+                //espera
                 string ans = input.GetInput();
                 user.UpdateSelectedCategory(storage.AnswersMainCategories[ans]);
 
 
                 output.SendMessage("Elije una segunda opción adicional:");
+            
+
+                //espera
+                string aux2 = input.GetInput();
+                while (input.GetInput() == aux2)
+                {
+                }
+                //espera
+                
                 string ans2 = input.GetInput();
                 user.UpdateSelectedCategory(storage.AnswersMainCategories[ans2]);
+
 
                 if(user.SelectedCategory.Count == 2)
                 {
