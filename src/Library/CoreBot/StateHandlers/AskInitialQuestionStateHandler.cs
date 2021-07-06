@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Library
 { 
@@ -8,10 +9,15 @@ namespace Library
         {  
             foreach (InitialQuestion initialQ in reader.InitialQuestionsBank)
             {
-                output.SendMessage(initialQ.Question);  
+                output.SendMessage(initialQ.Question);
                 output.SendMessageAnswers(initialQ.AnswerOptions);
+                //espera
+                string aux = input.GetInput();
+                while (input.GetInput() == aux)
+                {
+                }
+                //espera
                 string ans = input.GetInput();
-                //Console.WriteLine("La respuesta es" + ans);
                 user.UpdatePreferences(initialQ.AnswerOptions[ans]);
             }
 

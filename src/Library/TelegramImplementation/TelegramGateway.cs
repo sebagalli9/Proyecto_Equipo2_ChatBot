@@ -34,7 +34,7 @@ namespace Library
             Console.WriteLine($"Hola soy el Bot de P2, mi nombre es {telegramBot.BotName} y tengo el Identificador {telegramBot.BotId}");
             ITelegramBotClient bot = telegramBot.Client;
             bot.OnMessage += OnMessage;
-            bot.OnCallbackQuery += BotOnCallbackQueryRecived;
+            bot.OnCallbackQuery += BotOnCallbackQueryRecieved;
             bot.StartReceiving();
             Console.WriteLine("Presiona una tecla para terminar");
             Console.ReadKey();
@@ -65,14 +65,11 @@ namespace Library
             commandsCommandHandler.Handle(messageText, chatInfo);
         }
 
-        public static void GetInputAdapter(string res)
-        {   
-            callbackValue = res;
-        }
         public string GetInput() 
         //Este metodo deberia esperar a que alguien aprente el boton para retornar, asi el valor de callback ya esta actualizado
         { 
-            return callbackValue;    
+            return callbackValue;
+
         }
 
         public void SendMessage(string message)
@@ -88,7 +85,9 @@ namespace Library
 
         public void SendMessageAnswers(Dictionary<string, string> ans)
         {
+            callbackValue = "";
             SendMessageAnswersAdapter(ans);
+            
         }
 
         public async void SendMessageAnswersAdapter(Dictionary<string, string> ans)
@@ -113,12 +112,12 @@ namespace Library
            
                 await client.SendTextMessageAsync(
                     ChatID,
-                    "Seleccione",
+                    "Seleccione una de las siguientes opciones:",
                     replyMarkup: keyBoard 
                 );
         }
 
-        private static async void BotOnCallbackQueryRecived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
+        private static async void BotOnCallbackQueryRecieved(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
             var callbackQuery = callbackQueryEventArgs.CallbackQuery;
            
@@ -128,11 +127,11 @@ namespace Library
 
             await client.SendTextMessageAsync(
                     ChatID,
-                    "ok"
+                    $"Usted ha selecciona la respuesta: {callbackQuery.Data}"
                 );
 
              callbackValue = callbackQuery.Data; 
-             UpdateBottonClickedCompleted(true);     
+             UpdateBottonClickedCompleted(true);
              
         }
 

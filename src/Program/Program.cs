@@ -22,10 +22,10 @@ namespace Program
             IMessageSender telegramPrinter = new TelegramGateway();
             ConversationData storage = new ConversationData();
             ISearchGift findG;
-            findG = new SearchGiftML(user);
+            findG = new SearchGiftML(user,output);
             CoreBot coreBot = new CoreBot(reader, user, input, output, findG, storage);
 
-            //TelegramGateway.RunTelegramAPI();
+            TelegramGateway.RunTelegramAPI();
 
             coreBot.Start();
             
