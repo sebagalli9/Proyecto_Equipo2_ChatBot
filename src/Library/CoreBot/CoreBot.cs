@@ -47,7 +47,7 @@ namespace Library
             reader.ReadPriceQuestions(@"..\..\Assets\PriceQuestions.txt");
             
             IStateHandler askInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
-            IStateHandler askMainCategoryStateHanlder = new AskMainCategoryStateHandler();
+            IStateHandler askMainCategoryStateHanlder = new AskMainQuestionStateHandler();
             IStateHandler getMixedCategoryStateHandler = new GetMixedCategoryStateHandler();
             IStateHandler askMixedQuestionStateHanlder = new AskMixedQuestionStateHandler();
             IStateHandler getSpecificCategoryStateHandler = new GetSpecifiCategoryStateHandler();

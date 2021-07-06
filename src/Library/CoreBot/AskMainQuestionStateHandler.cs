@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 { 
-    public class AskMainCategoryStateHandler: AbstractStateHandler
+    public class AskMainQuestionStateHandler: AbstractStateHandler
     {
         public override object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
