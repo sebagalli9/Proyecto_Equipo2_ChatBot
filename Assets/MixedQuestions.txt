@@ -18,9 +18,10 @@ home;tool;¿Dispone de jardin?;gardenTool;1-si,2-no
 home;tool;¿Es una persona creativa?;manualTool;1-si,2-no
 sport;technology;¿Le gustan los videojuegos?;console;1-si,2-no
 sport;technology;¿Pasa muchas horas en su computadora?;computer;1-si,2-no
-sport;technology;¿Le gusta hacer ejercicio?;fitness;1-si,2-no
-sport;technology;¿Dispone un lugares amplios dentro de su casa?; indoorSport;1-si,2-no
-sport;technology;¿Le gusta la fotografia?;camera;1-si,2-no
+"sport;technology;¿Le gusta hacer ejercicio? 
+;fitness;1-si,2-no"
+sport;technology;¿Dispone un lugares amplios dentro de su casa?;indoorSport;1-si,2-no
+sport;technology;¿Le gusta la fotografia deportiva?;camera;1-si,2-no
 technology;tool;¿Le gusta mirar series y peliculas?;video;1-si,2-no
 technology;tool;¿Le gusta la fotografia?;camera;1-si,2-no
 technology;tool;¿Le gusta la musica?;audio;1-si,2-no
@@ -42,11 +43,11 @@ sport;clothing;¿Le gusta el tenis?;algo;1-si,2-no
 sport;clothing;¿Le gusta hacer yoga?;algo;1-si,2-no
 sport;clothing;¿Le gusta el crossfit?;algo;1-si,2-no
 sport;clothing;¿Le gusta las artes marciales?;algo;1-si,2-no
-tool;clothing;¿pregunta46?;algo;1-si,2-no
-tool;clothing;¿pregunta47?;algo;1-si,2-no
-tool;clothing;¿pregunta48?;algo;1-si,2-no
-tool;clothing;¿pregunta49?;algo;1-si,2-no
-tool;clothing;¿pregunta50?;algo;1-si,2-no
+tool;clothing;¿Es mecánico?;mechanicalJumpsuit;1-si,2-no
+tool;clothing;¿Trabaja en la construcción?;constructionHelmet;1-si,2-no
+tool;clothing;¿Es policía?;bulletproofVest;1-si,2-no
+tool;clothing;¿Es militar?;militaryUniform;1-si,2-no
+tool;clothing;¿Es médico/a o veterianario/a?;nursingUniform;1-si,2-no
 technology;clothing;¿pregunta51?;algo;1-si,2-no
 technology;clothing;¿pregunta52?;algo;1-si,2-no
 technology;clothing;¿pregunta53?;algo;1-si,2-no

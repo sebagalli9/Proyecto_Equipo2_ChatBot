@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 
 namespace Library
-{ 
-    public class GetSpecifiCategoryStateHandler: AbstractStateHandler
+{
+    public class GetSpecifiCategoryStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request,IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
-            if(storage.AskMixedCompleted)
+            if (storage.AskMixedCompleted)
             {
                 if (storage.AnswersMixedQuestions.ContainsValue("si"))
                 {
@@ -36,13 +36,13 @@ namespace Library
                         }
                     }
 
-                    if(storage.SpecificCategoriesSelected.Count > 0)
+                    if (storage.SpecificCategoriesSelected.Count > 0)
                     {
                         storage.UpdateGetSpecificCompleted(true);
                         output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas");
                     }
 
-                    return base.Handle(request,reader,user,input, output,searcher,storage);
+                    return base.Handle(request, reader, user, input, output, searcher, storage);
 
                 }
 
@@ -50,12 +50,12 @@ namespace Library
                 {
                     output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!");
                     //return  null;
-                    return this.prevHandler.Handle(request,reader,user,input, output,searcher,storage);
-                    
-                } 
-            
+                    return this.prevHandler.Handle(request, reader, user, input, output, searcher, storage);
 
-            }       
+                }
+
+
+            }
             else
             {
                 return null;

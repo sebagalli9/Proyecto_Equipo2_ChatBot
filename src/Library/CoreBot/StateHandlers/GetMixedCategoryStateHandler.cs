@@ -1,12 +1,12 @@
 using System;
 
 namespace Library
-{ 
-    public class GetMixedCategoryStateHandler: AbstractStateHandler
+{
+    public class GetMixedCategoryStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
-            if(storage.AskMainCompleted)
+            if (storage.AskMainCompleted)
             {
                 foreach (MixedCategory category in reader.MixedCategoryBank)
                 {
@@ -16,14 +16,14 @@ namespace Library
                     }
                 }
 
-                if(storage.MixedCategoriesSelected.Count > 0)
+                if (storage.MixedCategoriesSelected.Count > 0)
                 {
                     storage.UpdateGetMixedCompleted(true);
                     output.SendMessage("Se ha finalizado la fase de seleccion de preguntas mixtas");
                 }
 
-                return base.Handle(request,reader,user,input, output,searcher,storage);
-            }       
+                return base.Handle(request, reader, user, input, output, searcher, storage);
+            }
             else
             {
                 return null;

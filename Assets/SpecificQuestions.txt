@@ -1,3 +1,49 @@
+home;sport;¿Le gusta hacer ejercicio?;fitness
+home;sport;¿Dispone un lugares amplios dentro de su casa?;indoorSport
+home;sport;¿Tiene jardin?;garden
+home;sport;¿Le gustan los juegos de pelota?;ballSport
+home;sport;¿Le gustan las aventuras?;adventure
+home;sport;¿Le gustan lo deportes en el agua?;acuaticSport
+home;technology;¿Pasa muchas horas en su computadora?;computer
+home;technology;¿Pasa muchas horas en su celular?;cellphone
+home;technology;¿Le gustan los videojuegos?;console
+home;technology;¿Le gusta mirar series y peliculas?;video
+home;technology;¿Le gusta la fotografia?;camera
+home;technology;¿Le gusta la musica?;audio
+home;tool;¿Trabaja o estudia en su casa?;room
+home;tool;¿Le gusta cocinar?;kitchen
+home;tool;¿Le gusta la decoración?;living
+home;tool;¿Le gusta hacer trabajos manuales?;electricTool
+home;tool;¿Dispone de jardin?;gardenTool
+home;tool;¿Es una persona creativa?;manualTool
+sport;technology;¿Le gustan los videojuegos?;console
+sport;technology;¿Pasa muchas horas en su computadora?;computer
+"sport;technology;¿Le gusta hacer ejercicio? 
+;fitness"
+sport;technology;¿Dispone un lugares amplios dentro de su casa?;indoorSport
+sport;technology;¿Le gusta la fotografia deportiva?;camera
+technology;tool;¿Le gusta mirar series y peliculas?;video
+technology;tool;¿Le gusta la fotografia?;camera
+technology;tool;¿Le gusta la musica?;audio
+technology;tool;¿Pasa muchas horas en su computadora?;computer
+technology;tool;¿Le interesa la automatización del hogar?;robots
+technology;tool;¿Le gusta la electrónica?;electronics
+sport;tool;¿Le gusta hacer ejercicio?;sportEquipment
+sport;tool;¿Tiene jardin?;garden
+sport;tool;¿Le gustan las aventuras?;adventure
+sport;tool;¿Le gusta hacer trabajos manuales?;electricTool
+home;clothing;¿Le gusta vestirse bien?;algo
+home;clothing;¿Pasa mucho tiempo en su hogar?;algo
+home;clothing;¿pregunta37?;algo
+home;clothing;¿pregunta38?;algo
+home;clothing;¿pregunta39?;algo
+sport;clothing;¿Le gusta el football?;algo
+sport;clothing;¿Le gusta el basketball?;algo
+sport;clothing;¿Le gusta el tenis?;algo
+sport;clothing;¿Le gusta hacer yoga?;algo
+sport;clothing;¿Le gusta el crossfit?;algo
+sport;clothing;¿Le gusta las artes marciales?;algo
+tool;clothing;¿Es mecánico?;mechanicalJumpsuit
 garden;¿Le gustan las actividades de jardín?;hamacas, tobogán, cama elástica;1-si,2-no
 garden;¿Le gustan las piscinas?;inflables para piscina;1-si,2-no
 fitness;¿Le gustan las actividades tranquilas?;colchoneta yoga, pelota pilates;1-si,2-no
@@ -24,14 +70,14 @@ computer;¿Le gustaria tener las comodidades basicas de una computadora en un pr
 console;¿Le gusta jugar en su computadora?;mouse gamer, teclado gamer, auriculares gamer;1-si,2-no
 console;¿Le gusta las consolas de ultima generación?;PS5,XBOX X;1-si,2-no
 console;¿Suele viajar mucho?;nintendo switch;1-si,2-no
-audio;¿Le gusta escuchar música en su casa?;parlante ;1-si,2-no
+audio;¿Le gusta escuchar música en su casa?;parlante;1-si,2-no
 audio;¿Le gusta escuchar musica mientras esta fuera de su casa?;auriculares;1-si,2-no
 audio;¿Le gusta cantar?;microfono karaoke;1-si,2-no
 audio;¿Le gustan los instrumentos?;bateria, piano electronico, guitarra;1-si,2-no
 video;¿Tiene internet?;chrome cast;1-si,2-no
 video;¿Le gusta ir al cine?;proyector;1-si,2-no
 video;¿Le gusta ver series y peliculas en compañia?;popera;1-si,2-no
-kitchen;¿Le gusta la pastelería?;kit de reposteria ;1-si,2-no
+kitchen;¿Le gusta la pastelería?;kit de reposteria;1-si,2-no
 kitchen;¿Utiliza utensilios eléctricos?;batidora, licuadora, procesadora;1-si,2-no
 room;¿Prefiere estudiar o trabajar en formato oficina?;silla, escritorio;1-si,2-no
 room;¿Le gustan los articulos de papeleria?;papeleria;1-si,2-no
@@ -42,12 +88,24 @@ electricTool;¿Le gusta la herreria?;sierra para metal, prensas, lentes de prote
 electricTool;¿Le gusta la carpinteria?;sierra electrica, taladro, destornillador;1-si,2-no
 manualTool;¿Le gusta pintar?;caballete pintura, pinceles, lienzo, brochas;1-si,2-no
 manualTool;¿Le gusta hacer artesanias?;herramientas para artesania;1-si,2-no
-gardenTool;¿Le gusta la jardinería?;palas de jardineria, guantes de jardineria, macetas, tijeras de poda ;1-si,2-no
+gardenTool;¿Le gusta la jardinería?;palas de jardineria, guantes de jardineria, macetas, tijeras de poda;1-si,2-no
 gardenTool;¿Se encarga de las tareas de jardin?;cortacesped, cortacerco, podadora;1-si,2-no
 robots;¿Le gusta cocinar?;robot de cocina;1-si,2-no
 robots;¿Se encarga de la limpieza del hogar?;aspiradora robot;1-si,2-no
 electronics;¿Le gusta la programación?;arduino, microcontroladores y placas;1-si,2-no
 sportEquipment;¿Le gusta entrenar?;cronometro deportivo, cuerda de saltar, rodilleras;1-si,2-no
-sportEquipment;¿Le gustan los ejercicios  de fuerza y resistencia?;pesas, barras para pesas, banco de pesas, barra de dominadas;1-si,2-no
+sportEquipment;¿Le gustan los ejercicios de fuerza y resistencia?;pesas, barras para pesas, banco de pesas, barra de dominadas;1-si,2-no
 sportEquipment;¿Le gustan los deportes de contacto?;protectores bucales, vendas, guantes de boxeo, saco de boxeo, paleta de boxeo, punching ball;1-si,2-no
 algo;¿Una pregunta?;producto;1-si,2-no
+work;¿?;producto;1-si,2-no
+work;¿?;producto;1-si,2-no
+work;¿?;producto;1-si,2-no
+moda;¿Asiste a muchos eventos formales?;vestidos, trajes;1-si,2-no
+moda;¿?;producto;1-si,2-no
+moda;¿?;producto;1-si,2-no
+leisure;¿Le gusta usar pijamas?;pijamas, onesie;1-si,2-no
+leisure;¿?;producto;1-si,2-no
+leisure;¿?;producto;1-si,2-no
+sportClothing;¿?;producto;1-si,2-no
+sportClothing;¿?;producto;1-si,2-no
+sportClothing;¿?;producto;1-si,2-no

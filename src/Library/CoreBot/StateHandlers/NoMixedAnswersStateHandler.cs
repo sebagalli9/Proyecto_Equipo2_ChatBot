@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 
 namespace Library
-{ 
-    public class NoMixedAnswersStateHandler: AbstractStateHandler
+{
+    public class NoMixedAnswersStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request,IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
-                  
+
             storage.MixedCategoriesSelected.Clear();
             for (int i = 0; i < 6; i++)
             {
@@ -17,10 +17,10 @@ namespace Library
                 storage.MixedCategoriesSelected.Add(randCat);
             }
 
-            
-            return base.Handle(request,reader,user,input, output,searcher,storage); 
-                    
-      
+
+            return base.Handle(request, reader, user, input, output, searcher, storage);
+
+
 
         }
     }
