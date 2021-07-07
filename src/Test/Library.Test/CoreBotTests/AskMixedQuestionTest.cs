@@ -33,10 +33,10 @@ namespace Test.Library
 
         [Test]
         public void AskMixedQuestionHandlerTest()
-        //Se prueba que el metodo AskMixedQuestions almacene correctamente las respuestas dadas a las preguntas mixtas
+        //Se prueba que se almacene correctamente las respuestas dadas a las preguntas mixtas
         {
             //Act
-            Request request = new Request("initial");
+            Request request = new Request("mixed");
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");

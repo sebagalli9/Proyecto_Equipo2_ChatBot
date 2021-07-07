@@ -35,10 +35,10 @@ namespace Test.Library
 
         [Test]
         public void GetSpecificCategoryQuestionTest()
-        //Se prueba que el metodo GetSpecificCategoryQuestion obtenga las preguntas especificas a preguntar a partir de las respuestas a las preguntas mixtas
+        //Se prueba que se obtenga las preguntas especificas a preguntar a partir de las respuestas a las preguntas mixtas
         {
             //Act
-            Request request = new Request("initial");
+            Request request = new Request("mixed");
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             storage.UpdateAskMainCompleted(true);

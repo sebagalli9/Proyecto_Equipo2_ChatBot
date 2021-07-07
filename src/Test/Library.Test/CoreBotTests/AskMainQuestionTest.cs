@@ -30,10 +30,10 @@ namespace Test.Library
 
         [Test]
         public void AskMainCategoryHandlerTest()
-        //Se prueba que el metodo AskMainCategories actualice las categorias seleccionadas del perfil del usuario
+        //Se prueba que se actualice las categorias seleccionadas del perfil del usuario
         {
             //Act
-            Request request = new Request("initial");
+            Request request = new Request("main");
             reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             storage.UpdateAskInitialCompleted(true);
             askMainQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
