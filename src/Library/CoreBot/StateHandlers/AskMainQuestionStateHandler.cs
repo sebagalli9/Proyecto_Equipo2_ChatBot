@@ -17,14 +17,15 @@ namespace Library
                     storage.AnswersMainCategories.Add(contador.ToString(), mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
                     //espera
-                    Thread.Sleep(700);
+                    Thread.Sleep(800);
                     //espera
                 }
-                Thread.Sleep(2000);
+                //espera
+                Thread.Sleep(1000);
+                //espera
                 foreach (MainCategory mainQ in reader.MainCategoryBank)
-                {   Thread.Sleep(200);
+                {
                     output.SendMessageAnswers(mainQ.AnswerOptions);
-                    Thread.Sleep(500);
                 }
                 
                 //espera

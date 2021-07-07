@@ -47,29 +47,21 @@ namespace Library
                     while ((line = sr.ReadLine()) != null)
                     {
                         contador += 1;
-                        try
-                        {
-                            listaLinea = line.Split(';');
 
-                            MainCategory mainQ = new MainCategory(listaLinea[0]);
+                        listaLinea = line.Split(';');
 
-                            string[] keyVal = listaLinea[1].Split("-");
-                            mainQ.AddAnswerOption(keyVal[0], keyVal[1]);
+                        MainCategory mainQ = new MainCategory(listaLinea[0]);
 
-                            this.MainCategoryBank.Add(mainQ);
-                        }
-                        catch (Exception)
-                        {
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MainQuestions.");
-                            throw;
-                        }
+                        string[] keyVal = listaLinea[1].Split("-");
+                        mainQ.AddAnswerOption(keyVal[0], keyVal[1]);
+
+                        this.MainCategoryBank.Add(mainQ);
                     }
                 }
             }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo leer.");
-                throw;
             }
         }
 
@@ -87,34 +79,24 @@ namespace Library
                     while ((line = sr.ReadLine()) != null)
                     {
                         contador += 1;
-                        try
+                        listaLinea = line.Split(';');
+                        MixedCategory mixedQ = new MixedCategory(listaLinea[0], listaLinea[1], listaLinea[2], listaLinea[3]);
+
+                        string[] answers = listaLinea[4].Split(",");
+
+                        foreach (string element in answers)
                         {
-                            listaLinea = line.Split(';');
-                            MixedCategory mixedQ = new MixedCategory(listaLinea[0], listaLinea[1], listaLinea[2], listaLinea[3]);
-
-                            string[] answers = listaLinea[4].Split(",");
-
-                            foreach (string element in answers)
-                            {
-                                string[] keyVal = element.Split("-");
-                                mixedQ.AddAnswerOption(keyVal[0], keyVal[1]);
-                            }
-
-                            this.MixedCategoryBank.Add(mixedQ);
-                        }
-                        catch (Exception)
-                        {
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MixedQuestions.");
-                            throw;
+                            string[] keyVal = element.Split("-");
+                            mixedQ.AddAnswerOption(keyVal[0], keyVal[1]);
                         }
 
+                        this.MixedCategoryBank.Add(mixedQ);
                     }
                 }
             }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
-                throw;
             }
         }
 
@@ -133,39 +115,30 @@ namespace Library
                     {
                         contador += 1;
 
-                        try
+                        listaLinea = line.Split(';').ToArray();
+
+                        SpecificCategory specificCat = new SpecificCategory(listaLinea[0], listaLinea[1]);
+                        string[] products = listaLinea[2].Split(",");
+                        foreach (string prod in products)
                         {
-                            listaLinea = line.Split(';').ToArray();
-
-                            SpecificCategory specificCat = new SpecificCategory(listaLinea[0], listaLinea[1]);
-                            string[] products = listaLinea[2].Split(",");
-                            foreach (string prod in products)
-                            {
-                                specificCat.AddProduct(prod);
-                            }
-
-                            string[] answers = listaLinea[3].Split(",");
-
-                            foreach (string element in answers)
-                            {
-                                string[] keyVal = element.Split("-");
-                                specificCat.AddAnswerOption(keyVal[0], keyVal[1]);
-                            }
-
-                            SpecificCategoryBank.Add(specificCat);
+                            specificCat.AddProduct(prod);
                         }
-                        catch (Exception)
+
+                        string[] answers = listaLinea[3].Split(",");
+
+                        foreach (string element in answers)
                         {
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo SpecificQuestions.");
-                            throw;
+                            string[] keyVal = element.Split("-");
+                            specificCat.AddAnswerOption(keyVal[0], keyVal[1]);
                         }
+
+                        SpecificCategoryBank.Add(specificCat);
                     }
                 }
             }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
-                throw;
             }
 
         }
@@ -182,38 +155,61 @@ namespace Library
                     string line;
                     string[] listaLinea;
                     while ((line = sr.ReadLine()) != null)
-                    {   
+                    {
                         contador += 1;
+                        listaLinea = line.Split(';');
+                        string[] answers = listaLinea[1].Split(",");
 
-                        try
+                        InitialQuestion initialQ = new InitialQuestion(listaLinea[0]);
+                        foreach (string element in answers)
                         {
-                            listaLinea = line.Split(';');
-                            string[] answers = listaLinea[1].Split(",");
-
-                            InitialQuestion initialQ = new InitialQuestion(listaLinea[0]);
-                            foreach (string element in answers)
-                            {
-                                string[] keyVal = element.Split("-");
-                                initialQ.AddAnswerOption(keyVal[0], keyVal[1]);
-                            }
-
-                            this.InitialQuestionsBank.Add(initialQ);
+                            string[] keyVal = element.Split("-");
+                            initialQ.AddAnswerOption(keyVal[0], keyVal[1]);
                         }
-                        catch (Exception)
-                        {
-                            Console.WriteLine($"Hubo error al leer la linea {contador} del archivo InitialQuestions.");
-                            throw;
-                        }                        
+
+                        this.InitialQuestionsBank.Add(initialQ);
                     }
                 }
             }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
-                throw;
             }
         }
 
+        public void ReadPriceQuestions(string path)
+        {
+            this.PriceQuestionsBank = new List<PriceQuestion>();
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    int contador = 0;
+                    string line;
+                    string[] listaLinea;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        contador += 1;
+                        listaLinea = line.Split(';');
+                        string[] answers = listaLinea[1].Split(",");
+
+                        PriceQuestion priceQ = new PriceQuestion(listaLinea[0]);
+                        foreach (string element in answers)
+                        {
+                            string[] keyVal = element.Split("-");
+                            priceQ.AddAnswerOption(keyVal[0], keyVal[1]);
+                        }
+
+                        this.PriceQuestionsBank.Add(priceQ);
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Algo salio mal con el archivo. No se pudo abrir o encontrar.");
+            }
+        }
         public string ReadPlainText(string path)
         {
             string text = "";
@@ -223,20 +219,11 @@ namespace Library
                 {
                     int contador = 0;
                     string line;
-                    try
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            contador += 1;
-                            text += line;
-                        }
+                        contador += 1;
+                        text += line;
                     }
-                    catch (Exception)
-                    {
-                        Console.WriteLine($"Hubo error al leer la linea {contador} del archivo.");
-                        throw;
-                    }
-                    
                 }
             }
             catch (FileNotFoundException)

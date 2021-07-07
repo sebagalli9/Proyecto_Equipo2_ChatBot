@@ -17,7 +17,6 @@ namespace Library
                 {   
                     Thread.Sleep(1000);
                     output.SendMessage(category.Question);
-                    Thread.Sleep(1000);
                     output.SendMessageAnswers(category.AnswerOptions);
                     string aux = input.GetInput();
                     while (input.GetInput() == aux)

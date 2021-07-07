@@ -8,9 +8,8 @@ namespace Library
         public override object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {  
             foreach (InitialQuestion initialQ in reader.InitialQuestionsBank)
-            {   
+            {
                 output.SendMessage(initialQ.Question);
-                Thread.Sleep(1200);
                 output.SendMessageAnswers(initialQ.AnswerOptions);
                 //espera
                 string aux = input.GetInput();
