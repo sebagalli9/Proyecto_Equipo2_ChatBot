@@ -50,6 +50,12 @@ namespace Library
              
             ChatID = chatInfo.Id;
 
+            if(!Session.userSessions.ContainsKey(chatInfo.Id))
+            {
+                Request request = new Request("initial");
+                Session.userSessions.Add(chatInfo.Id,request);
+            }
+
             ICommandHandler commandsCommandHandler = new CommandsCommandHandler();
             ICommandHandler exitCommandHandler = new ExitCommandHandler();
             ICommandHandler startCommandHandler = new StartCommandHandler();
@@ -127,7 +133,7 @@ namespace Library
 
             await client.SendTextMessageAsync(
                     ChatID,
-                    $"Usted ha selecciona la respuesta: {callbackQuery.Data}"
+                    $"¡Entendido!"
                 );
 
              callbackValue = callbackQuery.Data; 

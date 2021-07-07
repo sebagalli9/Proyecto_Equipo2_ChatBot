@@ -40,18 +40,20 @@ namespace Test.Library
 
         [Test]
         public void AskSpecificQuestionHandlerTest()
-        //Se prueba que el metodo GetSpecificCategoryQuestion obtenga las preguntas especificas a preguntar a partir de las respuestas a las preguntas mixtas
+        //Se prueba que se obtenga las preguntas especificas a preguntar a partir de las respuestas a las preguntas mixtas
         {
             //Act
+            Request request = new Request("mixed");
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
             user.UpdateSelectedCategory("technology");
-            getMixedCategoryStateHandler.Handle(reader, user, input, output, findG, storage);
-            askMixedQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
-            getSpecificCategoryStateHandler.Handle(reader, user, input, output, findG, storage);
-            askSpecificQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
+            getMixedCategoryStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            askMixedQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            request.UpdateCurrentState("specific");
+            getSpecificCategoryStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            askSpecificQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
 
             //Assert
             Assert.AreEqual(10, storage.AnswersSpecificQuestions.Count);

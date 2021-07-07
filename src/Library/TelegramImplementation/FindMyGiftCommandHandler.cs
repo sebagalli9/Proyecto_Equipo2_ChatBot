@@ -19,17 +19,15 @@ namespace Library
             
             if (messageText != null && ((messageText as string) == "/searchgift"))
             {
-                IReader reader = new FileReader();
-                IPersonProfile user = new PersonProfile();
+         
+                IPersonProfile user = new PersonProfile(); 
                 IMessageReceiver input = new TelegramGateway();
                 IMessageSender output = new TelegramGateway();
-                ISearchGift findG;
-                findG = new SearchGiftML(user,output);
-                ConversationData storage = new ConversationData();
-                CoreBot coreBot = new CoreBot(reader, user, input, output, findG,storage);
-                await Task.Run(() => coreBot.Start());
-               
-               
+                ISearchGift findG = new SearchGiftML(user,output);
+                ConversationData storage = new ConversationData(); //HACER INTERFAZ DE CONVERSATIONDATA
+                
+                await Task.Run(() => Session.askInitialQuestionStateHandler.Handle(Session.userSessions[chatInfo.Id],Session.reader,user,input, output,findG,storage));
+                
                 return "searchgift Command";
             }
             else

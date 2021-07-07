@@ -34,8 +34,9 @@ namespace Test.Library
         //Se prueba que el metodo AskInitialQuestions actualice las preferencias del perfil del usuario
         {
             //Act
+            Request request = new Request("initial");
             reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
-            askInitialQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
+            askInitialQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(4, user.Preferences.Count);
         }

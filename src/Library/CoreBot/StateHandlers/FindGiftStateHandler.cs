@@ -4,12 +4,13 @@ namespace Library
 { 
     public class FindGiftStateHandler: AbstractStateHandler
     {
-        public override object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
-            if(storage.GetProductCompleted)
+            if(storage.GetProductCompleted && request.CurrentState == "product")
             {
                 searcher.FindGift();
-                return base.Handle(reader,user,input, output,searcher,storage); //OJO ACA, ESTO YA DEBERIA TERMINAR NO PASAR A OTRO
+                request.UpdateCurrentState("initial");
+                return null; 
             }
 
             else

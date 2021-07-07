@@ -5,7 +5,7 @@ namespace Library
 { 
     public class GetSpecifiCategoryStateHandler: AbstractStateHandler
     {
-        public override object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request,IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
             if(storage.AskMixedCompleted)
             {
@@ -35,28 +35,25 @@ namespace Library
                             }
                         }
                     }
-                }
-                /* else
-                {
-                    storage.MixedCategoriesSelected.Clear();
-                    for (int i = 0; i < 6; i++)
+
+                    if(storage.SpecificCategoriesSelected.Count > 0)
                     {
-                        Random r = new Random();
-                        int randomNum = r.Next(reader.MixedCategoryBank.Count);
-                        MixedCategory randCat = reader.MixedCategoryBank[randomNum];
-                        storage.MixedCategoriesSelected.Add(randCat);
+                        storage.UpdateGetSpecificCompleted(true);
+                        output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas");
                     }
-                    AskMixedQuestions();
-                    GetSpecificCategoryQuestion();
-                } */
 
-                if(storage.SpecificCategoriesSelected.Count > 0)
-                {
-                    storage.UpdateGetSpecificCompleted(true);
-                    output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas");
+                    return base.Handle(request,reader,user,input, output,searcher,storage);
+
                 }
 
-                return base.Handle(reader,user,input, output,searcher,storage);
+                else
+                {
+                    output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!");
+                    //return  null;
+                    return this.prevHandler.Handle(request,reader,user,input, output,searcher,storage);
+                    
+                } 
+            
 
             }       
             else

@@ -23,6 +23,7 @@ namespace Library
         void ReadMixedCategories(string path);
         void ReadSpecificCategories(string path);
         void ReadInitialQuestions(string path);
+        void UploadFiles();
         string ReadPlainText(string path);
 
     }
