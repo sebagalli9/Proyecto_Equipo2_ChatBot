@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class ConversationData
+    public class ConversationData : IStorage
     {
         public List<MixedCategory> MixedCategoriesSelected { get; private set; }
         public List<SpecificCategory> SpecificCategoriesSelected { get; private set; }
@@ -37,7 +37,7 @@ namespace Library
             this.GetProductCompleted = false;
         }
 
-        private void CleanLists()
+        public void CleanLists()
         {
             MixedCategoriesSelected.Clear();
             SpecificCategoriesSelected.Clear();

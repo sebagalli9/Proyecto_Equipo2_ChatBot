@@ -24,7 +24,7 @@ namespace Library
                 IMessageReceiver input = new TelegramGateway();
                 IMessageSender output = new TelegramGateway();
                 ISearchGift findG = new SearchGiftML(user,output);
-                ConversationData storage = new ConversationData(); //HACER INTERFAZ DE CONVERSATIONDATA
+                IStorage storage = new ConversationData(); 
                 
                 await Task.Run(() => Session.askInitialQuestionStateHandler.Handle(Session.userSessions[chatInfo.Id],Session.reader,user,input, output,findG,storage));
                 

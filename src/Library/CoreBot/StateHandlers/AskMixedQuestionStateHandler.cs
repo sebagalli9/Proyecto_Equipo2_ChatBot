@@ -3,19 +3,19 @@ using System.Threading;
 
 
 namespace Library
-{ 
-    public class AskMixedQuestionStateHandler: AbstractStateHandler
+{
+    public class AskMixedQuestionStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
-            if(request.CurrentState == "mixed")
+            if (request.CurrentState == "mixed")
             {
-  
-                if(storage.GetMixedCompleted)
-                {   
-                   
+
+                if (storage.GetMixedCompleted)
+                {
+
                     foreach (MixedCategory category in storage.MixedCategoriesSelected)
-                    {   
+                    {
                         Thread.Sleep(1000);
                         output.SendMessage(category.Question);
                         Thread.Sleep(1000);
@@ -28,15 +28,15 @@ namespace Library
                         storage.AnswersMixedQuestions.Add(category.Question, category.AnswerOptions[ans]);
                     }
 
-                    if(storage.MixedCategoriesSelected.Count == storage.AnswersMixedQuestions.Count)
+                    if (storage.MixedCategoriesSelected.Count == storage.AnswersMixedQuestions.Count)
                     {
                         storage.UpdateAskMixedCompleted(true);
-                        output.SendMessage("Se ha finalizado la fase de preguntas mixtas"); 
+                        output.SendMessage("Se ha finalizado la fase de preguntas mixtas");
                         request.UpdateCurrentState("specific");
                     }
 
-                    return base.Handle(request,reader,user,input, output,searcher,storage);
-                }      
+                    return base.Handle(request, reader, user, input, output, searcher, storage);
+                }
                 else
                 {
                     return null;
