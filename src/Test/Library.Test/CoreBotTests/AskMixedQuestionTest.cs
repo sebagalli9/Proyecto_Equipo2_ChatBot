@@ -12,7 +12,7 @@ namespace Test.Library
         private IMessageSender output;
         private ISearchGift findG;
 
-        private ConversationData storage;
+        private IStorage storage;
 
         private IStateHandler askMixedQuestionStateHandler;
 
@@ -25,7 +25,7 @@ namespace Test.Library
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
-            findG = new SearchGiftML(user,output);
+            findG = new SearchGiftML(user, output);
             storage = new ConversationData();
             askMixedQuestionStateHandler = new AskMixedQuestionStateHandler();
             getMixedCategoryStateHandler = new GetMixedCategoryStateHandler();
@@ -41,10 +41,10 @@ namespace Test.Library
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
             user.UpdateSelectedCategory("technology");
-            getMixedCategoryStateHandler.Handle(request,reader, user, input, output, findG, storage);
-            askMixedQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            getMixedCategoryStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            askMixedQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(6, storage.AnswersMixedQuestions.Count);
-        } 
+        }
     }
 }

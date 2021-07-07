@@ -1,2 +1,4 @@
-esto es una prueba
-esto es otra linea
+Bot desarrollado por:
+    - Constanza Di Bueno
+    - Rafael Durán 
+    - Sebastián Galli

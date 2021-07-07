@@ -43,7 +43,7 @@ namespace Test.Library
             //Act
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             //Assert
-            Assert.AreEqual(53, reader.SpecificCategoryBank.Count);
+            Assert.AreEqual(65, reader.SpecificCategoryBank.Count);
         }
 
         [Test]

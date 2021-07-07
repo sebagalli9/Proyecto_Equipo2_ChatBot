@@ -6,7 +6,7 @@ namespace Test.Library
 {
     public class ConversationDataTest
     {
-        private ConversationData storage;
+        private IStorage storage;
 
         [SetUp]
         public void Setup()
@@ -65,7 +65,7 @@ namespace Test.Library
         [Test]
         public void UpdateAskInitialCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateAskInitialCompleted(true);
             //Assert
@@ -75,7 +75,7 @@ namespace Test.Library
         [Test]
         public void UpdateAskMainCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateAskMainCompleted(true);
             //Assert
@@ -85,7 +85,7 @@ namespace Test.Library
         [Test]
         public void UpdateAskMixedCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateAskMixedCompleted(true);
             //Assert
@@ -95,7 +95,7 @@ namespace Test.Library
         [Test]
         public void UpdateAskSpecificCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateAskSpecificCompleted(true);
             //Assert
@@ -105,7 +105,7 @@ namespace Test.Library
         [Test]
         public void UpdateGetMixedCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateGetMixedCompleted(true);
             //Assert
@@ -115,17 +115,17 @@ namespace Test.Library
         [Test]
         public void UpdateGetSpecificCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateGetSpecificCompleted(true);
             //Assert
             Assert.AreEqual(true, storage.GetSpecificCompleted);
         }
 
-       [Test]
+        [Test]
         public void UpdateGetProductCompletedTest()
         //Se prueba que el diccionario AnswersSpecificQuestions sea un diccionario de tipo <strings,string>
-        {   
+        {
             //Act
             storage.UpdateGetProductCompleted(true);
             //Assert
