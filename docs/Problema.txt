@@ -1,0 +1,3 @@
+¿Existe otra forma de hacer que el programa espere a que el usuario 
+ingrese una respuesta (un input) mediante un botón sin tener que utilizar 
+un while que espere a que la respuesta no sea igual? Esto nos rompe los tests.

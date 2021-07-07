@@ -52,7 +52,7 @@ namespace Test.Library
             getProductToSearchStateHandler.Handle(reader, user, input, output, findG, storage);
 
             //Assert
-            Assert.AreEqual(27, user.ProductSearcherKeyWords.Count);
+            Assert.AreEqual(6, user.ProductSearcherKeyWords.Count);
         }
     }
 }

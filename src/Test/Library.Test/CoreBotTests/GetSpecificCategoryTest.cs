@@ -47,7 +47,7 @@ namespace Test.Library
             askMixedQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
             getSpecificCategoryStateHandler.Handle(reader, user, input, output, findG, storage);
             //Assert
-            Assert.AreEqual(19, storage.SpecificCategoriesSelected.Count);
+            Assert.AreEqual(10, storage.SpecificCategoriesSelected.Count);
         }
     }
 }

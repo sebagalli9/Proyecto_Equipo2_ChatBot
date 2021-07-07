@@ -40,6 +40,7 @@ namespace Library
 
         public void Start()
         {
+            //reader=FileReader.Instance();
             reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
             reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
             reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");

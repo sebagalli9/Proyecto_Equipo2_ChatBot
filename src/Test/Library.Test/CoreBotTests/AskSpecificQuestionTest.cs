@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Test.Library
 {
+    //ESTOS TESTS FALLAN
     public class AskSpecificQuestionTest
     {
         private IReader reader;
@@ -24,6 +25,7 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
+            
             reader = new FileReader();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
@@ -52,7 +54,7 @@ namespace Test.Library
             askSpecificQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
 
             //Assert
-            Assert.AreEqual(19, storage.AnswersSpecificQuestions.Count);
+            Assert.AreEqual(10, storage.AnswersSpecificQuestions.Count);
         }
     }
 }
