@@ -1,0 +1,1 @@
+¿Cuánto es lo máximo de dinero quieres gastar en pesos uruguayos?;1-500,2-1500,3-3000,4-10000,5-100000

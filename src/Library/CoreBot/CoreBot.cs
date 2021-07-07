@@ -44,6 +44,7 @@ namespace Library
             reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
             reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
             reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
+            reader.ReadPriceQuestions(@"..\..\Assets\PriceQuestions.txt");
             
             IStateHandler askInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
             IStateHandler askMainCategoryStateHanlder = new AskMainQuestionStateHandler();
