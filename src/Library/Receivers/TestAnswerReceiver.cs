@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Library
 {
@@ -15,11 +16,16 @@ namespace Library
 
         public TestAnswerReceiver(string text)
         {
-            this.Text = text;
+            this.Text=text;
+            
         }
         
         public string GetInput()
         {
+            if(this.Text=="1")
+                    this.Text = "2";
+                else
+                    this.Text="1";
             return this.Text;
         }
     }

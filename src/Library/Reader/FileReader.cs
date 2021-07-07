@@ -28,7 +28,20 @@ namespace Library
         public List<MixedCategory> MixedCategoryBank { get; private set; }
         public List<SpecificCategory> SpecificCategoryBank { get; private set; }
         public List<InitialQuestion> InitialQuestionsBank { get; private set; }
-
+        private static FileReader reader = null;
+  
+/*         public static FileReader Instance()
+        {
+            if(reader == null){
+                reader = new FileReader();
+                reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
+                reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
+                reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
+                reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
+            }
+            return reader;
+        } */
+        
         public void ReadMainCategories(string path)
         {
             MainCategoryBank = new List<MainCategory>();
@@ -56,9 +69,12 @@ namespace Library
                         catch (Exception)
                         {
                             Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MainQuestions.");
+                            sr.Close();
                             throw;
                         }
+                        
                     }
+    	            sr.Close();
                 }
             }
             catch (FileNotFoundException)
@@ -66,6 +82,7 @@ namespace Library
                 Console.WriteLine("Algo salio mal con el archivo. No se pudo leer.");
                 throw;
             }
+            
         }
 
         public void ReadMixedCategories(string path)
@@ -100,10 +117,12 @@ namespace Library
                         catch (Exception)
                         {
                             Console.WriteLine($"Hubo error al leer la linea {contador} del archivo MixedQuestions.");
+                            sr.Close();
                             throw;
                         }
 
                     }
+                    sr.Close();
                 }
             }
             catch (FileNotFoundException)
@@ -152,9 +171,11 @@ namespace Library
                         catch (Exception)
                         {
                             Console.WriteLine($"Hubo error al leer la linea {contador} del archivo SpecificQuestions.");
+                            sr.Close();
                             throw;
                         }
                     }
+                    sr.Close();
                 }
             }
             catch (FileNotFoundException)
@@ -197,9 +218,11 @@ namespace Library
                         catch (Exception)
                         {
                             Console.WriteLine($"Hubo error al leer la linea {contador} del archivo InitialQuestions.");
+                            sr.Close();
                             throw;
                         }                        
                     }
+                    sr.Close();
                 }
             }
             catch (FileNotFoundException)
@@ -225,14 +248,17 @@ namespace Library
                             contador += 1;
                             text += line;
                         }
+                         sr.Close();
                     }
                     catch (Exception)
                     {
                         Console.WriteLine($"Hubo error al leer la linea {contador} del archivo.");
+                        sr.Close();
                         throw;
                     }
                     
                 }
+               
             }
             catch (FileNotFoundException)
             {
