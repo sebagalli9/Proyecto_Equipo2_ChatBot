@@ -33,9 +33,10 @@ namespace Test.Library
         //Se prueba que el metodo AskMainCategories actualice las categorias seleccionadas del perfil del usuario
         {
             //Act
+            Request request = new Request("initial");
             reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             storage.UpdateAskInitialCompleted(true);
-            askMainQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
+            askMainQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(2, user.SelectedCategory.Count);
         } 

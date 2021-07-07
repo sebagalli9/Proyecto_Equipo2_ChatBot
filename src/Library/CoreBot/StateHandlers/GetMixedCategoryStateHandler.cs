@@ -4,7 +4,7 @@ namespace Library
 { 
     public class GetMixedCategoryStateHandler: AbstractStateHandler
     {
-        public override object Handle(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
+        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
             if(storage.AskMainCompleted)
             {
@@ -22,7 +22,7 @@ namespace Library
                     output.SendMessage("Se ha finalizado la fase de seleccion de preguntas mixtas");
                 }
 
-                return base.Handle(reader,user,input, output,searcher,storage);
+                return base.Handle(request,reader,user,input, output,searcher,storage);
             }       
             else
             {

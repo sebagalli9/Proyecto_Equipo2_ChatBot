@@ -36,12 +36,13 @@ namespace Test.Library
         //Se prueba que el metodo AskMixedQuestions almacene correctamente las respuestas dadas a las preguntas mixtas
         {
             //Act
+            Request request = new Request("initial");
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
             user.UpdateSelectedCategory("technology");
-            getMixedCategoryStateHandler.Handle(reader, user, input, output, findG, storage);
-            askMixedQuestionStateHandler.Handle(reader, user, input, output, findG, storage);
+            getMixedCategoryStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            askMixedQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(6, storage.AnswersMixedQuestions.Count);
         } 

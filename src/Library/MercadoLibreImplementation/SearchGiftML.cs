@@ -18,6 +18,8 @@ namespace Library
         }
         public void FindGift()
         {   
+            output.SendMessage("Buscando regalos...");
+
             List<MLApiSearchResult> resultsFiltered = new List<MLApiSearchResult>();
             string prefs = "";
 

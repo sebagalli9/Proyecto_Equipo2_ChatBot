@@ -38,34 +38,6 @@ namespace Library
         ISearchGift giftSearcherEngine;
         ConversationData storage;
 
-        public void Start()
-        {
-            //reader=FileReader.Instance();
-            reader.ReadInitialQuestions(@"..\..\Assets\InitialQuestions.txt");
-            reader.ReadMainCategories(@"..\..\Assets\MainCategories.txt");
-            reader.ReadMixedCategories(@"..\..\Assets\MixedQuestions.txt");
-            reader.ReadSpecificCategories(@"..\..\Assets\SpecificQuestions.txt");
-            
-            IStateHandler askInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
-            IStateHandler askMainCategoryStateHanlder = new AskMainQuestionStateHandler();
-            IStateHandler getMixedCategoryStateHandler = new GetMixedCategoryStateHandler();
-            IStateHandler askMixedQuestionStateHanlder = new AskMixedQuestionStateHandler();
-            IStateHandler getSpecificCategoryStateHandler = new GetSpecifiCategoryStateHandler();
-            IStateHandler askSpecificCategoryStateHandler = new AskSpecificQuestionStateHandler();
-            IStateHandler getProductToSearchStateHandler = new GetProductToSearchStateHandler();
-            IStateHandler findGiftStateHandler = new FindGiftStateHandler();
-
-            askInitialQuestionStateHandler.SetNext(askMainCategoryStateHanlder);
-            askMainCategoryStateHanlder.SetNext(getMixedCategoryStateHandler);
-            getMixedCategoryStateHandler.SetNext(askMixedQuestionStateHanlder);
-            askMixedQuestionStateHanlder.SetNext(getSpecificCategoryStateHandler);
-            getSpecificCategoryStateHandler.SetNext(askSpecificCategoryStateHandler);
-            askSpecificCategoryStateHandler.SetNext(getProductToSearchStateHandler);
-            getProductToSearchStateHandler.SetNext(findGiftStateHandler);
-
-            askInitialQuestionStateHandler.Handle(reader,user,input,output,giftSearcherEngine,storage);
-        }
-
         public CoreBot(IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, ConversationData storage)
         {
             this.reader = reader;
