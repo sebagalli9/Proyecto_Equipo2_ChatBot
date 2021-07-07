@@ -12,7 +12,7 @@ namespace Test.Library
         private IMessageSender output;
         private ISearchGift findG;
 
-        private ConversationData storage;
+        private IStorage storage;
 
         private IStateHandler askMainQuestionStateHandler;
 
@@ -23,7 +23,7 @@ namespace Test.Library
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
-            findG = new SearchGiftML(user,output);
+            findG = new SearchGiftML(user, output);
             storage = new ConversationData();
             askMainQuestionStateHandler = new AskMainQuestionStateHandler();
         }
@@ -36,9 +36,9 @@ namespace Test.Library
             Request request = new Request("main");
             reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             storage.UpdateAskInitialCompleted(true);
-            askMainQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            askMainQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(2, user.SelectedCategory.Count);
-        } 
+        }
     }
 }

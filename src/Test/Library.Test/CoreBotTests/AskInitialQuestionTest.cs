@@ -13,7 +13,7 @@ namespace Test.Library
         private IMessageSender output;
         private ISearchGift findG;
 
-        private ConversationData storage;
+        private IStorage storage;
 
         private IStateHandler askInitialQuestionStateHandler;
 
@@ -24,7 +24,7 @@ namespace Test.Library
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
-            findG = new SearchGiftML(user,output);
+            findG = new SearchGiftML(user, output);
             storage = new ConversationData();
             askInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
         }
@@ -36,7 +36,7 @@ namespace Test.Library
             //Act
             Request request = new Request("initial");
             reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
-            askInitialQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            askInitialQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(4, user.Preferences.Count);
         }

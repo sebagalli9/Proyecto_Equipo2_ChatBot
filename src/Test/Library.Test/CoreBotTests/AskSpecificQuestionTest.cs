@@ -13,7 +13,7 @@ namespace Test.Library
         private IMessageSender output;
         private ISearchGift findG;
 
-        private ConversationData storage;
+        private IStorage storage;
         private IStateHandler getSpecificCategoryStateHandler;
 
         private IStateHandler getMixedCategoryStateHandler;
@@ -25,12 +25,12 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            
+
             reader = new FileReader();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
-            findG = new SearchGiftML(user,output);
+            findG = new SearchGiftML(user, output);
             storage = new ConversationData();
             getSpecificCategoryStateHandler = new GetSpecifiCategoryStateHandler();
             getMixedCategoryStateHandler = new GetMixedCategoryStateHandler();
@@ -49,11 +49,11 @@ namespace Test.Library
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
             user.UpdateSelectedCategory("technology");
-            getMixedCategoryStateHandler.Handle(request,reader, user, input, output, findG, storage);
-            askMixedQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            getMixedCategoryStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            askMixedQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
             request.UpdateCurrentState("specific");
-            getSpecificCategoryStateHandler.Handle(request,reader, user, input, output, findG, storage);
-            askSpecificQuestionStateHandler.Handle(request,reader, user, input, output, findG, storage);
+            getSpecificCategoryStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            askSpecificQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
 
             //Assert
             Assert.AreEqual(10, storage.AnswersSpecificQuestions.Count);

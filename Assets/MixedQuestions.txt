@@ -18,8 +18,7 @@ home;tool;¿Dispone de jardin?;gardenTool;1-si,2-no
 home;tool;¿Es una persona creativa?;manualTool;1-si,2-no
 sport;technology;¿Le gustan los videojuegos?;console;1-si,2-no
 sport;technology;¿Pasa muchas horas en su computadora?;computer;1-si,2-no
-"sport;technology;¿Le gusta hacer ejercicio? 
-;fitness;1-si,2-no"
+sport;technology;¿Le gusta hacer ejercicio?;fitness;1-si,2-no
 sport;technology;¿Dispone un lugares amplios dentro de su casa?;indoorSport;1-si,2-no
 sport;technology;¿Le gusta la fotografia deportiva?;camera;1-si,2-no
 technology;tool;¿Le gusta mirar series y peliculas?;video;1-si,2-no
