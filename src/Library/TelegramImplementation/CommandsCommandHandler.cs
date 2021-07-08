@@ -13,7 +13,6 @@ namespace Library
 { 
     internal class CommandsCommandHandler : AbstractCommandHandler
     {
-
         public async override Task<object> Handle(string messageText, Chat chatInfo)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;   
@@ -34,7 +33,5 @@ namespace Library
                 return base.Handle(messageText, chatInfo);
             }
         }
-
     }
-    
 }

@@ -25,11 +25,10 @@ namespace Library
     */
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
-        public static long ChatID{get; private set;}
+        public static long ChatID { get; private set; }
         public static string callbackValue;
-        public static bool BottonClickedCompleted {get; private set;}
         public static void RunTelegramAPI()
-        { 
+        {
             TelegramBot telegramBot = TelegramBot.Instance;
             Console.WriteLine($"Hola soy el Bot de P2, mi nombre es {telegramBot.BotName} y tengo el Identificador {telegramBot.BotId}");
             ITelegramBotClient bot = telegramBot.Client;
@@ -38,8 +37,7 @@ namespace Library
             bot.StartReceiving();
             Console.WriteLine("Presiona una tecla para terminar");
             Console.ReadKey();
-            bot.StopReceiving();   
-
+            bot.StopReceiving();
         }
         private static void OnMessage(object sender, MessageEventArgs messageEventArgs)
         {
@@ -47,13 +45,13 @@ namespace Library
             Message message = messageEventArgs.Message;
             Chat chatInfo = message.Chat;
             string messageText = message.Text.ToLower();
-             
+
             ChatID = chatInfo.Id;
 
-            if(!Session.userSessions.ContainsKey(chatInfo.Id))
+            if (!Session.userSessions.ContainsKey(chatInfo.Id))
             {
                 Request request = new Request("initial");
-                Session.userSessions.Add(chatInfo.Id,request);
+                Session.userSessions.Add(chatInfo.Id, request);
             }
 
             ICommandHandler commandsCommandHandler = new CommandsCommandHandler();
@@ -71,16 +69,14 @@ namespace Library
             commandsCommandHandler.Handle(messageText, chatInfo);
         }
 
-        public string GetInput() 
-        //Este metodo deberia esperar a que alguien aprente el boton para retornar, asi el valor de callback ya esta actualizado
-        { 
+        public string GetInput()
+        {
             return callbackValue;
-
         }
 
         public void SendMessage(string message)
         {
-           SendMessageTelegramAdapter(message);
+            SendMessageTelegramAdapter(message);
         }
 
         public void SendMessageTelegramAdapter(string message)
@@ -93,14 +89,13 @@ namespace Library
         {
             callbackValue = "";
             SendMessageAnswersAdapter(ans);
-            
         }
 
         public async void SendMessageAnswersAdapter(Dictionary<string, string> ans)
         {
-            ITelegramBotClient client = TelegramBot.Instance.Client;        
-            
-             var rows = new List<List<InlineKeyboardButton>>();
+            ITelegramBotClient client = TelegramBot.Instance.Client;
+
+            var rows = new List<List<InlineKeyboardButton>>();
 
             foreach (var index in ans)
             {
@@ -113,22 +108,21 @@ namespace Library
                     });
 
             }
-             var keyBoard = new InlineKeyboardMarkup(rows);
+            var keyBoard = new InlineKeyboardMarkup(rows);
 
-           
-                await client.SendTextMessageAsync(
-                    ChatID,
-                    "Seleccione una de las siguientes opciones:",
-                    replyMarkup: keyBoard 
-                );
+            await client.SendTextMessageAsync(
+                ChatID,
+                "Seleccione una de las siguientes opciones:",
+                replyMarkup: keyBoard
+            );
         }
 
         private static async void BotOnCallbackQueryRecieved(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
             var callbackQuery = callbackQueryEventArgs.CallbackQuery;
-           
-            ITelegramBotClient client = TelegramBot.Instance.Client;                    
-             
+
+            ITelegramBotClient client = TelegramBot.Instance.Client;
+
             ChatID = callbackQuery.Message.Chat.Id;
 
             await client.SendTextMessageAsync(
@@ -136,14 +130,7 @@ namespace Library
                     $"¡Entendido!"
                 );
 
-             callbackValue = callbackQuery.Data; 
-             UpdateBottonClickedCompleted(true);
-             
-        }
-
-        public static void UpdateBottonClickedCompleted(bool b)
-        {
-            BottonClickedCompleted = b;
+            callbackValue = callbackQuery.Data;
         }
     }
 }

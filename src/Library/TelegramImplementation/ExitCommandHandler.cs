@@ -27,7 +27,5 @@ namespace Library
                 return base.Handle(messageText, chatInfo);
             }
         }
-
     }
-    
 }
