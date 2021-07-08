@@ -1,4 +1,9 @@
 Bot desarrollado por:
-    - Constanza Di Bueno
+    - Constanza Dibueno
     - Rafael Durán 
     - Sebastián Galli
+
+🤔 Por consultas acerca del bot contactarse a:
+- rafael.duran@correo.ucu.edu.uy
+- constanza.dibueno@correo.ucu.edu.uy
+- sebastian.galli@correo.ucu.edu.uy

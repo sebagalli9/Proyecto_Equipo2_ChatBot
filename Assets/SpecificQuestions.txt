@@ -64,3 +64,6 @@ sportClothing;¿Juega al football?;ropa de football;1-si,2-no
 sportClothing;¿Juega al tennis?;ropa de tennis;1-si,2-no
 sportClothing;¿Juega al volleyball?;ropa de volleyball;1-si,2-no
 sportClothing;¿Juega al handball?;ropa de volleyball;1-si,2-no
+smartwatch;¿Le gustan los smartwatch?;smartwatch;1-si,2-no
+earpods;¿Le gustan los auriculares deportivos?;earpods;1-si,2-no
+thermalJacket;¿Le gusta abrigarse y estar cómodo al mismo tiempo?;campera termica;1-si,2-no

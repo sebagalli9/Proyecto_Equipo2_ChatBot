@@ -47,8 +47,6 @@ tool;clothing;¿Trabaja en la construcción?;constructionHelmet;1-si,2-no
 tool;clothing;¿Es policía?;bulletproofVest;1-si,2-no
 tool;clothing;¿Es militar?;militaryUniform;1-si,2-no
 tool;clothing;¿Es médico/a o veterianario/a?;nursingUniform;1-si,2-no
-technology;clothing;¿pregunta51?;algo;1-si,2-no
-technology;clothing;¿pregunta52?;algo;1-si,2-no
-technology;clothing;¿pregunta53?;algo;1-si,2-no
-technology;clothing;¿pregunta54?;algo;1-si,2-no
-technology;clothing;¿pregunta55?;algo;1-si,2-no
+technology;clothing;¿Le gustan los relojes?;smartwatch;1-si,2-no
+technology;clothing;¿Escuchar música mientras corre?;earpods;1-si,2-no
+technology;clothing;¿Le gusta abrigarse de forma práctica?;thermalJacket;1-si,2-no
