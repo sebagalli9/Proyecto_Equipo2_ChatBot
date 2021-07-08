@@ -19,7 +19,6 @@ namespace Library
             
             if (messageText != null && ((messageText as string) == "/searchgift"))
             {
-         
                 IPersonProfile user = new PersonProfile(); 
                 IMessageReceiver input = new TelegramGateway();
                 IMessageSender output = new TelegramGateway();
@@ -35,7 +34,5 @@ namespace Library
                 return base.Handle(messageText, chatInfo);
             }
         }
-
-    }
-    
+    } 
 }
