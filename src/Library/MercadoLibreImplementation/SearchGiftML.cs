@@ -36,8 +36,6 @@ namespace Library
                
                 List<MLApiSearchResult> results = new MLApi().Search((search).Replace(" ", "-"));
 
-                CurrencyChanger currencyChanger = new CurrencyChanger();
-
                 for(int i = 0; i < 2; i++)
                 {
                     resultsFiltered.Add(results[i]);

@@ -132,7 +132,7 @@ namespace Library
             ChatID = callbackQuery.Message.Chat.Id;
 
             await client.SendTextMessageAsync(
-                    ChatID,
+                    callbackQuery.Message.Chat.Id,
                     $"¡Entendido!"
                 );
 
