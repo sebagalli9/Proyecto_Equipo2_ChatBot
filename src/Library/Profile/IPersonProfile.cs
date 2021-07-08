@@ -14,11 +14,8 @@ namespace Library
         List<string> SelectedCategory { get; }
         List<string> ProductSearcherKeyWords { get; }
         List<string> Preferences { get; }
-
-        List<string> PricePreferences { get; }
         
         void UpdatePreferences(string pref);
-        void UpdatePricePreferences(string pricePref);
         void UpdateSelectedCategory(string category);
         void AddProductToSearch(string product);
         void CleanPreferences();

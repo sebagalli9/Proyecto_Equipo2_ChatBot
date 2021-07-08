@@ -50,16 +50,17 @@ electronics;¿Le gusta la programación?;arduino, microcontroladores y placas;1-
 sportEquipment;¿Le gusta entrenar?;cronometro deportivo, cuerda de saltar, rodilleras;1-si,2-no
 sportEquipment;¿Le gustan los ejercicios de fuerza y resistencia?;pesas, barras para pesas, banco de pesas, barra de dominadas;1-si,2-no
 sportEquipment;¿Le gustan los deportes de contacto?;protectores bucales, vendas, guantes de boxeo, saco de boxeo, paleta de boxeo, punching ball;1-si,2-no
-algo;¿Una pregunta?;producto;1-si,2-no
-work;¿?;producto;1-si,2-no
-work;¿?;producto;1-si,2-no
-work;¿?;producto;1-si,2-no
+work;¿Necesita buena iluminación?;lampara de escritorio;1-si,2-no
+work;¿Pasa mucho tiempo sentado?;silla de oficina;1-si,2-no
+work;¿Necesita escribir mucho?;lapicera,bolígrafo parker;1-si,2-no
 moda;¿Asiste a muchos eventos formales?;vestidos, trajes;1-si,2-no
-moda;¿?;producto;1-si,2-no
-moda;¿?;producto;1-si,2-no
+moda;¿Le gusta la ropa casual?;ropa casual;1-si,2-no
+moda;¿Le gusta vestirse formal?;trajes,smockings;1-si,2-no
 leisure;¿Le gusta usar pijamas?;pijamas, onesie;1-si,2-no
-leisure;¿?;producto;1-si,2-no
-leisure;¿?;producto;1-si,2-no
-sportClothing;¿?;producto;1-si,2-no
-sportClothing;¿?;producto;1-si,2-no
-sportClothing;¿?;producto;1-si,2-no
+leisure;¿Le gusta tener calefacción en su cuarto?;estufa eléctrica;1-si,2-no
+leisure;¿Le gusta la ropa exótica?;lencería;1-si,2-no
+sportClothing;¿Juega al basketball?;ropa de basketball;1-si,2-no
+sportClothing;¿Juega al football?;ropa de football;1-si,2-no
+sportClothing;¿Juega al tennis?;ropa de tennis;1-si,2-no
+sportClothing;¿Juega al volleyball?;ropa de volleyball;1-si,2-no
+sportClothing;¿Juega al handball?;ropa de volleyball;1-si,2-no

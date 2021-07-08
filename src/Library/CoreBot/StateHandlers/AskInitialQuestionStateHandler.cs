@@ -11,9 +11,9 @@ namespace Library
             {
                 foreach (InitialQuestion initialQ in reader.InitialQuestionsBank)
                 {
-                    Thread.Sleep(500);
+                    Thread.Sleep(100);
                     output.SendMessage(initialQ.Question);
-                    Thread.Sleep(1200);
+                    Thread.Sleep(100);
                     output.SendMessageAnswers(initialQ.AnswerOptions);
                     //espera
                     string aux = input.GetInput();

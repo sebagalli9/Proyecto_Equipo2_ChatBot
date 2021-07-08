@@ -10,6 +10,9 @@ namespace Library
             {
                 searcher.FindGift();
                 request.UpdateCurrentState("initial");
+                storage.CleanLists();
+                user.CleanSelections();
+                user.CleanPreferences();
                 return null;
             }
 
