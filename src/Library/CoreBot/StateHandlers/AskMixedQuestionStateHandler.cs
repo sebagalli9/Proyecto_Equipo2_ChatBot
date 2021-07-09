@@ -17,9 +17,9 @@ namespace Library
                     foreach (MixedCategory category in storage.MixedCategoriesSelected)
                     {
                         Thread.Sleep(1000);
-                        output.SendMessage(category.Question);
+                        output.SendMessage(category.Question, request.RequestId);
                         Thread.Sleep(1000);
-                        output.SendMessageAnswers(category.AnswerOptions);
+                        output.SendMessageAnswers(category.AnswerOptions, request.RequestId);
                         string aux = input.GetInput();
                         while (input.GetInput() == aux)
                         {
@@ -31,7 +31,7 @@ namespace Library
                     if (storage.MixedCategoriesSelected.Count == storage.AnswersMixedQuestions.Count)
                     {
                         storage.UpdateAskMixedCompleted(true);
-                        output.SendMessage("Se ha finalizado la fase de preguntas mixtas");
+                        output.SendMessage("Se ha finalizado la fase de preguntas mixtas", request.RequestId);
                         request.UpdateCurrentState("specific");
                     }
 

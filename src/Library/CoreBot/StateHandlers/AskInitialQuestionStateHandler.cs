@@ -12,9 +12,9 @@ namespace Library
                 foreach (InitialQuestion initialQ in reader.InitialQuestionsBank)
                 {
                     Thread.Sleep(100);
-                    output.SendMessage(initialQ.Question);
+                    output.SendMessage(initialQ.Question, request.RequestId);
                     Thread.Sleep(100);
-                    output.SendMessageAnswers(initialQ.AnswerOptions);
+                    output.SendMessageAnswers(initialQ.AnswerOptions, request.RequestId);
                     //espera
                     string aux = input.GetInput();
                     while (input.GetInput() == aux)
@@ -28,7 +28,7 @@ namespace Library
                 if (user.Preferences.Count == reader.InitialQuestionsBank.Count)
                 {
                     storage.UpdateAskInitialCompleted(true);
-                    output.SendMessage("Se ha finalizado la fase de preguntas iniciales");
+                    output.SendMessage("Se ha finalizado la fase de preguntas iniciales", request.RequestId);
                     request.UpdateCurrentState("main");
                 }
 

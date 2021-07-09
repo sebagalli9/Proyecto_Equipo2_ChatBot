@@ -23,7 +23,7 @@ namespace Library
                 StringBuilder commandsStringBuilder = new StringBuilder("Lista de Comandos:\n")
                                                                                 .Append("/searchgift\n")
                                                                                 .Append("/about\n")
-                                                                                .Append("/exit\n");
+                                                                                ;
 
                 await client.SendTextMessageAsync(chatId: chatInfo.Id, text: commandsStringBuilder.ToString());
                 return "/commands Command";

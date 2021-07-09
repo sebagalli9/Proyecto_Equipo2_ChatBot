@@ -7,10 +7,12 @@ namespace Library
     public class Request
     {
         public string CurrentState { get; private set; }
+        public long RequestId {get;private set;}
 
-        public Request(string state)
+        public Request(string state, long requestId)
         {
             this.CurrentState = state;
+            this.RequestId = requestId;
            
         }
 
@@ -18,7 +20,6 @@ namespace Library
         {
             this.CurrentState = state;
         }
-
-      
+ 
     }
 }

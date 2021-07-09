@@ -37,16 +37,6 @@ namespace Library
             this.GetProductCompleted = false;
         }
 
-        public void CleanLists()
-        {
-            MixedCategoriesSelected.Clear();
-            SpecificCategoriesSelected.Clear();
-            SubCategory.Clear();
-            AnswersMainCategories.Clear();
-            AnswersMixedQuestions.Clear();
-            AnswersSpecificQuestions.Clear();
-        }
-
         public void UpdateAskInitialCompleted(bool b) {this.AskInitialCompleted = b;}
         public void UpdateAskMainCompleted(bool b) {this.AskMainCompleted = b;}
         public void UpdateAskMixedCompleted(bool b) {this.AskMixedCompleted = b;}

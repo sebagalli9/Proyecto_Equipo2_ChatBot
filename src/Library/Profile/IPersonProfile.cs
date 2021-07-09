@@ -18,8 +18,6 @@ namespace Library
         void UpdatePreferences(string pref);
         void UpdateSelectedCategory(string category);
         void AddProductToSearch(string product);
-        void CleanPreferences();
-        void CleanSelections();
 
     }
 }

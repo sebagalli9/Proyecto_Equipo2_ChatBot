@@ -78,15 +78,5 @@ namespace Library
             this.ProductSearcherKeyWords.Add(product);
         }
 
-        public void CleanPreferences()
-        {
-            this.Preferences.Clear();
-        }
-
-        public void CleanSelections()
-        {
-            this.SelectedCategory.Clear();
-            this.ProductSearcherKeyWords.Clear();
-        }
     }
 }

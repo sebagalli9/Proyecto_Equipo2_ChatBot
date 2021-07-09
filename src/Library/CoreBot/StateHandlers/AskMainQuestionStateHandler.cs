@@ -11,10 +11,10 @@ namespace Library
             if (request.CurrentState == "main" && storage.AskInitialCompleted)
             {
                 int contador = 1;
-                output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:");
+                output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:", request.RequestId);
                 foreach (MainCategory mainQ in reader.MainCategoryBank)
                 {
-                    output.SendMessage(contador + "-" + mainQ.Question);
+                    output.SendMessage(contador + "-" + mainQ.Question, request.RequestId);
                     storage.AnswersMainCategories.Add(contador.ToString(), mainQ.AnswerOptions[contador.ToString()]);
                     contador += 1;
                     //espera
@@ -25,7 +25,7 @@ namespace Library
                 foreach (MainCategory mainQ in reader.MainCategoryBank)
                 {
                     Thread.Sleep(200);
-                    output.SendMessageAnswers(mainQ.AnswerOptions);
+                    output.SendMessageAnswers(mainQ.AnswerOptions, request.RequestId);
                     Thread.Sleep(500);
                 }
 
@@ -38,7 +38,7 @@ namespace Library
                 string ans = input.GetInput();
                 user.UpdateSelectedCategory(storage.AnswersMainCategories[ans]);
 
-                output.SendMessage("Elije una segunda opción adicional:");
+                output.SendMessage("Elije una segunda opción adicional:", request.RequestId);
 
                 //espera
                 string aux2 = input.GetInput();
@@ -54,7 +54,7 @@ namespace Library
                 if (user.SelectedCategory.Count == 2)
                 {
                     storage.UpdateAskMainCompleted(true);
-                    output.SendMessage("Se ha finalizado la fase de preguntas principales");
+                    output.SendMessage("Se ha finalizado la fase de preguntas principales", request.RequestId);
                     request.UpdateCurrentState("mixed");
                 }
 

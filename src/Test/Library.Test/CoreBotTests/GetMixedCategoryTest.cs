@@ -33,7 +33,7 @@ namespace Test.Library
         //Se prueba que se obtenga las preguntas mixtas a preguntar a partir de las categorias Main seleccionadas
         {
             //Act
-            Request request = new Request("main");
+            Request request = new Request("main",1);
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");

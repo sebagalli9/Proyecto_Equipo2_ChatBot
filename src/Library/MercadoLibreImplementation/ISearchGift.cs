@@ -8,6 +8,6 @@ namespace Library
 {
     public interface ISearchGift
     {
-        void FindGift();
+        void FindGift(long requestId);
     }
 }

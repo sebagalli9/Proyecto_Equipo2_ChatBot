@@ -8,11 +8,9 @@ namespace Library
         {
             if (storage.GetProductCompleted && request.CurrentState == "product")
             {
-                searcher.FindGift();
+                searcher.FindGift(request.RequestId);
                 request.UpdateCurrentState("initial");
-                storage.CleanLists();
-                user.CleanSelections();
-                user.CleanPreferences();
+                
                 return null;
             }
 

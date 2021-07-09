@@ -12,7 +12,6 @@ namespace Library
         Dictionary<string, string> AnswersMixedQuestions { get; }
         Dictionary<string, string> AnswersSpecificQuestions { get; }
 
-        void CleanLists();
         void UpdateAskInitialCompleted(bool b);
         void UpdateAskMainCompleted(bool b);
         void UpdateAskMixedCompleted(bool b);

@@ -38,7 +38,7 @@ namespace Test.Library
         //Se prueba que se obtenga las preguntas especificas a preguntar a partir de las respuestas a las preguntas mixtas
         {
             //Act
-            Request request = new Request("mixed");
+            Request request = new Request("mixed",1);
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             storage.UpdateAskMainCompleted(true);

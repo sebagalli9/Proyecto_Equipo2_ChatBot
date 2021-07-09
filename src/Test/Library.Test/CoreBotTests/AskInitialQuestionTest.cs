@@ -31,10 +31,10 @@ namespace Test.Library
 
         [Test]
         public void AskInitialQuestionHandlerTest()
-        //Se prueba que el metodo AskInitialQuestions actualice las preferencias del perfil del usuario
+        //Se prueba que luego de la fase de preguntas iniciales se actualice las preferencias del perfil del usuario
         {
             //Act
-            Request request = new Request("initial");
+            Request request = new Request("initial",1);
             reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             askInitialQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
             //Assert

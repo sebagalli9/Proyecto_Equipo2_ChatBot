@@ -9,9 +9,9 @@ namespace Library
     */
     public interface IMessageSender
     {
-        void SendMessage(string message);
+        void SendMessage(string message, long requestId);
 
-        void SendMessageAnswers(Dictionary<string,string> ans);
+        void SendMessageAnswers(Dictionary<string,string> ans, long requestId);
 
     }
 }

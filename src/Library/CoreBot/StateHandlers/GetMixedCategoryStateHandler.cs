@@ -19,7 +19,7 @@ namespace Library
                 if (storage.MixedCategoriesSelected.Count > 0)
                 {
                     storage.UpdateGetMixedCompleted(true);
-                    output.SendMessage("Se ha finalizado la fase de seleccion de preguntas mixtas");
+                    output.SendMessage("Se ha finalizado la fase de seleccion de preguntas mixtas", request.RequestId);
                 }
 
                 return base.Handle(request, reader, user, input, output, searcher, storage);

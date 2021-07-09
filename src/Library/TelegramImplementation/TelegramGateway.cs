@@ -25,7 +25,7 @@ namespace Library
     */
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
-        public static long ChatID { get; private set; }
+        //public static long ChatID { get; private set; }
         public static string callbackValue;
         public static void RunTelegramAPI()
         {
@@ -46,22 +46,20 @@ namespace Library
             Chat chatInfo = message.Chat;
             string messageText = message.Text.ToLower();
 
-            ChatID = chatInfo.Id;
+            //ChatID = chatInfo.Id;
 
             if (!Session.userSessions.ContainsKey(chatInfo.Id))
             {
-                Request request = new Request("initial");
+                Request request = new Request("initial", chatInfo.Id);
                 Session.userSessions.Add(chatInfo.Id, request);
             }
 
             ICommandHandler commandsCommandHandler = new CommandsCommandHandler();
-            ICommandHandler exitCommandHandler = new ExitCommandHandler();
             ICommandHandler startCommandHandler = new StartCommandHandler();
             ICommandHandler searchMyGiftCommandHandler = new SearchMyGiftCommandHandler();
             ICommandHandler aboutCommandHandler = new AboutCommandHandler();
             ICommandHandler commandNotFoundHandler = new CommandNotFoundHandlder();
-            commandsCommandHandler.SetNext(exitCommandHandler);
-            exitCommandHandler.SetNext(startCommandHandler);
+            commandsCommandHandler.SetNext(startCommandHandler);
             startCommandHandler.SetNext(searchMyGiftCommandHandler);
             searchMyGiftCommandHandler.SetNext(aboutCommandHandler);
             aboutCommandHandler.SetNext(commandNotFoundHandler);
@@ -74,24 +72,24 @@ namespace Library
             return callbackValue;
         }
 
-        public void SendMessage(string message)
+        public void SendMessage(string message, long requestId)
         {
-            SendMessageTelegramAdapter(message);
+            SendMessageTelegramAdapter(message, requestId);
         }
 
-        public void SendMessageTelegramAdapter(string message)
+        public void SendMessageTelegramAdapter(string message, long requestId)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
-            client.SendTextMessageAsync(chatId: ChatID, text: message);
+            client.SendTextMessageAsync(chatId: requestId, text: message);
         }
 
-        public void SendMessageAnswers(Dictionary<string, string> ans)
+        public void SendMessageAnswers(Dictionary<string, string> ans, long requestId)
         {
             callbackValue = "";
-            SendMessageAnswersAdapter(ans);
+            SendMessageAnswersAdapter(ans, requestId);
         }
 
-        public async void SendMessageAnswersAdapter(Dictionary<string, string> ans)
+        public async void SendMessageAnswersAdapter(Dictionary<string, string> ans, long requestId)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
 
@@ -111,7 +109,7 @@ namespace Library
             var keyBoard = new InlineKeyboardMarkup(rows);
 
             await client.SendTextMessageAsync(
-                ChatID,
+                requestId,
                 "Seleccione una de las siguientes opciones:",
                 replyMarkup: keyBoard
             );
@@ -123,7 +121,7 @@ namespace Library
 
             ITelegramBotClient client = TelegramBot.Instance.Client;
 
-            ChatID = callbackQuery.Message.Chat.Id;
+            //ChatID = callbackQuery.Message.Chat.Id;
 
             await client.SendTextMessageAsync(
                     callbackQuery.Message.Chat.Id,

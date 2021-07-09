@@ -16,11 +16,11 @@ namespace Library
                     foreach (SpecificCategory category in storage.SpecificCategoriesSelected)
                     {
                         Thread.Sleep(1000);
-                        output.SendMessage(category.Question);
+                        output.SendMessage(category.Question, request.RequestId);
                         //ESPERA
                         Thread.Sleep(3000);
                         //ESPERA
-                        output.SendMessageAnswers(category.AnswerOptions);
+                        output.SendMessageAnswers(category.AnswerOptions, request.RequestId);
                         //espera
                         string aux = input.GetInput();
                         while (input.GetInput() == aux)
@@ -35,7 +35,7 @@ namespace Library
                     if (storage.SpecificCategoriesSelected.Count == storage.AnswersSpecificQuestions.Count)
                     {
                         storage.UpdateAskSpecificCompleted(true);
-                        output.SendMessage("Se ha finalizado la fase de preguntas especificas");
+                        output.SendMessage("Se ha finalizado la fase de preguntas especificas", request.RequestId);
                         request.UpdateCurrentState("product");
                     }
 
