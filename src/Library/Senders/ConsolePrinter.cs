@@ -14,16 +14,16 @@ namespace Library
     */
     public class ConsolePrinter : IMessageSender
     {
-        public void SendMessage(string message)
+        public void SendMessage(string message,long requestId)
         {
             Console.WriteLine(message);
         }
 
-        public void SendMessageAnswers(Dictionary<string,string> ans)
+        public void SendMessageAnswers(Dictionary<string,string> ans, long requestId)
         {
             foreach (var option in ans)
             {
-                SendMessage(option.Key + " - " + option.Value);
+                SendMessage(option.Key + " - " + option.Value, 1);
             }
         }
     }

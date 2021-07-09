@@ -39,7 +39,7 @@ namespace Library
                     if (storage.SpecificCategoriesSelected.Count > 0)
                     {
                         storage.UpdateGetSpecificCompleted(true);
-                        output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas");
+                        output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas", request.RequestId);
                     }
 
                     return base.Handle(request, reader, user, input, output, searcher, storage);
@@ -48,7 +48,7 @@ namespace Library
 
                 else
                 {
-                    output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!");
+                    output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!", request.RequestId);
                     //return  null;
                     return this.prevHandler.Handle(request, reader, user, input, output, searcher, storage);
 

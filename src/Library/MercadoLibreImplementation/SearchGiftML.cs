@@ -16,12 +16,12 @@ namespace Library
             this.user = user;
             this.output = output;
         }
-        public void FindGift()
+        public void FindGift(long requestId)
         {   
-            output.SendMessage("Buscando regalos...");
+            output.SendMessage("Buscando regalos...", requestId);
 
             List<MLApiSearchResult> resultsFiltered = new List<MLApiSearchResult>();
-            string prefs = "";
+            string prefs = "-";
 
             foreach(string pref in user.Preferences)
             {
@@ -30,9 +30,9 @@ namespace Library
             
             foreach (string prod in user.ProductSearcherKeyWords)
             {
-                string search = prod;
+                string search = prod + prefs;
 
-                //Console.WriteLine(search);
+                Console.WriteLine(search);
                
                 List<MLApiSearchResult> results = new MLApi().Search((search).Replace(" ", "-"));
 
@@ -41,7 +41,7 @@ namespace Library
                     resultsFiltered.Add(results[i]);
                 }
             }
-                resultsFiltered.ForEach(r => output.SendMessage(r.ToString())); 
+                resultsFiltered.ForEach(r => output.SendMessage(r.ToString(),requestId)); 
 
         }
     }

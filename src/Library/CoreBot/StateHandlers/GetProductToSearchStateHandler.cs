@@ -39,7 +39,7 @@ namespace Library
 
                 else
                 {
-                    output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!");
+                    output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!", request.RequestId);
                     //return this.PrevHandler.Handle(request,reader,user,input, output,searcher,storage);
                     return null;
 

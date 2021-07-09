@@ -33,7 +33,7 @@ namespace Test.Library
         //Se prueba que se actualice las categorias seleccionadas del perfil del usuario
         {
             //Act
-            Request request = new Request("main");
+            Request request = new Request("main",1);
             reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             storage.UpdateAskInitialCompleted(true);
             askMainQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);

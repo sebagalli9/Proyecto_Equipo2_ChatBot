@@ -4,6 +4,6 @@ Bot desarrollado por:
     - Sebastián Galli
 
 🤔 Por consultas acerca del bot contactarse a:
-- rafael.duran@correo.ucu.edu.uy
-- constanza.dibueno@correo.ucu.edu.uy
-- sebastian.galli@correo.ucu.edu.uy
+rafael.duran@correo.ucu.edu.uy
+constanza.dibueno@correo.ucu.edu.uy
+sebastian.galli@correo.ucu.edu.uy
