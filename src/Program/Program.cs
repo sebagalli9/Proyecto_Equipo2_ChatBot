@@ -16,7 +16,7 @@ namespace Program
         static void Main(string[] args)
         {
          
-            Session.Instance.Awake();
+            CoreBot.Instance.Awake();
             TelegramGateway.RunTelegramAPI();
 
             

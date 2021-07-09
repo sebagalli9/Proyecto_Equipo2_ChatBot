@@ -25,7 +25,6 @@ namespace Library
     */
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
-        //public static long ChatID { get; private set; }
         public static string callbackValue;
         public static void RunTelegramAPI()
         {
@@ -46,14 +45,14 @@ namespace Library
             Chat chatInfo = message.Chat;
             string messageText = message.Text.ToLower();
 
-            //ChatID = chatInfo.Id;
-
-            if (!Session.userSessions.ContainsKey(chatInfo.Id))
+            //Agrega usuarios nuevos al diccionario UserSessions de CoreBot
+            if (!CoreBot.Instance.UserSessions.ContainsKey(chatInfo.Id))
             {
                 Request request = new Request("initial", chatInfo.Id);
-                Session.userSessions.Add(chatInfo.Id, request);
+                CoreBot.Instance.AddUserSessions(chatInfo.Id, request);
             }
 
+            //Construye cadena de responsabilidad para manejar los comandos
             ICommandHandler commandsCommandHandler = new CommandsCommandHandler();
             ICommandHandler startCommandHandler = new StartCommandHandler();
             ICommandHandler searchMyGiftCommandHandler = new SearchMyGiftCommandHandler();
@@ -64,11 +63,13 @@ namespace Library
             searchMyGiftCommandHandler.SetNext(aboutCommandHandler);
             aboutCommandHandler.SetNext(commandNotFoundHandler);
 
+            //Envia el mensaje recibido al primer eslabon de la cadena de responsabilidad
             commandsCommandHandler.Handle(messageText, chatInfo);
         }
-
+  
         public string GetInput()
         {
+            //Recibe el valor de callback del botón y lo envia como input de usuario
             return callbackValue;
         }
 
@@ -79,6 +80,7 @@ namespace Library
 
         public void SendMessageTelegramAdapter(string message, long requestId)
         {
+            //Imprime un mensaje en el chat de Telegram
             ITelegramBotClient client = TelegramBot.Instance.Client;
             client.SendTextMessageAsync(chatId: requestId, text: message);
         }
@@ -93,6 +95,7 @@ namespace Library
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
 
+            //Mostrar botones de opciones de respuesta
             var rows = new List<List<InlineKeyboardButton>>();
 
             foreach (var index in ans)
@@ -120,8 +123,6 @@ namespace Library
             var callbackQuery = callbackQueryEventArgs.CallbackQuery;
 
             ITelegramBotClient client = TelegramBot.Instance.Client;
-
-            //ChatID = callbackQuery.Message.Chat.Id;
 
             await client.SendTextMessageAsync(
                     callbackQuery.Message.Chat.Id,

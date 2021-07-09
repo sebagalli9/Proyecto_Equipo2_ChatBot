@@ -3,45 +3,60 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class Session
+    //Esta clase antes se llamaba Session
+    public class CoreBot
     {
-        private static Session instance;
+        private static CoreBot instance;
 
-        public static Session Instance 
+        public static CoreBot Instance 
         {
             get
             {
                 if(instance == null)
                 {
-                    instance = new Session();
+                    instance = new CoreBot();
                 }
                 return instance;
             }
         }
 
-        public static Dictionary<long, Request> userSessions = new Dictionary<long, Request>();
-        public static IReader reader;
-        public static IStateHandler askInitialQuestionStateHandler;
-        IStateHandler askMainCategoryStateHanlder;
-        IStateHandler getMixedCategoryStateHandler;
-        IStateHandler askMixedQuestionStateHanlder;
-        IStateHandler getSpecificCategoryStateHandler;
-        IStateHandler askSpecificCategoryStateHandler;
-        IStateHandler getProductToSearchStateHandler;
-        IStateHandler findGiftStateHandler;
-        IStateHandler noMixedAnswersStateHandler;
+        private Dictionary<long, Request> userSessions = new Dictionary<long, Request>();
+        public Dictionary<long, Request> UserSessions
+        {
+            get
+            {
+                return this.userSessions;
+            }
+            private set
+            {
+               this.userSessions = value; 
+            }
+        }
+
+        public IReader Reader{get; private set;}
+        public IStateHandler AskInitialQuestionStateHandler {get;private set;}
+        private IStateHandler askMainCategoryStateHanlder;
+        private IStateHandler getMixedCategoryStateHandler;
+        private IStateHandler askMixedQuestionStateHanlder;
+        private IStateHandler getSpecificCategoryStateHandler;
+        private IStateHandler askSpecificCategoryStateHandler;
+        private IStateHandler getProductToSearchStateHandler;
+        private IStateHandler findGiftStateHandler;
+        private IStateHandler noMixedAnswersStateHandler;
         IStateHandler noSpecificAnswersStateHandler;
 
         public void Awake()
         {
-            reader = new FileReader();
-            reader.UploadFiles();
+            //Inicializa el bot leyendo los archivos de texto y construyendo la cadena de responsabilidad
+            Reader = new FileReader();
+            Reader.UploadFiles();
             InitiateStateHandlers();
         }
 
         private void InitiateStateHandlers()
         {
-            askInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
+            //Construye cadena de responsabilidad para manejar las fases de categorizacion para busqueda de regalo
+            AskInitialQuestionStateHandler = new AskInitialQuestionStateHandler();
             askMainCategoryStateHanlder = new AskMainQuestionStateHandler();
             getMixedCategoryStateHandler = new GetMixedCategoryStateHandler();
             askMixedQuestionStateHanlder = new AskMixedQuestionStateHandler();
@@ -53,7 +68,7 @@ namespace Library
             noMixedAnswersStateHandler = new NoMixedAnswersStateHandler();
             noSpecificAnswersStateHandler = new NoSpecificAnswersStateHandler();
 
-            askInitialQuestionStateHandler.SetNext(askMainCategoryStateHanlder);
+            AskInitialQuestionStateHandler.SetNext(askMainCategoryStateHanlder);
             askMainCategoryStateHanlder.SetNext(getMixedCategoryStateHandler);
             getMixedCategoryStateHandler.SetNext(askMixedQuestionStateHanlder);
             askMixedQuestionStateHanlder.SetNext(getSpecificCategoryStateHandler);
@@ -61,12 +76,18 @@ namespace Library
             askSpecificCategoryStateHandler.SetNext(getProductToSearchStateHandler);
             getProductToSearchStateHandler.SetNext(findGiftStateHandler);
 
-            
+            //Implementación para casos en los que la respuesta a las respuestas mixtas y especificas sean todas que "no"
             noMixedAnswersStateHandler.SetNext(askMixedQuestionStateHanlder);
             noSpecificAnswersStateHandler.SetNext(askSpecificCategoryStateHandler);
 
             getSpecificCategoryStateHandler.SetPrevious(noMixedAnswersStateHandler);
             getProductToSearchStateHandler.SetPrevious(noSpecificAnswersStateHandler); 
+        }
+
+        public void AddUserSessions(long id, Request request)
+        {
+            //Console.WriteLine(id);
+            userSessions.Add(id, request);
         }
     }
 }
