@@ -2,6 +2,17 @@ using System;
 
 namespace Library
 {
+    /*
+        POLIMORFISMO: Se aplica el patrón polimorfismo ya que las clases que 
+        implementan el tipo IStateHandler implementan sus operaciones polimórficas.
+
+        OCP: Se puede agregar nuevas responsabilidades en la cadena de responsabilidad 
+        mediante herencia. 
+
+        DIP: La clase cumple con el principio DIP ya que las abstracciones no 
+        deben depender de detalles.
+    */
+    
     public abstract class AbstractStateHandler : IStateHandler
     {
         private IStateHandler _nextHandler;

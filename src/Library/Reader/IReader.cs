@@ -4,14 +4,19 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-    Si en un futuro se agregaran nuevas clases que interpreten y que lean otros tipos de formato de archivo, las operaciones
-    de esta interfaz cumplirian con el patron Polimorfismo ya que las operaciones serian operaciones polimorficas. 
+        POLIMORFISMO: Si en un futuro se agregaran nuevas clases que interpreten 
+        y que lean otros tipos de formato de archivo, las operaciones de esta interfaz 
+        cumplirían con el patrón Polimorfismo ya que las operaciones serían operaciones polimórficas. 
 
-    Se cumple LSP ya que los objetos de las clases que implementan la interfaz IReader pueden ser asignados a una variable de 
-    tipo IReader y el coportamiento del programa no va a cambiar. Actualmente si utilizamos un FileReader o un CsvReader o otra 
-    clase que implemente IReader, el comportamiento del programa no cambia.
+        LSP: Se cumple LSP ya que los objetos de las clases que implementan la interfaz 
+        IReader pueden ser asignados a una variable de tipo IReader y el comportamiento 
+        del programa no va a cambiar. Actualmente si utilizamos un FileReader o otra  
+        clase que implemente IReader, el comportamiento del programa no cambia.
 
+        OCP: La interfaz IReader  hace que el medio por el que se leen los archivos externos 
+        sea abierto a extensión.
     */
+    
     public interface IReader
     {
         List<MixedCategory> MixedCategoryBank { get; }

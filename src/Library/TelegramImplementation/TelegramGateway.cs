@@ -14,15 +14,21 @@ using System.Linq;
 namespace Library
 {
     /* 
-    Se aplica el patrón Adapter: La clase cliente es el CoreBot y la clase que brinda el servicio que necesitamos adaptar
-    es la API de Telegram. La interfaz que usa el cliente es IMessageSender y IMessageReciver, por lo que como esta clase  
-    es la clase que debe hacer compatibles los mensajes que se envian o llegan desde Telegram, implementa las interfaces 
-    compatibles con el cliente 
-    
-    Se aplica el patron Chain of Responsibility 
+        POLIMORFISMO: Se cumple con el patrón de polimorfismo ya que las clases 
+        está implementando las operaciones polimórficas de sus interfaces.
 
-    Se cumple ISP
+        SRP: La clase cumple con el principio SRP ya que la única razón de cambio 
+        es administrar los envíos y recepciones de mensajes de Telegram.
+
+        ISP: La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
+
+        CHAIN OF RESPONSIBILITY: En esta clase se aplica el patrón Chain of Responsibility 
+        para que varios objetos gestionen las diferentes comandos y así favorecer la extensibilidad.
+
+        ADAPTER: La clase implementa el patrón Adapter para transformar a un formato 
+        reconocible para el manejo de mensajes (inputs y outputs) en el core del bot.
     */
+
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
         private static string callbackValue;

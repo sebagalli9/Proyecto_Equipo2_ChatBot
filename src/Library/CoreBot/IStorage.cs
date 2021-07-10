@@ -3,6 +3,22 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    /*
+        DIP: Se creó la interfaz IStorage para que la lógica interna del core 
+        de nuestro bot (distribuida en los StateHandlers, que son clases de alto nivel) 
+        se pueda abstraer de detalles. 
+
+        LSP: Si en un futuro se desean agregar otras formas de almacenamiento, 
+        implementando IStorage se cumpliría con el principio LSP ya que el comportamiento 
+        del programa no cambiaria si se sustituyera el subtipo actual (ConversationData) 
+        por otro subtipo.
+
+        POLIMORFISMO: Si en un futuro se desean agregar otras formas de almacenamiento, 
+        implementando IStorage se usarían operaciones polimórficas en los tipos cuyo 
+        comportamiento varía.
+
+        OCP: La interfaz IStorage hace que la forma de almacenamiento sea abierta a extensión.
+    */
     public interface IStorage
     {
         List<MixedCategory> MixedCategoriesSelected { get; }

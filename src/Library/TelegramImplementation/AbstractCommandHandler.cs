@@ -11,6 +11,11 @@ using System.Text;
 
 namespace Library
 { 
+    /*
+        POLIMORFISMO: La clase AbstractCommandHandler tiene el método Handler 
+        que implementa una operación polimórfica.
+    */
+    
     abstract public class AbstractCommandHandler: ICommandHandler
     {
         private ICommandHandler _nextHandler;

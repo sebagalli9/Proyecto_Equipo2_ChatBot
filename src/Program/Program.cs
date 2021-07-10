@@ -19,8 +19,6 @@ namespace Program
             CoreBot.Instance.Awake();
             TelegramGateway.RunTelegramAPI();
 
-            
-            
         }
     }
 }

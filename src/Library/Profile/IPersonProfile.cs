@@ -5,8 +5,9 @@ namespace Library
 {
 
     /*
-    Para cumplir con la inversión de dependencias en CoreBot creamos una abstracción implementada por la clase PersonProfile
-    con el fin de evitar la rigidez del código.
+        DIP: Se creó la interfaz IPersonProfile para que la lógica interna 
+        del core de nuestro bot (distribuida en los StateHandlers, que son clases de alto nivel) 
+        se pueda abstraer de detalles. 
     */
 
     public interface IPersonProfile

@@ -3,6 +3,34 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    /*
+        DIP: La clase Session cumple con el principio DIP, ya que depende únicamente 
+        de abstracciones, por lo que el código es flexible y no rígido, ya que esta 
+        clase no depende de los métodos de cada clase que implemente la interfaz IStateHandler, 
+        sino que justamente depende únicamente de las operaciones de dicha interfaz.
+
+        EXPERT: La clase Session cumple con el patrón Expert ya que al ser la clase 
+        experta en conocer los StateHandlers, es su responsabilidad crear la cadena 
+        de responsabilidad.
+
+        CHAIN OF RESPONSIBILITY: En esta clase se aplica el patrón Chain of Responsibility 
+        para que varios objetos gestionen las diferentes fases de preguntas y así favorecer 
+        la extensibilidad.
+
+        OCP: También cumple con el principio OCP, ya que la clase se encuentra abierta 
+        a extensión, debido a que si se desearan agregar más funcionalidades a manejar, 
+        simplemente habría que agregar más handlers.
+
+        SRP: La clase cumple con el principio SRP, ya que su única razón de cambio  
+        es modificar las preparaciones previas a que se inicie el bot (Awake() es el método 
+        que se llama en Program).
+
+        SINGLETON: En esta clase se aplica el patrón Singleton con el fin de que la creación 
+        de la cadena de responsabilidad y la lectura de archivos se haga una única vez para una 
+        mejor optimización de los recursos del bot.
+
+    */
+    
     //Esta clase antes se llamaba Session
     public class CoreBot
     {

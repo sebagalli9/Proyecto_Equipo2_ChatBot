@@ -4,14 +4,18 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-    La clase ConsolePrinter implementa la interfaz IMessageSender por lo que debe implementar las operaciones 
-    polimórficas y por lo tanto cumple con el patron de Polimorfismo.
+        POLIMORFISMO: La clase ConsolePrinter implementa la interfaz IMessageSender 
+        por lo que debe implementar las operaciones polimórficas y por lo tanto cumple 
+        con el patrón de Polimorfismo.
 
-    La clase cumple con el patron Expert ya que es la clase experta en enviar mensajes a la consola.
+        EXPERT: La clase cumple con el patrón Expert ya que es la clase experta en enviar 
+        mensajes a la consola.
 
-    La clase cumple con el principio SRP ya que no tiene más de una razón de cambio.
+        SRP: La clase cumple con el principio SRP ya que no tiene más de una razón de cambio.
 
+        ISP: La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
     */
+    
     public class ConsolePrinter : IMessageSender
     {
         public void SendMessage(string message,long requestId)
