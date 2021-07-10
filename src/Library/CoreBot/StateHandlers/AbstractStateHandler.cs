@@ -5,7 +5,7 @@ namespace Library
     public abstract class AbstractStateHandler : IStateHandler
     {
         private IStateHandler _nextHandler;
-        public IStateHandler prevHandler { get; private set; }
+        public IStateHandler PrevHandler { get; private set; }
 
         public IStateHandler SetNext(IStateHandler handler)
         {
@@ -15,7 +15,7 @@ namespace Library
 
         public IStateHandler SetPrevious(IStateHandler handler)
         {
-            this.prevHandler = handler;
+            this.PrevHandler = handler;
             return handler;
 
         }

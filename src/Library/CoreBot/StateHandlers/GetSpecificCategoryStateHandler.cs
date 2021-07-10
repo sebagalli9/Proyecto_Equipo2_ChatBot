@@ -50,7 +50,7 @@ namespace Library
                 {
                     output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!", request.RequestId);
                     //return  null;
-                    return this.prevHandler.Handle(request, reader, user, input, output, searcher, storage);
+                    return this.PrevHandler.Handle(request, reader, user, input, output, searcher, storage);
 
                 }
 
