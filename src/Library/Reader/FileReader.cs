@@ -30,15 +30,62 @@ namespace Library
     */
 
     public class FileReader : IReader
-    {
-        public List<MainCategory> MainCategoryBank { get; private set; }
-        public List<MixedCategory> MixedCategoryBank { get; private set; }
-        public List<SpecificCategory> SpecificCategoryBank { get; private set; }
-        public List<InitialQuestion> InitialQuestionsBank { get; private set; }
+    {   
+        private List<MainCategory> mainCategoryBank;
+
+        private ReadOnlyCollection<MainCategory> roMainCategoryBank;
+
+        public IList<MainCategory> MainCategoryBank
+        {
+            get 
+            {
+                roMainCategoryBank = mainCategoryBank.AsReadOnly();
+                return roMainCategoryBank;
+            }
+        }
+
+        private List<MixedCategory> mixedCategoryBank = new List<MixedCategory>();
+
+        private ReadOnlyCollection<MixedCategory> roMixedCategoryBank;
+
+        public IList<MixedCategory> MixedCategoryBank
+        {
+            get 
+            {
+                roMixedCategoryBank = mixedCategoryBank.AsReadOnly();
+                return roMixedCategoryBank;
+            }
+        }
+
+        private List<SpecificCategory> specificCategoryBank = new List<SpecificCategory>();
+
+        private ReadOnlyCollection<SpecificCategory> roSpecificCategoryBank;
+
+        public IList<SpecificCategory> SpecificCategoryBank
+        {
+            get 
+            {
+                roSpecificCategoryBank = specificCategoryBank.AsReadOnly();
+                return roSpecificCategoryBank;
+            }
+        }
+
+        private List<InitialQuestion> initialQuestionsBank = new List<InitialQuestion>();
+
+        private ReadOnlyCollection<InitialQuestion> roInitialQuestionsBank;
+
+        public IList<InitialQuestion> InitialQuestionsBank
+        {
+            get 
+            {
+                roInitialQuestionsBank = initialQuestionsBank.AsReadOnly();
+                return roInitialQuestionsBank;
+            }
+        }
 
         public void ReadMainCategories(string path)
         {
-            MainCategoryBank = new List<MainCategory>();
+            mainCategoryBank = new List<MainCategory>();
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -58,7 +105,7 @@ namespace Library
                             string[] keyVal = listaLinea[1].Split("-");
                             mainQ.AddAnswerOption(keyVal[0], keyVal[1]);
 
-                            this.MainCategoryBank.Add(mainQ);
+                            this.mainCategoryBank.Add(mainQ);
                         }
                         catch (Exception)
                         {
@@ -77,8 +124,7 @@ namespace Library
 
         public void ReadMixedCategories(string path)
         {
-            this.MixedCategoryBank = new List<MixedCategory>();
-
+            mixedCategoryBank = new List<MixedCategory>();
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -102,7 +148,7 @@ namespace Library
                                 mixedQ.AddAnswerOption(keyVal[0], keyVal[1]);
                             }
 
-                            this.MixedCategoryBank.Add(mixedQ);
+                            this.mixedCategoryBank.Add(mixedQ);
                         }
                         catch (Exception)
                         {
@@ -122,8 +168,7 @@ namespace Library
 
         public void ReadSpecificCategories(string path)
         {
-            this.SpecificCategoryBank = new List<SpecificCategory>();
-
+            specificCategoryBank = new List<SpecificCategory>();
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -154,7 +199,7 @@ namespace Library
                                 specificCat.AddAnswerOption(keyVal[0], keyVal[1]);
                             }
 
-                            SpecificCategoryBank.Add(specificCat);
+                            this.specificCategoryBank.Add(specificCat);
                         }
                         catch (Exception)
                         {
@@ -174,8 +219,7 @@ namespace Library
 
         public void ReadInitialQuestions(string path)
         {
-            this.InitialQuestionsBank = new List<InitialQuestion>();
-
+            initialQuestionsBank = new List<InitialQuestion>();
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -199,7 +243,7 @@ namespace Library
                                 initialQ.AddAnswerOption(keyVal[0], keyVal[1]);
                             }
 
-                            this.InitialQuestionsBank.Add(initialQ);
+                            this.initialQuestionsBank.Add(initialQ);
                         }
                         catch (Exception)
                         {
