@@ -6,7 +6,6 @@ namespace Test.Library
 {
     public class AskMainQuestionTest
     {
-        private IReader reader;
         private IPersonProfile user;
         private IMessageReceiver input;
         private IMessageSender output;
@@ -19,7 +18,6 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            reader = new FileReader();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
@@ -34,9 +32,9 @@ namespace Test.Library
         {
             //Act
             Request request = new Request("main",1);
-            reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
+            CoreBot.Instance.Reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             storage.UpdateAskInitialCompleted(true);
-            askMainQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            askMainQuestionStateHandler.Handle(request, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(2, user.SelectedCategory.Count);
         }

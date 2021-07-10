@@ -7,7 +7,6 @@ namespace Test.Library
 {
     public class AskInitialQuestionTest
     {
-        private IReader reader;
         private IPersonProfile user;
         private IMessageReceiver input;
         private IMessageSender output;
@@ -20,7 +19,6 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            reader = new FileReader();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
@@ -35,8 +33,8 @@ namespace Test.Library
         {
             //Act
             Request request = new Request("initial",1);
-            reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
-            askInitialQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            CoreBot.Instance.Reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
+            askInitialQuestionStateHandler.Handle(request, user, input, output, findG, storage);
             //Assert
             Assert.AreEqual(4, user.Preferences.Count);
         }

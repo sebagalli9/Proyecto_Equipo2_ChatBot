@@ -9,5 +9,8 @@ namespace Library
     public interface ISearchGift
     {
         void FindGift(long requestId);
+
+        List<MLApiSearchResult> Results { get; }
+        List<MLApiSearchResult> ResultsFiltered { get; }
     }
 }

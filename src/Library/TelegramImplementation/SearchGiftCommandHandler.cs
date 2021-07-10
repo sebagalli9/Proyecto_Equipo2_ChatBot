@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Library
 { 
-    internal class SearchMyGiftCommandHandler : AbstractCommandHandler
+    public class SearchGiftCommandHandler : AbstractCommandHandler
     {
-        public async override Task<object> Handle(string messageText, Chat chatInfo)
+        public async override Task<object> Handle(string messageText, long chatInfoID)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
             
@@ -25,13 +25,13 @@ namespace Library
                 ISearchGift findG = new SearchGiftML(user,output);
                 IStorage storage = new ConversationData(); 
                 
-                await Task.Run(() => CoreBot.Instance.AskInitialQuestionStateHandler.Handle(CoreBot.Instance.UserSessions[chatInfo.Id],CoreBot.Instance.Reader,user,input, output,findG,storage));
+                await Task.Run(() => CoreBot.Instance.AskInitialQuestionStateHandler.Handle(CoreBot.Instance.UserSessions[chatInfoID],user,input, output,findG,storage));
                 
                 return "searchgift Command";
             }
             else
             {
-                return base.Handle(messageText, chatInfo);
+                return base.Handle(messageText, chatInfoID);
             }
         }
     } 

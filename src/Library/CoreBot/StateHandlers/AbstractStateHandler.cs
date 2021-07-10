@@ -20,11 +20,11 @@ namespace Library
 
         }
 
-        public virtual object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public virtual object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (this._nextHandler != null)
             {
-                return this._nextHandler.Handle(request, reader, user, input, output, searcher, storage);
+                return this._nextHandler.Handle(request, user, input, output, searcher, storage);
             }
             else
             {

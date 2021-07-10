@@ -33,7 +33,7 @@ namespace Test.Library
             //Act
             reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             //Assert
-            Assert.AreEqual(54, reader.MixedCategoryBank.Count);
+            Assert.AreEqual(52, reader.MixedCategoryBank.Count);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Test.Library
             //Act
             reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             //Assert
-            Assert.AreEqual(65, reader.SpecificCategoryBank.Count);
+            Assert.AreEqual(69, reader.SpecificCategoryBank.Count);
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace Test.Library
             //Act
             string text = reader.ReadPlainText("../../../../../../Assets/Welcome.txt");
             //Assert
-            Assert.AreEqual(51, text.Length);
+            Assert.AreEqual(213, text.Length);
         }
     }
 

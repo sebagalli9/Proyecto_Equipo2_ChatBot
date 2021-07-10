@@ -11,23 +11,22 @@ using System.Threading.Tasks;
 
 namespace Library
 { 
-    internal class StartCommandHandler : AbstractCommandHandler
+    public class StartCommandHandler : AbstractCommandHandler
     {
-        public async override Task<object> Handle(string messageText, Chat chatInfo)
+        public async override Task<object> Handle(string messageText, long chatInfoID)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
  
             if (messageText != null && (messageText as string) == "/start")
             {
-                FileReader fileReader = new FileReader();
-                string info = fileReader.ReadPlainText("../../Assets/Welcome.txt");
-                await client.SendTextMessageAsync(chatId: chatInfo.Id, text: info);
+                string info = CoreBot.Instance.Reader.ReadPlainText("../../Assets/Welcome.txt");
+                await client.SendTextMessageAsync(chatId: chatInfoID, text: info);
                
-                return "About Command";
+                return "Start";
             }
             else
             {
-                return base.Handle(messageText, chatInfo);
+                return base.Handle(messageText, chatInfoID);
             }
         }
     } 

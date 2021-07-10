@@ -4,11 +4,11 @@ namespace Library
 {
     public class GetMixedCategoryStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (storage.AskMainCompleted)
             {
-                foreach (MixedCategory category in reader.MixedCategoryBank)
+                foreach (MixedCategory category in CoreBot.Instance.Reader.MixedCategoryBank)
                 {
                     if ((category.ParentCategoryName == user.SelectedCategory[0] && category.SecondParentCategoryName == user.SelectedCategory[1]) || (category.ParentCategoryName == user.SelectedCategory[1] && category.SecondParentCategoryName == user.SelectedCategory[0]))
                     {
@@ -22,7 +22,7 @@ namespace Library
                     output.SendMessage("Se ha finalizado la fase de seleccion de preguntas mixtas", request.RequestId);
                 }
 
-                return base.Handle(request, reader, user, input, output, searcher, storage);
+                return base.Handle(request, user, input, output, searcher, storage);
             }
             else
             {

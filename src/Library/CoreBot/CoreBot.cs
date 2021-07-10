@@ -33,7 +33,18 @@ namespace Library
             }
         }
 
-        public IReader Reader{get; private set;}
+        private IReader reader = new FileReader();
+        public IReader Reader
+        {
+            get
+            {
+                return this.reader;
+            }
+            private set	
+            {
+                this.reader = value;
+            }
+        }
         public IStateHandler AskInitialQuestionStateHandler {get;private set;}
         private IStateHandler askMainCategoryStateHanlder;
         private IStateHandler getMixedCategoryStateHandler;
@@ -48,7 +59,6 @@ namespace Library
         public void Awake()
         {
             //Inicializa el bot leyendo los archivos de texto y construyendo la cadena de responsabilidad
-            Reader = new FileReader();
             Reader.UploadFiles();
             InitiateStateHandlers();
         }
@@ -85,8 +95,7 @@ namespace Library
         }
 
         public void AddUserSessions(long id, Request request)
-        {
-            //Console.WriteLine(id);
+        {   
             userSessions.Add(id, request);
         }
     }

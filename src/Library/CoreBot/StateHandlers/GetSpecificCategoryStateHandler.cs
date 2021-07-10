@@ -5,7 +5,7 @@ namespace Library
 {
     public class GetSpecifiCategoryStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (storage.AskMixedCompleted)
             {
@@ -25,7 +25,7 @@ namespace Library
                         }
                     }
 
-                    foreach (SpecificCategory category in reader.SpecificCategoryBank)
+                    foreach (SpecificCategory category in CoreBot.Instance.Reader.SpecificCategoryBank)
                     {
                         foreach (string subCat in storage.SubCategory)
                         {
@@ -42,7 +42,7 @@ namespace Library
                         output.SendMessage("Se ha finalizado la fase de seleccion de preguntas especificas", request.RequestId);
                     }
 
-                    return base.Handle(request, reader, user, input, output, searcher, storage);
+                    return base.Handle(request, user, input, output, searcher, storage);
 
                 }
 
@@ -50,7 +50,7 @@ namespace Library
                 {
                     output.SendMessage("¿No le gusta nada? ¡Bueno, intenemos de nuevo!", request.RequestId);
                     //return  null;
-                    return this.PrevHandler.Handle(request, reader, user, input, output, searcher, storage);
+                    return this.PrevHandler.Handle(request, user, input, output, searcher, storage);
 
                 }
 

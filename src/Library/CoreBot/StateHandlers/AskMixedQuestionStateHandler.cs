@@ -6,7 +6,7 @@ namespace Library
 {
     public class AskMixedQuestionStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (request.CurrentState == "mixed")
             {
@@ -35,7 +35,7 @@ namespace Library
                         request.UpdateCurrentState("specific");
                     }
 
-                    return base.Handle(request, reader, user, input, output, searcher, storage);
+                    return base.Handle(request, user, input, output, searcher, storage);
                 }
                 else
                 {

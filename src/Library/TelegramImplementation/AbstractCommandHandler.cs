@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Library
 { 
-    abstract class AbstractCommandHandler: ICommandHandler
+    abstract public class AbstractCommandHandler: ICommandHandler
     {
         private ICommandHandler _nextHandler;
 
@@ -21,11 +21,11 @@ namespace Library
             return handler;
         }
         
-        public virtual object Handle(string message, Chat chatInfo)
+        public virtual object Handle(string message, long chatInfoID)
         {
             if (this._nextHandler != null)
             {
-                return this._nextHandler.Handle(message, chatInfo);
+                return this._nextHandler.Handle(message, chatInfoID);
             }
             else
             {

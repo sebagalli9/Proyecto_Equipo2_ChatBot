@@ -6,7 +6,6 @@ namespace Test.Library
 {
     public class GetProductToSearchTest
     {
-        private IReader reader;
         private IPersonProfile user;
         private IMessageReceiver input;
         private IMessageSender output;
@@ -22,7 +21,6 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            reader = new FileReader();
             user = new PersonProfile();
             input = new TestAnswerReceiver("1");
             output = new ConsolePrinter();
@@ -41,18 +39,18 @@ namespace Test.Library
         {
             //Act
             Request request = new Request("mixed",1);
-            reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
-            reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
+            CoreBot.Instance.Reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
+            CoreBot.Instance.Reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
             user.UpdateSelectedCategory("technology");
-            getMixedCategoryStateHandler.Handle(request, reader, user, input, output, findG, storage);
-            askMixedQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            getMixedCategoryStateHandler.Handle(request, user, input, output, findG, storage);
+            askMixedQuestionStateHandler.Handle(request, user, input, output, findG, storage);
             request.UpdateCurrentState("specific");
-            getSpecificCategoryStateHandler.Handle(request, reader, user, input, output, findG, storage);
-            askSpecificQuestionStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            getSpecificCategoryStateHandler.Handle(request, user, input, output, findG, storage);
+            askSpecificQuestionStateHandler.Handle(request, user, input, output, findG, storage);
             request.UpdateCurrentState("product");
-            getProductToSearchStateHandler.Handle(request, reader, user, input, output, findG, storage);
+            getProductToSearchStateHandler.Handle(request, user, input, output, findG, storage);
 
             //Assert
             Assert.AreEqual(6, user.ProductSearcherKeyWords.Count);

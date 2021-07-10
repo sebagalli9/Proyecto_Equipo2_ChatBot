@@ -10,6 +10,8 @@ namespace Library
     {
         private IPersonProfile user;
         private IMessageSender output;
+        public List<MLApiSearchResult> Results {get; private set;}
+        public List<MLApiSearchResult> ResultsFiltered {get; private set;}
 
         public SearchGiftML(IPersonProfile user, IMessageSender output)
         {
@@ -20,7 +22,7 @@ namespace Library
         {   
             output.SendMessage("Buscando regalos...", requestId);
 
-            List<MLApiSearchResult> resultsFiltered = new List<MLApiSearchResult>();
+            ResultsFiltered = new List<MLApiSearchResult>();
             string prefs = "-";
 
             foreach(string pref in user.Preferences)
@@ -34,14 +36,14 @@ namespace Library
 
                 Console.WriteLine(search);
                
-                List<MLApiSearchResult> results = new MLApi().Search((search).Replace(" ", "-"));
+                Results = new MLApi().Search((search).Replace(" ", "-"));
 
                 for(int i = 0; i < 2; i++)
                 {
-                    resultsFiltered.Add(results[i]);
+                    ResultsFiltered.Add(Results[i]);
                 }
             }
-                resultsFiltered.ForEach(r => output.SendMessage(r.ToString(),requestId)); 
+                ResultsFiltered.ForEach(r => output.SendMessage(r.ToString(),requestId)); 
 
         }
     }
