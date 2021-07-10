@@ -5,9 +5,12 @@ using System.Threading;
 namespace Library
 {
     /*
-    La clase cumple con el patrón Expert ya que es la clase experta en conocer la información para crear una respuesta pre-hecha.
+        EXPERT: La clase cumple con el patrón Expert ya que es la clase experta 
+        en conocer la información para crear una respuesta pre-hecha.
 
-    La clase cumple con el principio SRP ya que existe una sola razón de cambio.
+        SRP: La clase cumple con el principio SRP ya que existe una sola razón de cambio.
+
+        ISP: La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
     */
 
     public class TestAnswerReceiver : IMessageReceiver

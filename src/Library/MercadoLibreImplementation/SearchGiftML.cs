@@ -6,6 +6,15 @@ using System.Linq;
 
 namespace Library
 {
+    /*
+        SRP: La clase SearchGiftML cumple con el principio SRP, 
+        debido a que sólo cuenta con una responsabilidad, la cuál es buscar 
+        el producto, por lo tanto sólo tiene una razón de cambio la cuál es 
+        cambiar la forma en que se realizan las búsquedas de productos.
+
+        ISP: La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
+    */
+    
     public class SearchGiftML : ISearchGift
     {
         private IPersonProfile user;

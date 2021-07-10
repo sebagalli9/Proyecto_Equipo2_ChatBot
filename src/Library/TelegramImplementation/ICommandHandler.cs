@@ -11,6 +11,11 @@ using System.Text;
 
 namespace Library
 { 
+    /*
+        POLIMORFISMO: La interfaz ICommandHandler tiene la operación polimórfica Handler, 
+        la cuál es implementada por todos los handlers que implementan esta interfaz.
+    */
+    
     public interface ICommandHandler
     {
         ICommandHandler SetNext(ICommandHandler handler);

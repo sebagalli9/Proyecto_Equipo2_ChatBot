@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    /*
+        La clase ConversationData se creó para cumplir con la responsabilidad 
+        de registrar el estado de las fases de preguntas y almacenar las respuestas 
+        que ingresa un usuario durante cada fase. De esta manera se retira dicha 
+        responsabilidad de la clase responsable de ejecutar las fases de preguntas.
+        
+    */
     public class ConversationData : IStorage
     {
         public List<MixedCategory> MixedCategoriesSelected { get; private set; }

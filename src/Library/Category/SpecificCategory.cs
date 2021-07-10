@@ -4,10 +4,15 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-    La clase SpecificCategory cumple con el principio SRP ya que no tiene más de una razón de cambio.
-    La clase SpecificCategory cumple con al patrón Expert ya que es la clase experta en conocer la información
-    necesaria para instanciar objetos SpecificCategory. La clase también es experta en conocer las 
-    respuestas predeterminadas posibles.
+        La clase SpecificCategory cumple con el principio SRP ya que no 
+        tiene más de una razón de cambio, la cual sería modificar la forma 
+        en que se añade información a sus dos colecciones.
+
+        La clase SpecificCategory cumple con al patrón Expert ya que al ser 
+        la clase experta en conocer la información necesaria para crear objetos 
+        SpecificCategory, es su responsabilidad agregar las respuestas predeterminadas 
+        y sus productos asociados a su respectivas colecciones.
+
     */
     public class SpecificCategory
     {

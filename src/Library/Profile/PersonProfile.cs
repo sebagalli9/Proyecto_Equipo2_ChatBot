@@ -5,14 +5,13 @@ namespace Library
 {
 
     /*
-    Actualmente la clase PersonProfile cumple con el principio SRP ya que no existe más de una razón de cambio la cual es:
-    - Hacer actualizaciónes de información en el perfil.
+        SRP: Actualmente la clase PersonProfile cumple con el principio SRP 
+        ya que no existe más de una razón de cambio la cual sería modificar 
+        la forma de hacer actualizaciones de la información en el perfil.
     
-    La clase PersonProfile cumple con el patrón Expert ya que es la clase experta en conocer la información necesaria
-    para crear instancias de la clase PersonProfile y actualizar dicha información.
-
-    La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
-
+        EXPERT: La clase PersonProfile cumple con el patrón Expert ya que 
+        es la clase experta en conocer la información necesaria para crear 
+        instancias de la clase PersonProfile y actualizar dicha información.
     */
 
     public class PersonProfile : IPersonProfile

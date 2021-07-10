@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 
 namespace Library
 { 
+    /*
+        POLIMORFISMO: La clase StartCommandHandler tiene el método Handler 
+        que implementa una operación polimórfica.
+    */
+
     public class StartCommandHandler : AbstractCommandHandler
     {
         public async override Task<object> Handle(string messageText, long chatInfoID)

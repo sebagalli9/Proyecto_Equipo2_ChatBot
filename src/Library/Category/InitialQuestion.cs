@@ -3,12 +3,16 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    /*
-    La clase InitialQuestion cumple con el principio SRP ya que no tiene más de una razón de cambio.
-    La clase InitialQuestion cumple con al patrón Expert ya que es la clase experta en conocer la 
-    información necesaria para crear objetos InitialQuestion. La clase también es experta en conocer las 
-    respuestas predeterminadas posibles.
+    /* 
+        SRP: La clase InitialQuestion cumple con el principio SRP ya que no 
+        tiene más de una razón de cambio, la cual sería modificar la forma en que 
+        se agregan opciones de respuesta al diccionario AnswerOptions.
+
+        EXPERT: La clase InitialQuestion cumple con el patrón Expert ya que al ser 
+        la clase experta en conocer la información necesaria para crear objetos InitialQuestion, 
+        es su responsabilidad agregar las respuestas predeterminadas a su respectivo diccionario. 
     */
+
     public class InitialQuestion
     {
         public string Question { get; }

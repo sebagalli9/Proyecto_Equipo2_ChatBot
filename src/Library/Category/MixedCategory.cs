@@ -4,10 +4,13 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-    La clase MixedCategory cumple con el principio SRP ya que no tiene más de una razón de cambio.
-    La clase MixedCategory cumple con al patrón Expert ya que es la clase experta en conocer la información
-    necesaria para instanciar objetos MidexCategory. La clase también es experta en conocer las 
-    respuestas predeterminadas posibles.
+        SRP: La clase MixedCategory cumple con el principio SRP ya que no 
+        tiene más de una razón de cambio, la cual sería modificar la forma 
+        en que se agregan opciones de respuesta al diccionario AnswerOptions.
+
+        La clase MixedCategory cumple con al patrón Expert ya que al ser la 
+        clase experta en conocer la información necesaria para crear objetos MixedCategory, 
+        es su responsabilidad agregar las respuestas predeterminadas a su respectivo diccionario.
     */
     public class MixedCategory
     {
