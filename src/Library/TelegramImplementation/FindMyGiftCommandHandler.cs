@@ -25,7 +25,7 @@ namespace Library
                 ISearchGift findG = new SearchGiftML(user,output);
                 IStorage storage = new ConversationData(); 
                 
-                await Task.Run(() => Session.askInitialQuestionStateHandler.Handle(Session.userSessions[chatInfo.Id],Session.reader,user,input, output,findG,storage));
+                await Task.Run(() => CoreBot.Instance.AskInitialQuestionStateHandler.Handle(CoreBot.Instance.UserSessions[chatInfo.Id],CoreBot.Instance.Reader,user,input, output,findG,storage));
                 
                 return "searchgift Command";
             }

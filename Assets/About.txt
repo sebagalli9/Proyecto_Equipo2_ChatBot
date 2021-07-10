@@ -3,7 +3,7 @@ Bot desarrollado por:
     - Rafael Durán 
     - Sebastián Galli
 
-🤔 Por consultas acerca del bot contactarse a:
-rafael.duran@correo.ucu.edu.uy
-constanza.dibueno@correo.ucu.edu.uy
-sebastian.galli@correo.ucu.edu.uy
+🤔 Por consultas acerca del bot contactarse con:
+ rafael.duran@correo.ucu.edu.uy ,
+ constanza.dibueno@correo.ucu.edu.uy ,
+ sebastian.galli@correo.ucu.edu.uy
