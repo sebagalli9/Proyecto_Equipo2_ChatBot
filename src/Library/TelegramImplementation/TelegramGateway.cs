@@ -32,6 +32,11 @@ namespace Library
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
         private static string callbackValue;
+        private static ICommandHandler commandsCommandHandler;
+        private static ICommandHandler startCommandHandler;
+        private static ICommandHandler searchMyGiftCommandHandler;
+        private static ICommandHandler aboutCommandHandler;
+        private static ICommandHandler commandNotFoundHandler;
         public static void RunTelegramAPI()
         {
             TelegramBot telegramBot = TelegramBot.Instance;
@@ -59,11 +64,12 @@ namespace Library
             }
 
             //Construye cadena de responsabilidad para manejar los comandos
-            ICommandHandler commandsCommandHandler = new CommandsCommandHandler();
-            ICommandHandler startCommandHandler = new StartCommandHandler();
-            ICommandHandler searchMyGiftCommandHandler = new SearchGiftCommandHandler();
-            ICommandHandler aboutCommandHandler = new AboutCommandHandler();
-            ICommandHandler commandNotFoundHandler = new CommandNotFoundHandlder();
+            commandsCommandHandler = new CommandsCommandHandler();
+            startCommandHandler = new StartCommandHandler();
+            searchMyGiftCommandHandler = new SearchGiftCommandHandler();
+            aboutCommandHandler = new AboutCommandHandler();
+            commandNotFoundHandler = new CommandNotFoundHandlder();
+
             commandsCommandHandler.SetNext(startCommandHandler);
             startCommandHandler.SetNext(searchMyGiftCommandHandler);
             searchMyGiftCommandHandler.SetNext(aboutCommandHandler);
@@ -84,7 +90,7 @@ namespace Library
             SendMessageTelegramAdapter(message, requestId);
         }
 
-        public void SendMessageTelegramAdapter(string message, long requestId)
+        private void SendMessageTelegramAdapter(string message, long requestId)
         {
             //Imprime un mensaje en el chat de Telegram
             ITelegramBotClient client = TelegramBot.Instance.Client;
@@ -97,7 +103,7 @@ namespace Library
             SendMessageAnswersAdapter(ans, requestId);
         }
 
-        public async void SendMessageAnswersAdapter(Dictionary<string, string> ans, long requestId)
+        private async void SendMessageAnswersAdapter(Dictionary<string, string> ans, long requestId)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
 
