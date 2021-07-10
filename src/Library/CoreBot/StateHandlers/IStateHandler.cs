@@ -7,6 +7,6 @@ namespace Library
         IStateHandler SetNext(IStateHandler handler);
         IStateHandler SetPrevious(IStateHandler handler);
         
-        object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage);
+        object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage);
     }
 }

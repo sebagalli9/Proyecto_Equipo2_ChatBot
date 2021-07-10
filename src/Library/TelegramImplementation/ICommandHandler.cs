@@ -14,6 +14,6 @@ namespace Library
     public interface ICommandHandler
     {
         ICommandHandler SetNext(ICommandHandler handler);
-        object Handle(string message, Chat chatInfo);
+        object Handle(string message, long chatInfoID);
     }
 }

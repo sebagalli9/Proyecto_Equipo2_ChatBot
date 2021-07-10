@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    internal class CommandNotFoundHandlder : AbstractCommandHandler
+    public class CommandNotFoundHandlder : AbstractCommandHandler
     {
-        public async override Task<object> Handle(string messageText, Chat chatInfo)
+        public async override Task<object> Handle(string messageText, long chatInfoID)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;
 
             if (messageText != null)
             {
                 await client.SendTextMessageAsync(
-                                              chatId: chatInfo.Id,
-                                              text: $"{chatInfo.FirstName}, no logro entender lo que me estas diciendo 😕 Escribe /commands o /comandos para ver la lista de comandos "
+                                              chatId: chatInfoID,
+                                              text: $"No logro entender lo que me estas diciendo 😕 Escribe /commands o /comandos para ver la lista de comandos "
                                             );
                 return "Command Not Found";
             }

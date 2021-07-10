@@ -5,7 +5,7 @@ namespace Library
 {
     public class GetProductToSearchStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (storage.AskSpecificCompleted)
             {
@@ -34,7 +34,7 @@ namespace Library
                         storage.UpdateGetProductCompleted(true);
                     }
 
-                    return base.Handle(request, reader, user, input, output, searcher, storage);
+                    return base.Handle(request, user, input, output, searcher, storage);
                 }
 
                 else

@@ -5,14 +5,14 @@ namespace Library
 {
     public class AskMainQuestionStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
 
             if (request.CurrentState == "main" && storage.AskInitialCompleted)
             {
                 int contador = 1;
                 output.SendMessage("Elije el número correspondiente a una de las afirmaciones. A la persona a la que quieres regalarle:", request.RequestId);
-                foreach (MainCategory mainQ in reader.MainCategoryBank)
+                foreach (MainCategory mainQ in CoreBot.Instance.Reader.MainCategoryBank)
                 {
                     output.SendMessage(contador + "-" + mainQ.Question, request.RequestId);
                     storage.AnswersMainCategories.Add(contador.ToString(), mainQ.AnswerOptions[contador.ToString()]);
@@ -22,7 +22,7 @@ namespace Library
                     //espera
                 }
                 Thread.Sleep(2000);
-                foreach (MainCategory mainQ in reader.MainCategoryBank)
+                foreach (MainCategory mainQ in CoreBot.Instance.Reader.MainCategoryBank)
                 {
                     Thread.Sleep(200);
                     output.SendMessageAnswers(mainQ.AnswerOptions, request.RequestId);
@@ -58,7 +58,7 @@ namespace Library
                     request.UpdateCurrentState("mixed");
                 }
 
-                return base.Handle(request, reader, user, input, output, searcher, storage);
+                return base.Handle(request, user, input, output, searcher, storage);
             }
             else
             {

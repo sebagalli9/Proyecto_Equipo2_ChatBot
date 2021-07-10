@@ -5,20 +5,20 @@ namespace Library
 {
     public class NoMixedAnswersStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
 
             storage.MixedCategoriesSelected.Clear();
             for (int i = 0; i < 6; i++)
             {
                 Random r = new Random();
-                int randomNum = r.Next(reader.MixedCategoryBank.Count);
-                MixedCategory randCat = reader.MixedCategoryBank[randomNum];
+                int randomNum = r.Next(CoreBot.Instance.Reader.MixedCategoryBank.Count);
+                MixedCategory randCat = CoreBot.Instance.Reader.MixedCategoryBank[randomNum];
                 storage.MixedCategoriesSelected.Add(randCat);
             }
 
 
-            return base.Handle(request, reader, user, input, output, searcher, storage);
+            return base.Handle(request, user, input, output, searcher, storage);
 
 
 

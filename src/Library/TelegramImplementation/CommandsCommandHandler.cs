@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Library
 { 
-    internal class CommandsCommandHandler : AbstractCommandHandler
+    public class CommandsCommandHandler : AbstractCommandHandler
     {
-        public async override Task<object> Handle(string messageText, Chat chatInfo)
+        public async override Task<object> Handle(string messageText, long chatInfoID)
         {
             ITelegramBotClient client = TelegramBot.Instance.Client;   
 
@@ -25,12 +25,12 @@ namespace Library
                                                                                 .Append("/about\n")
                                                                                 ;
 
-                await client.SendTextMessageAsync(chatId: chatInfo.Id, text: commandsStringBuilder.ToString());
+                await client.SendTextMessageAsync(chatId: chatInfoID, text: commandsStringBuilder.ToString());
                 return "/commands Command";
             }
             else
             {
-                return base.Handle(messageText, chatInfo);
+                return base.Handle(messageText, chatInfoID);
             }
         }
     }

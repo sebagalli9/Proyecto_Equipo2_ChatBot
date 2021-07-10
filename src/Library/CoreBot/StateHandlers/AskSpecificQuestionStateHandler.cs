@@ -6,7 +6,7 @@ namespace Library
 {
     public class AskSpecificQuestionStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IReader reader, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (request.CurrentState == "specific")
             {
@@ -39,7 +39,7 @@ namespace Library
                         request.UpdateCurrentState("product");
                     }
 
-                    return base.Handle(request, reader, user, input, output, searcher, storage);
+                    return base.Handle(request, user, input, output, searcher, storage);
                 }
                 else
                 {

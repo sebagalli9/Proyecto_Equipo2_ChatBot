@@ -55,7 +55,7 @@ namespace Library
             //Construye cadena de responsabilidad para manejar los comandos
             ICommandHandler commandsCommandHandler = new CommandsCommandHandler();
             ICommandHandler startCommandHandler = new StartCommandHandler();
-            ICommandHandler searchMyGiftCommandHandler = new SearchMyGiftCommandHandler();
+            ICommandHandler searchMyGiftCommandHandler = new SearchGiftCommandHandler();
             ICommandHandler aboutCommandHandler = new AboutCommandHandler();
             ICommandHandler commandNotFoundHandler = new CommandNotFoundHandlder();
             commandsCommandHandler.SetNext(startCommandHandler);
@@ -64,7 +64,7 @@ namespace Library
             aboutCommandHandler.SetNext(commandNotFoundHandler);
 
             //Envia el mensaje recibido al primer eslabon de la cadena de responsabilidad
-            commandsCommandHandler.Handle(messageText, chatInfo);
+            commandsCommandHandler.Handle(messageText, chatInfo.Id);
         }
   
         public string GetInput()
