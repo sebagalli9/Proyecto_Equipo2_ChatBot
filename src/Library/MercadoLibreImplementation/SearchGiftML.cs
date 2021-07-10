@@ -8,8 +8,8 @@ namespace Library
 {
     public class SearchGiftML : ISearchGift
     {
-        IPersonProfile user;
-        IMessageSender output;
+        private IPersonProfile user;
+        private IMessageSender output;
 
         public SearchGiftML(IPersonProfile user, IMessageSender output)
         {

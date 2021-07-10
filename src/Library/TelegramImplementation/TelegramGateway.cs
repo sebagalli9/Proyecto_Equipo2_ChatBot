@@ -25,7 +25,7 @@ namespace Library
     */
     public class TelegramGateway : IMessageSender, IMessageReceiver
     {
-        public static string callbackValue;
+        private static string callbackValue;
         public static void RunTelegramAPI()
         {
             TelegramBot telegramBot = TelegramBot.Instance;
