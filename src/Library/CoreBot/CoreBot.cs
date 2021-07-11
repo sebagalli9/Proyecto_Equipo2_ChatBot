@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace Library
 {
     /*
-        DIP: La clase Session cumple con el principio DIP, ya que depende únicamente 
+        DIP: La clase CoreBot cumple con el principio DIP, ya que depende únicamente 
         de abstracciones, por lo que el código es flexible y no rígido, ya que esta 
         clase no depende de los métodos de cada clase que implemente la interfaz IStateHandler, 
         sino que justamente depende únicamente de las operaciones de dicha interfaz.
 
-        EXPERT: La clase Session cumple con el patrón Expert ya que al ser la clase 
+        EXPERT: La clase CoreBot cumple con el patrón Expert ya que al ser la clase 
         experta en conocer los StateHandlers, es su responsabilidad crear la cadena 
         de responsabilidad.
 
