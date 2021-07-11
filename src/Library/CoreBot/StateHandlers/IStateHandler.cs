@@ -18,6 +18,6 @@ namespace Library
         IStateHandler SetNext(IStateHandler handler);
         IStateHandler SetPrevious(IStateHandler handler);
         
-        object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage);
+        object Handle(IRequest request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage);
     }
 }

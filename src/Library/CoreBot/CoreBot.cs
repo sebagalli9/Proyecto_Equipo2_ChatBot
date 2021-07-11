@@ -5,13 +5,10 @@ namespace Library
 {
     /*
         DIP: La clase CoreBot cumple con el principio DIP, ya que depende únicamente 
-        de abstracciones, por lo que el código es flexible y no rígido, ya que esta 
-        clase no depende de los métodos de cada clase que implemente la interfaz IStateHandler, 
-        sino que justamente depende únicamente de las operaciones de dicha interfaz.
+        de abstracciones, por lo que el código es flexible y no rígido.
 
-        EXPERT: La clase CoreBot cumple con el patrón Expert ya que al ser la clase 
-        experta en conocer los StateHandlers, es su responsabilidad crear la cadena 
-        de responsabilidad.
+        EXPERT: Al ser la clase experta en conocer los StateHandlers, es su responsabilidad
+        crear la cadena de responsabilidad.
 
         CHAIN OF RESPONSIBILITY: En esta clase se aplica el patrón Chain of Responsibility 
         para que varios objetos gestionen las diferentes fases de preguntas y así favorecer 
@@ -21,9 +18,11 @@ namespace Library
         a extensión, debido a que si se desearan agregar más funcionalidades a manejar, 
         simplemente habría que agregar más handlers.
 
-        SRP: La clase cumple con el principio SRP, ya que su única razón de cambio  
-        es modificar las preparaciones previas a que se inicie el bot (Awake() es el método 
+        SRP: La clase no cumple con el principio SRP ya que no tiene una única razón de cambio,
+        las cuales pueden ser:  
+        -Modificar las preparaciones previas a que se inicie el bot (Awake() es el método 
         que se llama en Program).
+        -Modificar el modo en que se almacenan elementos en el diccionario userSessions
 
         SINGLETON: En esta clase se aplica el patrón Singleton con el fin de que la creación 
         de la cadena de responsabilidad y la lectura de archivos se haga una única vez para una 
@@ -48,8 +47,8 @@ namespace Library
             }
         }
 
-        private Dictionary<long, Request> userSessions = new Dictionary<long, Request>();
-        public Dictionary<long, Request> UserSessions
+        private Dictionary<long, IRequest> userSessions = new Dictionary<long, IRequest>();
+        public Dictionary<long, IRequest> UserSessions
         {
             get
             {
@@ -122,7 +121,7 @@ namespace Library
             getProductToSearchStateHandler.SetPrevious(noSpecificAnswersStateHandler); 
         }
 
-        public void AddUserSessions(long id, Request request)
+        public void AddUserSessions(long id, IRequest request)
         {   
             userSessions.Add(id, request);
         }

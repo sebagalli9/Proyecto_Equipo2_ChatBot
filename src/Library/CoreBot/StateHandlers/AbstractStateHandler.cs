@@ -9,8 +9,6 @@ namespace Library
         OCP: Se puede agregar nuevas responsabilidades en la cadena de responsabilidad 
         mediante herencia. 
 
-        DIP: La clase cumple con el principio DIP ya que las abstracciones no 
-        deben depender de detalles.
     */
     
     public abstract class AbstractStateHandler : IStateHandler
@@ -31,7 +29,7 @@ namespace Library
 
         }
 
-        public virtual object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public virtual object Handle(IRequest request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (this._nextHandler != null)
             {

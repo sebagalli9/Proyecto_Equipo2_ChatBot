@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Library
 { 
     /*
-        POLIMORFISMO: La clase CommandsCommandHandler tiene el método Handler 
+        POLIMORFISMO: La clase CommandsCommandHandler tiene el método Handle 
         que implementa una operación polimórfica.
     */
     

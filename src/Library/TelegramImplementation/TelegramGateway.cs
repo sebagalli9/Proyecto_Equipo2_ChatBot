@@ -17,8 +17,10 @@ namespace Library
         POLIMORFISMO: Se cumple con el patrón de polimorfismo ya que las clases 
         está implementando las operaciones polimórficas de sus interfaces.
 
-        SRP: La clase cumple con el principio SRP ya que la única razón de cambio 
-        es administrar los envíos y recepciones de mensajes de Telegram.
+        SRP: La clase no cumple con el principio SRP ya que tiene más de una razón de cambio
+        las cuales pueden ser: 
+        -Modificar la forma en la que se envian mensajes a Telegram.
+        -Modificar la forma en la que se reciben mensajes desde Telegram.
 
         ISP: La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
 
@@ -26,7 +28,7 @@ namespace Library
         para que varios objetos gestionen las diferentes comandos y así favorecer la extensibilidad.
 
         ADAPTER: La clase implementa el patrón Adapter para transformar a un formato 
-        reconocible para el manejo de mensajes (inputs y outputs) en el core del bot.
+        reconocible de manejo de mensajes (inputs y outputs) para el core del bot.
     */
 
     public class TelegramGateway : IMessageSender, IMessageReceiver
@@ -59,7 +61,7 @@ namespace Library
             //Agrega usuarios nuevos al diccionario UserSessions de CoreBot
             if (!CoreBot.Instance.UserSessions.ContainsKey(chatInfo.Id))
             {
-                Request request = new Request("initial", chatInfo.Id);
+                IRequest request = new Request("initial", chatInfo.Id);
                 CoreBot.Instance.AddUserSessions(chatInfo.Id, request);
             }
 

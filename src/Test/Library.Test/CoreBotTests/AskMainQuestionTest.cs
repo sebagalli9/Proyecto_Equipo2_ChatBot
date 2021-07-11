@@ -31,7 +31,7 @@ namespace Test.Library
         //Se prueba que se actualice las categorias seleccionadas del perfil del usuario
         {
             //Act
-            Request request = new Request("main",1);
+            IRequest request = new Request("main",1);
             CoreBot.Instance.Reader.ReadMainCategories("../../../../../../Assets/MainCategories.txt");
             storage.UpdateAskInitialCompleted(true);
             askMainQuestionStateHandler.Handle(request, user, input, output, findG, storage);

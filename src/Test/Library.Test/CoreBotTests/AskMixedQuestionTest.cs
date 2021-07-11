@@ -34,7 +34,7 @@ namespace Test.Library
         //Se prueba que se almacene correctamente las respuestas dadas a las preguntas mixtas
         {
             //Act
-            Request request = new Request("mixed",1);
+            IRequest request = new Request("mixed",1);
             CoreBot.Instance.Reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
