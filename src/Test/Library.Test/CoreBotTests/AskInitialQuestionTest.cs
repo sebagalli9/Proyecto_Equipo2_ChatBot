@@ -32,7 +32,7 @@ namespace Test.Library
         //Se prueba que luego de la fase de preguntas iniciales se actualice las preferencias del perfil del usuario
         {
             //Act
-            Request request = new Request("initial",1);
+            IRequest request = new Request("initial",1);
             CoreBot.Instance.Reader.ReadInitialQuestions("../../../../../../Assets/InitialQuestions.txt");
             askInitialQuestionStateHandler.Handle(request, user, input, output, findG, storage);
             //Assert

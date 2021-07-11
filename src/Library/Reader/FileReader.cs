@@ -20,11 +20,6 @@ namespace Library
         e InitialQuestion a listas de su mismo tipo, guarda dichas instancias y tiene los 
         datos que serán provistos al constructor para inicializar sus instancias.
 
-        COMPOSICIÓN: En la clase FileReader existe una relación de composición entre esta 
-        clase y las clases InitialQuestion, MainCategory, MixedCategory y SpecificCategory, 
-        ya que está compuesta de bancos de categorías de instancias de sus clases respectivas, 
-        las cuales no tienen un propósito independiente a las instancias de esta clase. 
-
         ISP: La clase cumple con el principio ISP ya que no depende de un tipo que no usa.
 
     */

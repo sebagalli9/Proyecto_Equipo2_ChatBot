@@ -12,8 +12,11 @@ using System.Text;
 namespace Library
 { 
     /*
-        POLIMORFISMO: La interfaz ICommandHandler tiene la operación polimórfica Handler, 
+        POLIMORFISMO: La interfaz ICommandHandler tiene la operación polimórfica Handle, 
         la cuál es implementada por todos los handlers que implementan esta interfaz.
+
+        OCP: La implementación de la interfaz en conjunto con una cadena de responsabilidad 
+        favorecen la extensibilidad de los comandos.
     */
     
     public interface ICommandHandler

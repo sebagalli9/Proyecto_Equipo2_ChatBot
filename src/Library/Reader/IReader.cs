@@ -15,6 +15,11 @@ namespace Library
 
         OCP: La interfaz IReader  hace que el medio por el que se leen los archivos externos 
         sea abierto a extensión.
+
+        COMPOSICIÓN: Existe una relación de composición entre las clases que implementen IReader y las 
+        clases InitialQuestion, MainCategory, MixedCategory y SpecificCategory, ya que están compuestas 
+        de bancos de preguntas de instancias de sus clases respectivas, las cuales no tienen un propósito
+        independiente a las instancias de dichas clases. 
     */
     
     public interface IReader

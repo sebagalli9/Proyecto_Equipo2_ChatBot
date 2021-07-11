@@ -62,7 +62,6 @@ Si, es posible agregar, modificar o retirar preguntas a cada una de las distinta
 Si tienes más dudas al respecto, puedes contactar con los desarrolladores.
 
 ## Comentarios sobre el desarrollo
-
 - En aquellos casos en que el usuario deba responder con un "si" o un "no" y se responda a todas las preguntas con un "no", el programa debe recolectar categorías aleatorias correspondientes a la fase anterior y hacer nuevas preguntas hasta que el usuario pueda encontrar una categoría a la cual poder responder "si". Esta funcionalidad se intentó implementar utilizando handlers con bifurcaciones (es decir, handlers a los cuales se les puede asociar tanto un next handler como un previous handler), que se agregan a la cadena de responsabilidad formada por IStateHandlers, sin embargo actualmente dicha característica no se encuentra en funcionamiento dado que surgió una falla que no se pudo detectar.
 - Al implementar las funcionalidades para Telegram, se tuvo problemas con los tiempos de ejecución de los métodos y el tiempo de respuesta del usuario. Se necesitó implementar un tiempo de espera entre que se imprime una pregunta y se recibe el callback de respuesta del botón de Telegram. La solución que se encontró para esto fue utilizar while loops para generar dichas esperas, sin embargo sabemos que no es la solución más eficiente. Creemos que esto se puede mejorar implementando eventos y métodos asincrónicos.
 - Se implementaron excepciones en la clase FileReader con el fin de interrumpir el flujo del programa antes de que se inicie el bot en caso de que no se puedan leer los archivos correctamente. Creemos que la implementación de excepciones podría mejorar creando excepciones que engloben tipos de errores más detallados, aunque esto puede implicar cambios importantes en la lógica del programa que haría discutible hasta qué punto valdría la pena crear excepciones tan específicas para detalles pequeños.
@@ -82,5 +81,9 @@ Consideramos que el desafío más difícil de la entrega fue la implementación 
 La implementación del patrón Chain of Responsibility, la implementación de botones en Telegram y se investigó sobre el patrón Adapter.
 - ¿Qué recursos (páginas web, libros, foros, etc) encontraron que les fueron valiosos para sortear los desafíos que encontraron?
 Documentación de .NET, documentación de la API de Telegram, StackOverflow y videos en YouTube.
+
+#### Aclaraciones
+- En caso de ejecutar dotnet test, tener en cuenta que los casos de test tienen un cierto tiempo de demora.
+- Luego de clonar el repositorio y abrirlo por primera vez es necesario realizar dotnet restore en la carpeta Program y en la carpeta Library.Test.
 
 ![WHLogo](./Assets/logowhitehats.png)

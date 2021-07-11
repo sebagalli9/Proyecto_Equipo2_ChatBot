@@ -12,12 +12,10 @@ namespace Library
         una razón de cambio, la cual sería modificar la forma en la que se gestiona 
         la fase de preguntas mixtas.
 
-        DIP:  La clase cumple con el principio DIP ya que la clase es de alto nivel 
-        y no depende de clases de bajo nivel, sino de abstracciones. 
     */
     public class AskMixedQuestionStateHandler : AbstractStateHandler
     {
-        public override object Handle(Request request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
+        public override object Handle(IRequest request, IPersonProfile user, IMessageReceiver input, IMessageSender output, ISearchGift searcher, IStorage storage)
         {
             if (request.CurrentState == "mixed")
             {

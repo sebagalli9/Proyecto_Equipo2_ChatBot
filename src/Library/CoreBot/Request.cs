@@ -13,7 +13,7 @@ namespace Library
         la propiedad CurrentState.
 
     */
-    public class Request
+    public class Request : IRequest
     {
         public string CurrentState { get; private set; }
         public long RequestId {get;private set;}

@@ -38,7 +38,7 @@ namespace Test.Library
         //Se prueba que se obtengan los productos a partir de las respuestas a las preguntas especificas
         {
             //Act
-            Request request = new Request("mixed",1);
+            IRequest request = new Request("mixed",1);
             CoreBot.Instance.Reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             CoreBot.Instance.Reader.ReadSpecificCategories("../../../../../../Assets/SpecificQuestions.txt");
             storage.UpdateAskMainCompleted(true);

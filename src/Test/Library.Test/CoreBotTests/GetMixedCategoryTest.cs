@@ -31,7 +31,7 @@ namespace Test.Library
         //Se prueba que se obtenga las preguntas mixtas a preguntar a partir de las categorias Main seleccionadas
         {
             //Act
-            Request request = new Request("main", 1);
+            IRequest request = new Request("main", 1);
             CoreBot.Instance.Reader.ReadMixedCategories("../../../../../../Assets/MixedQuestions.txt");
             storage.UpdateAskMainCompleted(true);
             user.UpdateSelectedCategory("home");
