@@ -3,9 +3,15 @@
 
 ![Banner](./Assets/gift.png)
 
-![Demo](./Assets/demo.png)
+<p align="center">
+  <img src="./Assets/demo.png">
+</p>
 
 Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! GiftBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
+
+## ¿Como encuentro a GiftBot?
+
+Podés buscarlo como GiftBot "WhiteHats" con usuario @whiteHatsGiftBot.
 
 ## ¿Cómo funciona GiftBot?
 Desde un conjunto de archivos externos se extrae la información necesaria para crear bancos que almacenan distintas clases de categorías de preguntas, las cuales se clasifican como Initial, Main, Mixed y Specific y que también corresponden a distintas fases del mismo nombre. 
@@ -50,12 +56,12 @@ cellphone;¿Le gusta sacar fotos?;selfie stick;1-si,2-no
 ```
 Finalmente, aquella o aquellas preguntas clasificadas como Specific que hayan obtenido como respuesta un "si", devolverán un producto que posteriormente va a ser ingresado a una búsqueda en Mercado Libre.
 
-### ¿Puedo agregar más preguntas al Gift Bot?
+## ¿Puedo agregar más preguntas al Gift Bot?
 Si, es posible agregar, modificar o retirar preguntas a cada una de las distintas fases del bot a través de archivos externos configurables. Actualmente GiftBot lee toda esta información de archivos .txt, pero el sistema está diseñado para que sea posible implementar lectura de otro tipo de archivos. Pero por el momento, si quieres modificar, agregar o retirar preguntas, solamente debes editar los archivos .txt en la carpeta de Assets, procurando seguir el formato correspondiente y que cuentes con una pregunta en las fases anteriores que permita al GiftBot llegar hasta tu pregunta. Todos los archivos .txt de fases de preguntas son configurables y extensibles.
 
 Si tienes más dudas al respecto, puedes contactar con los desarrolladores.
 
-#### Comentarios sobre el desarrollo
+## Comentarios sobre el desarrollo
 
 - En aquellos casos en que el usuario deba responder con un "si" o un "no" y se responda a todas las preguntas con un "no", el programa debe recolectar categorías aleatorias correspondientes a la fase anterior y hacer nuevas preguntas hasta que el usuario pueda encontrar una categoría a la cual poder responder "si". Esta funcionalidad se intentó implementar utilizando handlers con bifurcaciones (es decir, handlers a los cuales se les puede asociar tanto un next handler como un previous handler), que se agregan a la cadena de responsabilidad formada por IStateHandlers, sin embargo actualmente dicha característica no se encuentra en funcionamiento dado que surgió una falla que no se pudo detectar.
 - Al implementar las funcionalidades para Telegram, se tuvo problemas con los tiempos de ejecución de los métodos y el tiempo de respuesta del usuario. Se necesitó implementar un tiempo de espera entre que se imprime una pregunta y se recibe el callback de respuesta del botón de Telegram. La solución que se encontró para esto fue utilizar while loops para generar dichas esperas, sin embargo sabemos que no es la solución más eficiente. Creemos que esto se puede mejorar implementando eventos y métodos asincrónicos.
