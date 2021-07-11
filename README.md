@@ -3,11 +3,11 @@
 
 ![Banner](./Assets/gift.png)
 
+Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! GiftBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
+
 <p align="center">
   <img src="./Assets/demo.png">
 </p>
-
-Llega el día del cumpleaños de la persona más importante para tí y suele pasar que no sabemos qué regalar. ¡No te preocupes! GiftBot es tu mejor asistente. Él te ayudará a construir un perfil basado en determinadas preguntas y te hará fantásticas sugerencias para tu próximo regalo.
 
 ## ¿Como encuentro a GiftBot?
 
